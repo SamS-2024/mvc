@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h1>Om kursen</h1>
+        <div class="about-container">
+            <div class="about-text">
+                <p>
+                    Den kursen, kallad "mvc", fokuserar på objektorienterad PHP-programmering och omfattar
+                    webbramverket Symfony.
+                </p><br>
+
+                <p>
+                    Kursen täcker även enhetstestning, kodkvalitet och databaskopplingar
+                    med hjälp av objekt-relational mapping (ORM).
+                </p><br>
+
+                <p>
+                    Under kursen används verktyg som Git och GitHub
+                    för versionshantering och samarbete. Se gärna
+                    <a href="https://github.com/dbwebb-se/mvc" target="_blank" class="about-link">Kursens git-repo</a>
+
+                    Och även <a href="https://github.com/SamS-2024/mvc" target="_blank" class="about-link">Projektets git-repo</a>
+                </p><br>
+
+                <p>
+                    Kursen syftar till att ge studenten en djup förståelse för objektorienterad programmering och databaser i webbmiljö.
+                </p><br>
+                <p>
+                    Efter avslutad kurs ska studenten kunna tillämpa objektorienterade programmeringsparadigmen
+                    samt utveckla och driftsätta en webbapplikation med hjälp av ramverk och databaser.
+                </p><br>
+                <p>
+                    Kursen fokuserar även på att studenten ska kunna hantera verktyg och miljöer som används vid utveckling av
+                    databasdrivna webbapplikationer.
+                </p>
+            </div>
+
+                <a href="{{ asset('img/about.webp') }}">
+                    <img src="{{ asset('img/about.webp') }}" classe="about-img" alt="course-image">
+                </a>
+        </div>
+
+{% endblock %}

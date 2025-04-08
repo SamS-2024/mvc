@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(250, 251, 248);
+    line-height: 1.5;
+}
+
+/* body {
+    background: url('../images/background.jpg');
+    background-size: cover;
+} */
+
+main {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    border-bottom: 4px double #5b5c5b;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+header {
+    height: 150px;
+    background: url('../images/background.jpg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.site-title {
+    color: rgb(243, 242, 242);
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centrera innehållet i navbaren */
+    align-items: center;
+    background-color: rgb(237, 241, 226);
+    margin-bottom: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* Sprida ut länkarna */
+    align-items: center;
+    font-size: 1.5rem;
+    height: 50px;
+    width: 50%; /* Gör att ul tar upp 50% av bredden av nav och kan ändras när länkarna ökar */
+}
+
+a {
+    text-decoration: none;
+    color: rgb(92, 94, 95);
+}
+
+p {
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+footer {
+    background-color: rgb(75, 77, 76);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 80px;
+    /* Hjälper med att hålla footern nera vid lort innehåll */
+    margin-top: 25%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.copyright {
+    padding: 30px;
+    margin: 0 auto;
+}
+
+.github-icon {
+    background-color: white;
+    border-radius: 45%;
+    margin-right: 30px;
+}
+
+.me-img {
+    float: left;
+    border-radius: 8px;
+    padding-right: 20px;
+}
+
+.about-container {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 3rem;
+}
+
+.about-link {
+    color: rgb(1, 61, 37);
+    text-decoration: underline;
+}
+
+.about-link:hover {
+    color: rgb(6, 149, 116);
+}
+
+.report-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.kmom-links a {
+   color: black;
+   text-decoration: underline;
+   font-size: 1.3rem;
+}
+
+.kmom-links ul {
+    display: block;
+    align-self: center;
+    margin-left: 100px;
+    border-left: 1px darkgray solid;
+    height: 100%;
+}
+
+.kmom-links-titel {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.magic-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+
+.lucky-img {
+    border-radius: 5px;
+    margin-top: 4rem;
+    border: 1px rgb(234, 236, 234) solid;
+    width: 30%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.api-overview ul {
+    display: block;
+    padding: 10px;
+}
+
+.api-overview ul li {
+    margin-bottom: 10px;
+}

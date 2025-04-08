@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h1>Redovisning</h1>
+        <div class="report-container">
+            <div id="kmom01">
+                <h2>Kmom01</h2>
+                <p>
+                    Kort om tidigare kunskaper i objektorientering. Jag har grundläggande kunskaper
+                    i objektorientering från kurser i Java Python så det kommer att blir spinnande
+                    att se hur det fungerar i PHP.
+                </p><br>
+                <p>
+                    I föreläsningen lärde man sig att PHP använder en objektorienterad modell där klasser
+                    och objekt utgör grunden. För att komma igång behöver man förstå hur klasser definieras med
+                    hjälp av nyckelordet class, och hur objekt kan skapas från dessa klasser genom att använda new.
+                    Inuti en klass kan egenskaper (variabler) och metoder (funktioner) deklareras.
+                </p><br>
+                <p>
+                    En speciell metod som ofta används är konstruktorn __construct(), som gör det möjligt att
+                    sätta startvärden när ett objekt skapas. Även begreppen public, private och protected används för
+                    att styra åtkomsten till klassens innehåll. Nyckelordet this används inom klassen för att referera till
+                    det aktuella objektet och dess innehåll.
+                </p><br>
+
+                <p>
+                    Kodbasen till me/report kan upplevas som ganska omfattande i början av kursen. Det blir
+                    lätt att man följer instruktionerna steg för steg utan att alltid känna sig helt säker på varför
+                    man gör som man gör. Samtidigt verkar strukturen genomtänkt, där controllers används för att hantera
+                    routes och templates för att skapa vyer.
+                </p><br>
+                <p>
+                    Det finns fortfarande delar som känns oklara, till exempel vilken roll JavaScript spelar i projektet,
+                    eller syftet med vissa filer/ konfigurationsfiler men förhoppningsvis kommer förståelsen att växa med tiden.
+                </p><br>
+                <p>
+                    Zoom-genomgången var hjälpsam och gav en bra översikt, men det hade varit värdefullt med mer tid att sätta sig
+                    in i ramverket, PHP och objektorienterad programmering. Samtidigt hade det varit bättre att lägga mindre fokus
+                    på CSS och rapportskrivning, för att ge mer utrymme åt att förstå grunderna i applikationens uppbyggnad och php.
+                </p><br>
+                <p>
+                    Som svar på frågan om artikeln “PHP The Right Way” så hann jag bara läsa en liten del av den och den verkar vara bra
+                    då den lyfter flera viktiga delar. Särskilt intressant är avsnittet om automatiserade tester.
+                </p><br>
+                <p>
+                    Det visar hur man kan säkra att funktioner fortsätter fungera när man gör ändringar i koden, vilket är särskilt värdefullt
+                    i större projekt. Även Test Driven Development (TDD) känns intressant att lära sig mer om, eftersom det bygger på att man
+                    först skriver tester och sedan kodar utifrån dem.
+                </p><br>
+                <p>
+                    Ett annat exempel är enhetstester, där man testar enskilda funktioner och metoder för att se till att de beter sig korrekt.
+                    Det kan handla om att testa både giltiga och ogiltiga argument för att försäkra sig om att koden hanterar olika fall som den ska.
+                </p><br>
+                <p>
+                    Artikeln jämför detta med att bara använda var_dump() i en separat testfil, vilket anses vara ohållbart sätt att testa kod,
+                    särskilt i större eller mer professionella projekt. Automatiserade tester ger ett mer pålitligt och systematiskt sätt att kontrollera
+                    funktionalitet och undvika att gamla delar av applikationen går sönder när ny kod läggs till.
+                </p><br>
+                <p>
+                    TIL för detta kursmoment är hur routes fungerar i PHP och hur de kopplas till Twig-templates för rendering. Jag har också lärt mig hur
+                    man skapar ett JSON API samt hur man kan använda metoder i PHP som genererar slumpmässiga värden.
+                </p><br>
+
+            </div>
+            <div class="kmom-links">
+                <h2 class ="kmom-links-titel">Kursmoment</h2>
+                <ul>
+                    <li><a href="#kmom01">Kmom01</a></li>
+                    <li><a href="#kmom02">Kmom02</a></li>
+                    <li><a href="#kmom03">Kmom03</a></li>
+                    <li><a href="#kmom04">Kmom04</a></li>
+                    <li><a href="#kmom05">Kmom05</a></li>
+                    <li><a href="#kmom06">Kmom06</a></li>
+                    <li><a href="#kmom10">Kmom10</a></li>
+                </ul>
+            </div>
+        </div>
+
+{% endblock %}
