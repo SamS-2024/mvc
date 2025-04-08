@@ -65,3 +65,5 @@ symfony server:start
 Open the website by visiting the following address in your browser:
 
 http://127.0.0.1:8000/
+
+"Thanks for checking out the project!"
