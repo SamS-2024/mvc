@@ -39,8 +39,8 @@ class ControllerJson extends AbstractController
 
         $quotes = [$quote1, $quote2, $quote3, $quote4, $quote5];
         $randomQuotes = $quotes[array_rand($quotes)];
-
-
+        // Sätter tidszonen så det blir rätt i studentservern.
+        date_default_timezone_set('Europe/Stockholm');
         $data = [
             'randomQuotes' => $randomQuotes,
             'data' => date('Y-m-d H:i:s')
