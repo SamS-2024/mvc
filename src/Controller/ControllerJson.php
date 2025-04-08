@@ -43,7 +43,7 @@ class ControllerJson extends AbstractController
         date_default_timezone_set('Europe/Stockholm');
         $data = [
             'randomQuotes' => $randomQuotes,
-            'data' => date('Y-m-d H:i:s')
+            'date' => date('Y-m-d H:i:s')
         ];
 
         $response = new JsonResponse($data);
