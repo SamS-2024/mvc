@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ControllerJson extends AbstractController
 {
-
     #[Route("/api", name: "api-overview")]
     public function apiOverview(): Response
     {
