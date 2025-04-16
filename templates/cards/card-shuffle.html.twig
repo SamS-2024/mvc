@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Shuffled Cards{% endblock %}
+
+{% block body %}
+<h1>Shuffled Cards</h1>
+
+<div class="card-container">
+    {{ cardString|raw }}
+</div>
+
+{% endblock %}

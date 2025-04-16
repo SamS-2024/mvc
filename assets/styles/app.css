@@ -225,12 +225,10 @@ input {
 }
 
 .card-container {
-    text-align: center; /* Centrerar innehållet horisontellt */
-}
+    text-align: center;
+    font-size: 5.5em;
+    display: block;
 
-.cards-row {
-    font-size: 5em;
-    display: inline-block; /* Gör varje kort till inline-block för att hålla på en rad */
 }
 
 .red {

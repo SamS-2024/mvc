@@ -4,13 +4,13 @@ namespace App\Card;
 
 class Card
 {
-    private $suit;
     private $rank;
+    private $suit;
 
-    public function __construct($suit, $rank)
+    public function __construct($rank, $suit)
     {
-        $this->suit = $suit;
         $this->rank = $rank;
+        $this->suit = $suit;
     }
 
     public function getSuit(): string
@@ -22,4 +22,13 @@ class Card
     {
         return $this->rank;
     }
+
+    public function getColor(): string
+    {
+        if ($this->suit === 'hearts' || $this->suit === 'diamonds') {
+            return 'red';
+        }
+        return 'black';
+    }
+
 }

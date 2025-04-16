@@ -5,11 +5,12 @@
 {% block body %}
 <h1>Cards</h1>
 
+
 <div class="card-container">
-    <p class="cards-row">{{ spades }}</p>
-    <p class="cards-row red">{{ hearts }}</p>
-    <p class="cards-row red">{{ diamonds }}</p>
-    <p class="cards-row">{{ clubs }}</p>
+    {{ spades|raw }}
+    {{ hearts|raw }}
+    {{ diamonds|raw }}
+    {{ clubs|raw }}
 </div>
 
 {% endblock %}

@@ -27,7 +27,7 @@ class CardGraphic extends Card
             '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮', '🂡'
         ];
 
-        $spadesCards = $this->createCardObjects($this->spades);
+        $spadesCards = $this->createCardObjects($this->spades, 'spades');
 
         return $spadesCards;
 }
@@ -40,8 +40,7 @@ class CardGraphic extends Card
             '🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾', '🂱'
         ];
 
-
-        $heartsCards = $this->createCardObjects($this->hearts);
+        $heartsCards = $this->createCardObjects($this->hearts, 'hearts');
 
         return $heartsCards;
     }
@@ -54,7 +53,7 @@ class CardGraphic extends Card
             '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎', '🃁'
         ];
 
-        $diamondsCards = $this->createCardObjects($this->diamonds);
+        $diamondsCards = $this->createCardObjects($this->diamonds, 'diamonds');
 
         return $diamondsCards;
     }
@@ -67,30 +66,37 @@ class CardGraphic extends Card
             '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞', '🃑'
         ];
 
-        $clubsCards = $this->createCardObjects($this->clubs);
+        $clubsCards = $this->createCardObjects($this->clubs, 'clubs');
 
         return $clubsCards;
     }
 
-    public function createCardObjects(array $represenation): array
+    public function createCardObjects(array $representation, string $suit): array
     {
-        $cards = [];
+    $cards = [];
 
-        for($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
+    for($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
+        $cards[] = new Card($representation[$i - 2], $suit);  // Skickar både svit och symbol
+    }
 
-            $cards[] = new Card($represenation[$i - 2], $i);
-        }
-        return $cards;
+    return $cards;
+
     }
 
     public function getAsString(array $cardsArray): string
     {
-        $strings = [];
+    $strings = [];
 
-        foreach($cardsArray as $card) {
-            $strings[] = $card->getSuit();
+    foreach ($cardsArray as $card) {
+        $symbol = $card->getRank();
+
+        if ($card->getColor() === 'red') {
+            $strings[] = '<span class="red">' . $symbol . '</span>';
+        } else {
+            $strings[] = $symbol;
         }
+    }
 
-        return implode(" ", $strings);
+    return implode(" ", $strings);
     }
 }
