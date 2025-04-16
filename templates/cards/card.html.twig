@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+<h1>Card</h1>
+
+<div class="link-container">
+    <a href="{{ path('delete_session') }}" class="links">Delete session</a>
+    <a href="{{ path('card_deck') }}" class="links">Show cards</a>
+</div>
+
+{{ include('flash.html.twig') }}
+
+{% endblock %}

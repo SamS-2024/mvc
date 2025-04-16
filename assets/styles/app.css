@@ -201,3 +201,38 @@ input {
 .flash-warning:before {
     content: "⚠";
 }
+
+/* Kmom02 */
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.links {
+    align-self: self-start;
+    margin: 10px;
+    text-decoration: none;
+    background-color: #3E555C;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Mjuk övergång på hover */
+}
+
+.links:hover {
+    background-color: #4C7277;
+}
+
+.card-container {
+    text-align: center; /* Centrerar innehållet horisontellt */
+}
+
+.cards-row {
+    font-size: 5em;
+    display: inline-block; /* Gör varje kort till inline-block för att hålla på en rad */
+}
+
+.red {
+    color: red;
+}

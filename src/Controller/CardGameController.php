@@ -13,6 +13,25 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
+    #[Route("/card", name: "card")]
+    public function card(): Response {
+
+        return $this->render('Cards/card.html.twig');
+    }
+
+    #[Route("/card/deck", name: "card_deck")]
+    public function cardDeck(): Response {
+        $allCards = new CardGraphic();
+
+        $data = [
+            "spades"=>$allCards->getAsString($allCards->createSpades()),
+            "hearts"=>$allCards->getAsString($allCards->createHearts()),
+            "diamonds"=>$allCards->getAsString($allCards->createDiamonds()),
+            "clubs"=>$allCards->getAsString($allCards->createClubs())
+        ];
+        return $this->render('Cards/card-deck.html.twig', $data);
+    }
+
     #[Route("/test", name: "test_session")]
     public function sessionTest(
         SessionInterface $session
