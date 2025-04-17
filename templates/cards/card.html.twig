@@ -16,4 +16,24 @@
 
 {{ include('flash.html.twig') }}
 
+<h2>Klassstruktur för Kortlekssystemet</h2>
+
+    <h3>1. Card:</h3>
+    <p>Denna klass representerar ett enskilt kort och har två egenskaper: <em>rank</em> (kortets värde) och <em>suit</em> (kortets svit, t.ex. "hearts", "spades").</p>
+    <p>Metoderna getSuit(), getRank() och getColor() används för att hämta kortets svit, rank och färg (röd eller svart) beroende på sviten.</p>
+
+    <h3>2. CardGraphic:</h3>
+    <p>Denna klass ärver från Card och ansvarar för den grafiska representationen av korten.</p>
+    <p>Här definieras kortsymboler för varje svit och skapar kortobjekt genom metoden createCardObjects().</p>
+    <p>Det finns metoder för att skapa korten för varje svit (spades, hearts, diamonds, clubs) och en metod för att konvertera korten till strängar i HTML-format (getAsString()).</p>
+
+    <h3>3. DeckOfCards:</h3>
+    <p>Denna klass representerar en kortlek och innehåller ett antal kort som skapas genom komposition av CardGraphic.</p>
+    <p>Kortleken kan blandas genom metoden shuffleCards() och konvertera en lista av kort till en sträng genom getAsString().</p>
+    <p>Klassens metoder ansvarar för att skapa hela kortleken (createDeck()) och hantera korten som ingår i leken.</p>
+
+    <h3>Relationer mellan klasserna:</h3>
+    <p>CardGraphic ärver från Card, vilket innebär att varje CardGraphic-instans innehåller kortegenskaper från Card.</p>
+    <p>DeckOfCards använder komposition av CardGraphic för att skapa kort och skapar en komplett kortlek med hjälp av metoderna i CardGraphic. See gärna UML-diagrammet nedan:</p>
+
 {% endblock %}

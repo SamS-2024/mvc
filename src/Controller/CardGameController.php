@@ -22,13 +22,13 @@ class CardGameController extends AbstractController
 
     #[Route("/card/deck", name: "card_deck")]
     public function cardDeck(): Response {
-        $allCards = new CardGraphic();
+
+        $deck = new DeckOfCards();
+        $cardArray = $deck->createDeck();
+        $cards = $deck->getAsString($cardArray);
 
         $data = [
-            "spades"=>$allCards->getAsString($allCards->createSpades()),
-            "hearts"=>$allCards->getAsString($allCards->createHearts()),
-            "diamonds"=>$allCards->getAsString($allCards->createDiamonds()),
-            "clubs"=>$allCards->getAsString($allCards->createClubs())
+            "cards"=>$cards
         ];
 
         return $this->render('Cards/card-deck.html.twig', $data);
@@ -128,11 +128,6 @@ class CardGameController extends AbstractController
         }
 
         $shuffledCards = $session->get("shuffled_cards");
-
-        // if(empty($shuffledCards)) {
-
-        //     return $this->redirectToRoute("card_shuffle");
-        // }
 
         $removedCards = [];
         $count = 0;
