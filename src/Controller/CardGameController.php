@@ -105,6 +105,13 @@ class CardGameController extends AbstractController
             SessionInterface $session
         ): Response {
 
+            // Kollar om kortleken är tom innan anrop till hjälpfunktionen.
+            $shuffledCards = $session->get("shuffled_cards");
+            if(empty($shuffledCards)) {
+
+                return $this->redirectToRoute("card_shuffle");
+            }
+
             $numCards = $request->request->get('num_cards');
 
             $data = $this->drawCardsHelper($numCards, $session);
@@ -122,12 +129,14 @@ class CardGameController extends AbstractController
 
         $shuffledCards = $session->get("shuffled_cards");
 
-        if(empty($shuffledCards)) {
+        // if(empty($shuffledCards)) {
 
-            return $this->redirectToRoute("card_shuffle");
-        }
+        //     return $this->redirectToRoute("card_shuffle");
+        // }
 
+        $removedCards = [];
         $count = 0;
+
         while ($count < $num) {
             $removedCards[] = array_pop($shuffledCards);
             $count++;
