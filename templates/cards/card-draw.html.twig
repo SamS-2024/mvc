@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw Card{% endblock %}
+
+{% block body %}
+<h1>Draw Card</h1>
+
+<div class="card-container">
+    {{ cardString|raw }}
+</div>
+
+<p>Remaining cards: {{ remainigCards }}</p>
+
+{% endblock %}

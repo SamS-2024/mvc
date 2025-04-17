@@ -35,10 +35,15 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card/deck/shuffle", name: "card_shuffle")]
-    public function shuffleCards(): Response {
+    public function shuffleCards(
+        SessionInterface $session
+    ): Response {
+
     $cards = new DeckOfCards();
     $cards->createDeck();
     $shuffledCards = $cards->shuffleCards();
+
+    $session->set("shuffled_cards", $shuffledCards);
 
     $data = [
         "cardString" => $cards->getAsString($shuffledCards)
@@ -47,15 +52,108 @@ class CardGameController extends AbstractController
     return $this->render('Cards/card-shuffle.html.twig', $data);
 }
 
-    #[Route("/test", name: "test_session")]
-    public function sessionTest(
-        SessionInterface $session
-    ): Response {
-        $session->set("test", "Hej jag är en session");
-        $session->set("test2", "Hello, här är det ett annat test");
+    #[Route("/card/deck/draw", name: "card_draw")]
+        public function drawCard(
+            SessionInterface $session
+        ): Response {
 
-        return $this->redirectToRoute("show_session");
+        $shuffledCards = $session->get("shuffled_cards");
+
+        if(empty($shuffledCards)) {
+
+            return $this->redirectToRoute("card_shuffle");
+        }
+
+        $removedCard = array_pop($shuffledCards);
+
+        $symbol = $removedCard->getRank();
+        if ($removedCard->getColor() === 'red') {
+            $symbol = '<span class="red">' . $symbol . '</span>';
+        }
+
+        // Uppdaterar sessionen
+        $session->set("shuffled_cards", $shuffledCards);
+
+        $data = [
+            "cardString" => $symbol,
+            "remainigCards" => count($shuffledCards)
+        ];
+
+        return $this->render('Cards/card-draw.html.twig', $data);
     }
+
+    #[Route("card/deck/draw/{num<\d+>}", name: "draw_cards")]
+        public function drawCards(
+            int $num,
+            SessionInterface $session
+        ): Response {
+
+        $data = $this->drawCardsHelper($num, $session);
+
+        return $this->render('Cards/draw-cards.html.twig', $data);
+    }
+
+    #[Route("card/deck/draw/num", name: "draw_cards_num_get", methods: ['GET'])]
+        public function drawCardsGet(): Response {
+
+        return $this->render('Cards/draw-cards-form.html.twig');
+    }
+
+    #[Route("card/deck/draw/num", name: "draw_cards_num_post", methods: ['POST'])]
+        public function drawCardsPost(
+            Request $request,
+            SessionInterface $session
+        ): Response {
+
+            $numCards = $request->request->get('num_cards');
+
+            $data = $this->drawCardsHelper($numCards, $session);
+
+            return $this->render('Cards/draw-cards.html.twig', $data);
+    }
+
+    private function drawCardsHelper(
+        $num,
+        SessionInterface $session
+        ) {
+        if ($num > 52) {
+            throw new \Exception("Can not draw more than 52 cards!");
+        }
+
+        $shuffledCards = $session->get("shuffled_cards");
+
+        if(empty($shuffledCards)) {
+
+            return $this->redirectToRoute("card_shuffle");
+        }
+
+        $count = 0;
+        while ($count < $num) {
+            $removedCards[] = array_pop($shuffledCards);
+            $count++;
+        }
+
+        // Uppdaterar sessionen
+        $session->set("shuffled_cards", $shuffledCards);
+
+        $cardString = '';
+        foreach ($removedCards as $card) {
+            $symbol = $card->getRank();
+            if ($card->getColor() === 'red') {
+                $cardString .= '<span class="red">' . $symbol . ' ' . '</span>';
+            } else {
+                $cardString .= $symbol . ' ';
+            }
+        }
+
+        $data = [
+            "cardString" => $cardString,
+            "remainigCards" => count($shuffledCards)
+        ];
+
+        return $data;
+    }
+
 
     #[Route("/session", name: "show_session")]
     public function session(
@@ -63,8 +161,7 @@ class CardGameController extends AbstractController
     ): Response {
 
         $data = [
-            "test" => $session->get("test"),
-            "test2" => $session->get("test2")
+            "session" => $session->all()
         ];
 
         return $this->render('Cards/session.html.twig', $data);

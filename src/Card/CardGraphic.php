@@ -55,6 +55,7 @@ class CardGraphic extends Card
 
         $diamondsCards = $this->createCardObjects($this->diamonds, 'diamonds');
 
+
         return $diamondsCards;
     }
 
@@ -76,7 +77,8 @@ class CardGraphic extends Card
     $cards = [];
 
     for($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
-        $cards[] = new Card($representation[$i - 2], $suit);  // Skickar både svit och symbol
+        // Skickar både svit och symbol
+        $cards[] = new Card($representation[$i - 2], $suit);
     }
 
     return $cards;
@@ -95,6 +97,7 @@ class CardGraphic extends Card
         } else {
             $strings[] = $symbol;
         }
+
     }
 
     return implode(" ", $strings);

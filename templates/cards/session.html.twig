@@ -5,8 +5,8 @@
 {% block body %}
 <h1>Session</h1>
 
-<p>{{ test }}</p>
-<p>{{ test2 }}</p>
+{{ dump(session) }}
+
 
 {{ include('flash.html.twig') }}
 

@@ -6,8 +6,12 @@
 <h1>Card</h1>
 
 <div class="link-container">
-    <a href="{{ path('delete_session') }}" class="links">Delete session</a>
     <a href="{{ path('card_deck') }}" class="links">Show cards</a>
+    <a href="{{ path('card_shuffle') }}" class="links">Shuffle cards</a>
+    <a href="{{ path('card_draw') }}" class="links">Draw a card</a>
+    <a href="{{ path('draw_cards_num_get') }}" class="links">Draw cards</a>
+    <a href="{{ path('show_session') }}" class="links">Show Session</a>
+    <a href="{{ path('delete_session') }}" class="links">Delete session</a>
 </div>
 
 {{ include('flash.html.twig') }}

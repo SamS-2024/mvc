@@ -34,10 +34,10 @@ class DeckOfCards
         return $this->cardsArray;
     }
 
-    public function getAsString(array $cardsArray): string
+
+    public function getAsString(array $arrayOfCards): string
     {
 
-        return $this->cardGraphic->getAsString($cardsArray);
-
+        return $this->cardGraphic->getAsString($arrayOfCards);
     }
 }
