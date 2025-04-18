@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\CardGraphic;
-use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,6 +85,14 @@ class CardGameController extends AbstractController
             SessionInterface $session
         ): Response {
 
+        // Kollar om kortleken är tom innan anrop till hjälpfunktionen.
+        $shuffledCards = $session->get("shuffled_cards", []);
+
+        if(empty($shuffledCards)) {
+
+            return $this->redirectToRoute("card_shuffle");
+        }
+
         $data = $this->drawCardsHelper($num, $session);
 
         return $this->render('Cards/draw-cards.html.twig', $data);
@@ -102,21 +107,12 @@ class CardGameController extends AbstractController
     #[Route("card/deck/draw/num", name: "draw_cards_num_post", methods: ['POST'])]
         public function drawCardsPost(
             Request $request,
-            SessionInterface $session
         ): Response {
-
-            // Kollar om kortleken är tom innan anrop till hjälpfunktionen.
-            $shuffledCards = $session->get("shuffled_cards");
-            if(empty($shuffledCards)) {
-
-                return $this->redirectToRoute("card_shuffle");
-            }
 
             $numCards = $request->request->get('num_cards');
 
-            $data = $this->drawCardsHelper($numCards, $session);
+            return $this->redirectToRoute('draw_cards', ['num' => $numCards]);
 
-            return $this->render('Cards/draw-cards.html.twig', $data);
     }
 
     private function drawCardsHelper(
@@ -132,7 +128,7 @@ class CardGameController extends AbstractController
         $removedCards = [];
         $count = 0;
 
-        while ($count < $num) {
+        while ($count < $num && !empty($shuffledCards)) {
             $removedCards[] = array_pop($shuffledCards);
             $count++;
         }
