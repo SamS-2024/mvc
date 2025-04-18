@@ -8,8 +8,8 @@ class CardGraphic extends Card
     protected $hearts;
     protected $diamonds;
     protected $clubs;
-    const MIN_VALUE = 2;
-    const MAX_VALUE = 14;
+    public const MIN_VALUE = 2;
+    public const MAX_VALUE = 14;
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class CardGraphic extends Card
         $spadesCards = $this->createCardObjects($this->spades, 'spades');
 
         return $spadesCards;
-}
+    }
 
     public function createHearts(): array
     {
@@ -74,32 +74,32 @@ class CardGraphic extends Card
 
     public function createCardObjects(array $representation, string $suit): array
     {
-    $cards = [];
+        $cards = [];
 
-    for($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
-        // Skickar både svit och symbol
-        $cards[] = new Card($representation[$i - 2], $suit);
-    }
+        for ($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
+            // Skickar både svit och symbol
+            $cards[] = new Card($representation[$i - 2], $suit);
+        }
 
-    return $cards;
+        return $cards;
 
     }
 
     public function getAsString(array $cardsArray): string
     {
-    $strings = [];
+        $strings = [];
 
-    foreach ($cardsArray as $card) {
-        $symbol = $card->getRank();
+        foreach ($cardsArray as $card) {
+            $symbol = $card->getRank();
 
-        if ($card->getColor() === 'red') {
-            $strings[] = '<span class="red">' . $symbol . '</span>';
-        } else {
-            $strings[] = $symbol;
+            if ($card->getColor() === 'red') {
+                $strings[] = '<span class="red">' . $symbol . '</span>';
+            } else {
+                $strings[] = $symbol;
+            }
+
         }
 
-    }
-
-    return implode(" ", $strings);
+        return implode(" ", $strings);
     }
 }

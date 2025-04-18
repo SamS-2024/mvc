@@ -44,25 +44,12 @@ class DeckOfCards
         return $this->cardGraphic->getAsString($arrayOfCards);
     }
 
-
-    // public function getAsJson(): array
-    // {
-    //     $deckData = [];
-    //     foreach ($this->cardsArray as $card) {
-    //         $deckData[] = [
-    //             'rank' => $card->getRank(),
-    //             'color' => $card->getColor()
-    //         ];
-    //     }
-    //     return $deckData;
-    // }
-
     public function getAsJson(): array
     {
         $deckData = [];
         foreach ($this->cardsArray as $card) {
             $deckData[] = $card->getAsJson(); // Använder getAsJson på varje kort
-    }
+        }
         return $deckData;
     }
 

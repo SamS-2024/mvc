@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ControllerJsonCardGame extends AbstractController
 {
-
     #[Route("api/deck", name: "api-deck", methods: ["GET"])]
     public function apiDeck(): Response
     {
@@ -37,23 +36,23 @@ class ControllerJsonCardGame extends AbstractController
     #[Route("api/deck/shuffle", name: "api-deck-shuffle", methods: ["POST"])]
     public function apiDeckShuffle(SessionInterface $session): Response
     {
-    $deck = new DeckOfCards();
-    $deck->createDeck();
-    $deck->shuffleCards();
+        $deck = new DeckOfCards();
+        $deck->createDeck();
+        $deck->shuffleCards();
 
-    $session->set("shuffled_cards_json", $deck->getAsJson());
+        $session->set("shuffled_cards_json", $deck->getAsJson());
 
-    $data = ['deck' => $deck->getAsJson()];
-    $response = $this->responseHelper($data);
+        $data = ['deck' => $deck->getAsJson()];
+        $response = $this->responseHelper($data);
 
-    return $response;
-}
+        return $response;
+    }
 
     #[Route("api/deck/draw", name: "api-deck-draw-get", methods: ["GET"])]
-        public function apiDeckDrawForm(): Response
-        {
-            return $this->render('Cards/json_form.html.twig');
-        }
+    public function apiDeckDrawForm(): Response
+    {
+        return $this->render('Cards/json_form.html.twig');
+    }
 
     #[Route("api/deck/draw", name: "api-deck-draw", methods: ["POST"])]
     public function apiDeckDraw(SessionInterface $session): Response
@@ -75,7 +74,8 @@ class ControllerJsonCardGame extends AbstractController
 
 
     #[Route("api/deck/draw/form", name: "api-deck-draw-cards-form", methods: ["POST"])]
-    public function drawCardsForm(): Response {
+    public function drawCardsForm(): Response
+    {
         return $this->render('Cards/api-draw-cards-form.html.twig');
     }
 
@@ -90,10 +90,10 @@ class ControllerJsonCardGame extends AbstractController
         $drawn = [];
         $count = 0;
 
-    while ($count < $number && !empty($cards)) {
-        $drawn[] = array_pop($cards);
-        $count++;
-    }
+        while ($count < $number && !empty($cards)) {
+            $drawn[] = array_pop($cards);
+            $count++;
+        }
 
         $session->set("shuffled_cards_json", $cards);
 
