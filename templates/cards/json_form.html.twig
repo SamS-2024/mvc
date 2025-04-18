@@ -7,12 +7,20 @@
 
 <div class="link-container">
     <form method="POST" action="{{ path('api-deck-shuffle') }}">
-        <button type="submit" class="links">Blanda kortleken</button>
+        <button type="submit" class="links">Shuffle cards</button>
     </form>
 
     <form method="POST" action="{{ path('api-deck-draw') }}">
-        <button type="submit" class="links">Dra ett kort</button>
+        <button type="submit" class="links">Draw a card</button>
     </form>
+
+
+    <form method="POST" action="{{ path('api-deck-draw-cards-form') }}">
+        <button type="submit" class="links">Draw Cards</button>
+    </form>
+
+
+
 </div>
 
 {% endblock %}
