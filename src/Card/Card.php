@@ -30,4 +30,13 @@ class Card
         }
         return 'black';
     }
+
+   // Ny metod för att hantera ett kort i JSON-format
+   public function getAsJson(): array {
+
+        return  [
+            'rank' => $this->getRank(),
+            'suit' => $this->getSuit()
+        ];
+    }
 }

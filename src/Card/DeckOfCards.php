@@ -14,6 +14,9 @@ class DeckOfCards
         $this->cardGraphic = new CardGraphic();
     }
 
+
+
+
     public function createDeck(): array
     {
         // Skapar en deck av kort med hjälp av CardGraphic
@@ -42,16 +45,26 @@ class DeckOfCards
     }
 
 
+    // public function getAsJson(): array
+    // {
+    //     $deckData = [];
+    //     foreach ($this->cardsArray as $card) {
+    //         $deckData[] = [
+    //             'rank' => $card->getRank(),
+    //             'color' => $card->getColor()
+    //         ];
+    //     }
+    //     return $deckData;
+    // }
+
     public function getAsJson(): array
     {
         $deckData = [];
         foreach ($this->cardsArray as $card) {
-            $deckData[] = [
-                'rank' => $card->getRank(),
-                'color' => $card->getColor()
-            ];
-        }
+            $deckData[] = $card->getAsJson(); // Använder getAsJson på varje kort
+    }
         return $deckData;
     }
+
 
 }
