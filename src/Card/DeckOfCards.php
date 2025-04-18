@@ -2,11 +2,18 @@
 
 namespace App\Card;
 
+/**
+ * Represents a full deck of playing cards, including graphical symbols.
+ * Manages creation, shuffling, and retrieval of cards.
+ */
 class DeckOfCards
 {
     protected $cardsArray;
     protected $cardGraphic;
 
+    /**
+    * Initializes the deck with an empty cards array and a CardGraphic instance.
+    */
     public function __construct()
     {
         $this->cardsArray = [];
@@ -14,9 +21,11 @@ class DeckOfCards
         $this->cardGraphic = new CardGraphic();
     }
 
-
-
-
+    /**
+     * Creates a deck of cards by generating cards for each suit
+     * (spades, hearts, diamonds, clubs).
+     * Merges the cards into a single array and returns it.
+     */
     public function createDeck(): array
     {
         // Skapar en deck av kort med hjälp av CardGraphic
@@ -30,6 +39,9 @@ class DeckOfCards
         return $this->cardsArray;
     }
 
+    /**
+     * Shuffles the deck of cards and returns the shuffled array.
+     */
     public function shuffleCards(): array
     {
         shuffle($this->cardsArray);
@@ -37,13 +49,23 @@ class DeckOfCards
         return $this->cardsArray;
     }
 
-
+    /**
+     * Converts an array of cards into a string representation.
+     *
+     * @param array $arrayOfCards An array of Card objects.
+     * @return string A string representation of the cards.
+     */
     public function getAsString(array $arrayOfCards): string
     {
 
         return $this->cardGraphic->getAsString($arrayOfCards);
     }
 
+    /**
+     * Converts the deck of cards into a JSON-compatible array.
+     *
+     * @return array An array representation of the deck.
+     */
     public function getAsJson(): array
     {
         $deckData = [];
@@ -52,6 +74,4 @@ class DeckOfCards
         }
         return $deckData;
     }
-
-
 }

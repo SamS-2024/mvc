@@ -2,6 +2,10 @@
 
 namespace App\Card;
 
+/**
+ * Represents a playing card with graphical symbols.
+ * Extends the Card class by adding suit symbols and value constants.
+ */
 class CardGraphic extends Card
 {
     protected $spades;
@@ -11,6 +15,9 @@ class CardGraphic extends Card
     public const MIN_VALUE = 2;
     public const MAX_VALUE = 14;
 
+    /**
+     * Initializes the arrays used to store card symbols for each suit.
+     */
     public function __construct()
     {
         $this->spades = [];
@@ -19,6 +26,11 @@ class CardGraphic extends Card
         $this->clubs = [];
     }
 
+    /**
+     * Creates card objects for spades using Unicode symbols.
+     *
+     * @return array Array of spade card objects.
+     */
     public function createSpades(): array
     {
         $spadesCards = [];
@@ -32,6 +44,11 @@ class CardGraphic extends Card
         return $spadesCards;
     }
 
+    /**
+     * Creates card objects for hearts using Unicode symbols.
+     *
+     * @return array Array of hearts card objects.
+     */
     public function createHearts(): array
     {
         $heartsCards = [];
@@ -45,6 +62,11 @@ class CardGraphic extends Card
         return $heartsCards;
     }
 
+    /**
+     * Creates card objects for diamonds using Unicode symbols.
+     *
+     * @return array Array of diamonds card objects.
+     */
     public function createDiamonds(): array
     {
         $diamondsCards = [];
@@ -59,6 +81,11 @@ class CardGraphic extends Card
         return $diamondsCards;
     }
 
+    /**
+     * Creates card objects for clubs using Unicode symbols.
+     *
+     * @return array Array of clubs card objects.
+     */
     public function createClubs(): array
     {
         $clubsCards = [];
@@ -72,6 +99,13 @@ class CardGraphic extends Card
         return $clubsCards;
     }
 
+    /**
+     * Creates card objects from a symbol array and suit name.
+     *
+     * @param array $representation Array of card symbols.
+     * @param string $suit The suit of the cards.
+     * @return array Array of Card objects.
+     */
     public function createCardObjects(array $representation, string $suit): array
     {
         $cards = [];
@@ -82,9 +116,14 @@ class CardGraphic extends Card
         }
 
         return $cards;
-
     }
 
+    /**
+     * Returns a string representation of cards with HTML styling for red cards.
+     *
+     * @param array $cardsArray Array of Card objects.
+     * @return string String of card symbols with red coloring where applicable.
+     */
     public function getAsString(array $cardsArray): string
     {
         $strings = [];
@@ -97,7 +136,6 @@ class CardGraphic extends Card
             } else {
                 $strings[] = $symbol;
             }
-
         }
 
         return implode(" ", $strings);
