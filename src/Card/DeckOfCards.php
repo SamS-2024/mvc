@@ -40,4 +40,18 @@ class DeckOfCards
 
         return $this->cardGraphic->getAsString($arrayOfCards);
     }
+
+
+    public function getAsJson(): array
+    {
+        $deckData = [];
+        foreach ($this->cardsArray as $card) {
+            $deckData[] = [
+                'rank' => $card->getRank(),
+                'color' => $card->getColor()
+            ];
+        }
+        return $deckData;
+    }
+
 }
