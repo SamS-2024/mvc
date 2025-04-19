@@ -15,6 +15,10 @@ class ControllerJson extends AbstractController
         $data = [
             '/api' => 'Visar en sammanställning av alla JSON routes som din webbplats erbjuder.',
             '/api/quote' => 'Ger ett slumpmässigt JSON svar som innehåller dagens citat.',
+            '/api/deck' => 'Visar alla kort i en sorterad ordning på färg och värde.',
+            '/api/deck/shuffle' => 'Visar en vy där man kan välja att blandade korten och välja kort.',
+            '/api/deck/draw' => 'Visar en vy där man kan dra ett kort från kortleken.',
+            '/api/deck/draw/number' => 'Visar en vy men formulär där man kan dra flera kort från kortleken.'
         ];
 
         return $this->render('api-overview.html.twig', ['data' => $data]);

@@ -3,7 +3,7 @@
 {% block title %}Shuffled Cards{% endblock %}
 
 {% block body %}
-<h1>Shuffled Cards</h1>
+<h1>Shuffled Cards/ draw cards</h1>
 
 <div class="link-container">
     <form method="POST" action="{{ path('api-deck-shuffle') }}">
@@ -15,7 +15,7 @@
     </form>
 
 
-    <form method="POST" action="{{ path('api-deck-draw-cards-form') }}">
+    <form method="GET" action="{{ path('api-deck-draw-cards-form') }}">
         <button type="submit" class="links">Draw Cards</button>
     </form>
 

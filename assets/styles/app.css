@@ -16,6 +16,8 @@ body {
 main {
     max-width: 80%;
     margin: 0 auto;
+    /* Växer med innehållet och håller footern på plats */
+    min-height: 70vh;
 }
 
 h1 {
@@ -86,8 +88,8 @@ footer {
     align-items: center;
     justify-content: right;
     height: 80px;
-    /* Hjälper med att hålla footern nera vid lort innehåll */
-    margin-top: 25%;
+    /* Hjälper med att hålla footern nera vid kort innehåll */
+    /* margin-top: 25%; */
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }

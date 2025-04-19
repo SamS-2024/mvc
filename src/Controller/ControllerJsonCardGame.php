@@ -27,12 +27,6 @@ class ControllerJsonCardGame extends AbstractController
         return $response;
     }
 
-    #[Route("api/deck/shuffle", name: "api-deck-shuffle-get", methods: ["GET"])]
-    public function viewShuffleForm(): Response
-    {
-        return $this->render('Cards/json_form.html.twig');
-    }
-
     #[Route("api/deck/shuffle", name: "api-deck-shuffle", methods: ["POST"])]
     public function apiDeckShuffle(SessionInterface $session): Response
     {
@@ -46,6 +40,12 @@ class ControllerJsonCardGame extends AbstractController
         $response = $this->responseHelper($data);
 
         return $response;
+    }
+
+    #[Route("api/deck/shuffle", name: "api-deck-shuffle-get", methods: ["GET"])]
+    public function viewShuffleForm(): Response
+    {
+        return $this->render('Cards/json_form.html.twig');
     }
 
     #[Route("api/deck/draw", name: "api-deck-draw-get", methods: ["GET"])]
@@ -73,7 +73,7 @@ class ControllerJsonCardGame extends AbstractController
     }
 
 
-    #[Route("api/deck/draw/form", name: "api-deck-draw-cards-form", methods: ["POST"])]
+    #[Route("api/deck/draw/number", name: "api-deck-draw-cards-form", methods: ["GET"])]
     public function drawCardsForm(): Response
     {
         return $this->render('Cards/api-draw-cards-form.html.twig');
