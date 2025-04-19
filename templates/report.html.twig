@@ -5,65 +5,135 @@
 {% block body %}
     <h1>Redovisning</h1>
         <div class="report-container">
-            <div id="kmom01">
-                <h2>Kmom01</h2>
-                <p>
-                    Kort om tidigare kunskaper i objektorientering. Jag har grundläggande kunskaper
-                    i objektorientering från kurser i Java och Python så det kommer att blir spännande
-                    att se hur det fungerar i PHP.
-                </p><br>
-                <p>
-                    I föreläsningen lärde man sig att PHP använder en objektorienterad modell där klasser
-                    och objekt utgör grunden. För att komma igång behöver man förstå hur klasser definieras med
-                    hjälp av nyckelordet class, och hur objekt kan skapas från dessa klasser genom att använda new.
-                    Inuti en klass kan egenskaper (variabler) och metoder (funktioner) deklareras.
-                </p><br>
-                <p>
-                    En speciell metod som ofta används är konstruktorn __construct(), som gör det möjligt att
-                    sätta startvärden när ett objekt skapas. Även begreppen public, private och protected används för
-                    att styra åtkomsten till klassens innehåll. Nyckelordet this används inom klassen för att referera till
-                    det aktuella objektet och dess innehåll.
-                </p><br>
+            <div class="kmom-content">
+                <div id="kmom01">
+                    <h2>Kmom01</h2>
+                    <p>
+                        Kort om tidigare kunskaper i objektorientering. Jag har grundläggande kunskaper
+                        i objektorientering från kurser i Java och Python så det kommer att blir spännande
+                        att se hur det fungerar i PHP.
+                    </p><br>
+                    <p>
+                        I föreläsningen lärde man sig att PHP använder en objektorienterad modell där klasser
+                        och objekt utgör grunden. För att komma igång behöver man förstå hur klasser definieras med
+                        hjälp av nyckelordet class, och hur objekt kan skapas från dessa klasser genom att använda new.
+                        Inuti en klass kan egenskaper (variabler) och metoder (funktioner) deklareras.
+                    </p><br>
+                    <p>
+                        En speciell metod som ofta används är konstruktorn __construct(), som gör det möjligt att
+                        sätta startvärden när ett objekt skapas. Även begreppen public, private och protected används för
+                        att styra åtkomsten till klassens innehåll. Nyckelordet this används inom klassen för att referera till
+                        det aktuella objektet och dess innehåll.
+                    </p><br>
 
-                <p>
-                    Kodbasen till me/report kan upplevas som ganska omfattande i början av kursen. Det blir
-                    lätt att man följer instruktionerna steg för steg utan att alltid känna sig helt säker på varför
-                    man gör som man gör. Samtidigt verkar strukturen genomtänkt, där controllers används för att hantera
-                    routes och templates för att skapa vyer.
-                </p><br>
-                <p>
-                    Det finns fortfarande delar som känns oklara, till exempel vilken roll JavaScript spelar i projektet,
-                    eller syftet med vissa filer/ konfigurationsfiler men förhoppningsvis kommer förståelsen att växa med tiden.
-                </p><br>
-                <p>
-                    Zoom-genomgången var hjälpsam och gav en bra översikt, men det hade varit värdefullt med mer tid att sätta sig
-                    in i ramverket, PHP och objektorienterad programmering. Samtidigt hade det varit bättre att lägga mindre fokus
-                    på CSS och rapportskrivning, för att ge mer utrymme åt att förstå grunderna i applikationens uppbyggnad och php.
-                </p><br>
-                <p>
-                    Som svar på frågan om artikeln “PHP The Right Way” så hann jag bara läsa en liten del av den och den verkar vara bra
-                    då den lyfter flera viktiga delar. Särskilt intressant är avsnittet om automatiserade tester.
-                </p><br>
-                <p>
-                    Det visar hur man kan säkra att funktioner fortsätter fungera när man gör ändringar i koden, vilket är särskilt värdefullt
-                    i större projekt. Även Test Driven Development (TDD) känns intressant att lära sig mer om, eftersom det bygger på att man
-                    först skriver tester och sedan kodar utifrån dem.
-                </p><br>
-                <p>
-                    Ett annat exempel är enhetstester, där man testar enskilda funktioner och metoder för att se till att de beter sig korrekt.
-                    Det kan handla om att testa både giltiga och ogiltiga argument för att försäkra sig om att koden hanterar olika fall som den ska.
-                </p><br>
-                <p>
-                    Artikeln jämför detta med att bara använda var_dump() i en separat testfil, vilket anses vara ohållbart sätt att testa kod,
-                    särskilt i större eller mer professionella projekt. Automatiserade tester ger ett mer pålitligt och systematiskt sätt att kontrollera
-                    funktionalitet och undvika att gamla delar av applikationen går sönder när ny kod läggs till.
-                </p><br>
-                <p>
-                    TIL för detta kursmoment är hur routes fungerar i PHP och hur de kopplas till Twig-templates för rendering. Jag har också lärt mig hur
-                    man skapar ett JSON API samt hur man kan använda metoder i PHP som genererar slumpmässiga värden.
-                </p><br>
+                    <p>
+                        Kodbasen till me/report kan upplevas som ganska omfattande i början av kursen. Det blir
+                        lätt att man följer instruktionerna steg för steg utan att alltid känna sig helt säker på varför
+                        man gör som man gör. Samtidigt verkar strukturen genomtänkt, där controllers används för att hantera
+                        routes och templates för att skapa vyer.
+                    </p><br>
+                    <p>
+                        Det finns fortfarande delar som känns oklara, till exempel vilken roll JavaScript spelar i projektet,
+                        eller syftet med vissa filer/ konfigurationsfiler men förhoppningsvis kommer förståelsen att växa med tiden.
+                    </p><br>
+                    <p>
+                        Zoom-genomgången var hjälpsam och gav en bra översikt, men det hade varit värdefullt med mer tid att sätta sig
+                        in i ramverket, PHP och objektorienterad programmering. Samtidigt hade det varit bättre att lägga mindre fokus
+                        på CSS och rapportskrivning, för att ge mer utrymme åt att förstå grunderna i applikationens uppbyggnad och php.
+                    </p><br>
+                    <p>
+                        Som svar på frågan om artikeln “PHP The Right Way” så hann jag bara läsa en liten del av den och den verkar vara bra
+                        då den lyfter flera viktiga delar. Särskilt intressant är avsnittet om automatiserade tester.
+                    </p><br>
+                    <p>
+                        Det visar hur man kan säkra att funktioner fortsätter fungera när man gör ändringar i koden, vilket är särskilt värdefullt
+                        i större projekt. Även Test Driven Development (TDD) känns intressant att lära sig mer om, eftersom det bygger på att man
+                        först skriver tester och sedan kodar utifrån dem.
+                    </p><br>
+                    <p>
+                        Ett annat exempel är enhetstester, där man testar enskilda funktioner och metoder för att se till att de beter sig korrekt.
+                        Det kan handla om att testa både giltiga och ogiltiga argument för att försäkra sig om att koden hanterar olika fall som den ska.
+                    </p><br>
+                    <p>
+                        Artikeln jämför detta med att bara använda var_dump() i en separat testfil, vilket anses vara ohållbart sätt att testa kod,
+                        särskilt i större eller mer professionella projekt. Automatiserade tester ger ett mer pålitligt och systematiskt sätt att kontrollera
+                        funktionalitet och undvika att gamla delar av applikationen går sönder när ny kod läggs till.
+                    </p><br>
+                    <p>
+                        TIL för detta kursmoment är hur routes fungerar i PHP och hur de kopplas till Twig-templates för rendering. Jag har också lärt mig hur
+                        man skapar ett JSON API samt hur man kan använda metoder i PHP som genererar slumpmässiga värden.
+                    </p><br>
+                </div>
 
-            </div>
+                <div id="kmom02">
+                    <h2>Kmom02</h2>
+
+                        <p><strong>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP</strong></p><br>
+
+                        <p><strong>Arv</strong><br>
+                        <p>Arv används för att skapa en ny klass baserad på en befintlig klass. Den nya klassen kallas subklass och ärver egenskaper och metoder
+                        från basklassen. Detta gör att kod kan återanvändas och organiseras bättre. I PHP stöds bara enkel arv, vilket betyder att en klass bara
+                        kan ärva från en annan klass. Arv används när flera klasser delar ett gemensamt beteende.</p><br>
+
+                        <p><strong>Komposition</strong><br>
+                        <p>Komposition används för att sätta ihop klasser genom att en klass innehåller andra objekt. Istället för att ärva beteenden används
+                        andra klasser som byggstenar. Detta ger mer flexibilitet än arv, eftersom klasser kan kombineras på olika sätt utan att vara kopplade genom arv.
+                        Komposition används när man vill bygga upp funktionalitet genom att använda flera mindre delar.</p><br>
+
+                        <p><strong>Interface</strong><br>
+                        <p>Ett interface i PHP definierar en uppsättning metoder som en klass måste implementera. Det innehåller bara metodsignaturer, men ingen
+                        faktisk kod. Det fungerar som ett kontrakt eller en mall för vad som måste finnas, och används när man vill tvinga flera olika
+                        klasser att följa en gemensam struktur.</p><br>
+
+                        <p><strong>Trait</strong><br>
+                        <p>Ett trait är ett sätt att återanvända kod mellan flera klasser. Till skillnad från ett interface kan ett trait innehålla färdig kod.
+                        Det löser begränsningen att PHP endast stödjer enkel arv, och gör det enklare att dela gemensam funktionalitet mellan olika klasser.</p><br>
+
+                        <p><strong>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du
+                        i din koden och dina klasser?</strong></p><br>
+
+                        <p>Arbetet delades upp i flera delar för att på ett strukturerat sätt lösa uppgiften. Först implementerades de grundläggande klasserna
+                        för att representera spelkort. Klassen Card skapades för att hantera varje korts rang och svit. Därefter utökades funktionaliteten med CardGraphic,
+                        som ansvarar för att associera varje svit med rätt grafisk symbol och generera färdiga uppsättningar av kort för spader, hjärter, ruter och klöver.</p><br>
+
+                        <p>För att hantera hela kortleken implementerades DeckOfCards. I denna klass samlades alla kort ihop, och metoder lades till för
+                        att skapa, blanda och hämta kortleken i olika format. Metoder för att konvertera kort och kortlekar till JSON-format eller strängar för
+                        HTML-visning tillkom för att möjliggöra användning både i API och webbsida.<br>
+                        Två separata kontroller skapades: en för spelets gränssnitt och en för JSON-baserat API.</p><br>
+
+                        <p>I spelets kontroller (CardGameController) hanterades sidvisningar och spelrelaterade actions, som att visa en blandad kortlek eller dra
+                        kort och visa dem på en webbsida. För detta användes sessionen för att bevara kortlekens tillstånd mellan anrop.</p><br>
+
+                        <p>I API-kontrollern (ControllerJsonCardGame) hanterades motsvarande funktioner fast med JSON-svar. Routes implementerades för att visa en ny kortlek,
+                        blanda korten och dra kort, både ett och flera. Även här sparades kortleken i sessionen för att möjliggöra upprepade dragningar utan att återställa kortleken.</p><br>
+
+                        <p>En hjälpfunktion för att strukturera JSON-responsen skapades i API-kontrollern för att undvika upprepning och göra koden mer läsbar.</p><br>
+
+                        <p>Det finns flera delar i koden som hade kunnat förbättras, både när det gäller struktur och styling. Eftersom uppgiften var relativt omfattande,
+                        fanns det begränsat med tid för att finjustera och optimera alla delar. En förbättrad användargränssnitt för spelet hade till exempel kunnat bidra till en mer
+                        tilltalande visuell presentation.</p><br>
+
+                        <p>Även kontrollernas struktur hade kunnat göras tydligare. Vissa krav var svårtolkade, vilket kan ha lett till lösningar som blev mer komplicerade än nödvändigt.
+                        Samtidigt fungerar kärnan i 'src'-katalogen väl, med klasserna för kort, grafisk representation och kortlek. Dessa delar är jag i alla fall nöjd med.</p><br>
+
+                        <p><strong>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC.</strong></p><br>
+
+                        <p>Att arbeta med Symfony enligt MVC har hjälpt till att strukturera koden tydligare genom att separera ansvar. Det blir enklare att förstå var
+                        olika delar av logiken hör hemma. Modellerna fokuserar på spelregler och data, medan kontrollern hanterar flödet och skickar data till vyn. Det gör det
+                        även lättare att felsöka och vidareutveckla applikationen.</p><br>
+
+                        <p>En utmaning har varit API-delen och arbetet med JSON-kontrollern. Att hantera data och sessioner över flera rutter och kontroller har ibland varit komplicerat,
+                        vilket krävde extra uppmärksamhet på logikens placering. Detta har dock gett värdefulla insikter i hur man bättre organiserar och hanterar applikationsflödet i
+                        framtida projekt.</p><br>
+
+                        <p><strong>Vilken är din TIL för detta kmom?</strong></p><br>
+
+                        <p>I det här momentet har jag lärt mig mer om klasser, arv och komposition, vilket har varit användbart för att strukturera koden i uppgiften. Jag har också fått
+                        en bättre förståelse för hur man använder sessioner effektivt i Symfony för att hantera data mellan olika requests. Jag har också fått en bättre förståelse för
+                        utf-8 och hur det kan användas i spelkort och specialtecken.</p>
+                    </div>
+                </div>
+
             <div class="kmom-links">
                 <h2 class ="kmom-links-titel">Kursmoment</h2>
                 <ul>
