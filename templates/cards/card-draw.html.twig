@@ -11,4 +11,12 @@
 
 <p>Remaining cards: {{ remainigCards }}</p>
 
+<form method="post" action="" class="card-game-submit">
+    <p>
+        <input type="submit" name="draw" value="Draw"
+        onClick="this.form.action='{{ path('card_draw') }}';"
+        >
+     </p>
+</form>
+
 {% endblock %}

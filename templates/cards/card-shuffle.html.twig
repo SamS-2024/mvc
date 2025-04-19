@@ -9,4 +9,14 @@
     {{ cardString|raw }}
 </div>
 
+
+<form method="post" action="" class="card-game-submit">
+    <p>
+        <input type="submit" name="shuffle" value="Shuffle"
+        onClick="this.form.action='{{ path('card_shuffle') }}';"
+        >
+     </p>
+</form>
+
+
 {% endblock %}
