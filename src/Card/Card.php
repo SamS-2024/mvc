@@ -7,13 +7,13 @@ namespace App\Card;
  */
 class Card
 {
-    private $rank;
-    private $suit;
+    private string $rank;
+    private string $suit;
 
     /**
      * Create a card with given rank and suit.
      */
-    public function __construct($rank, $suit)
+    public function __construct(string $rank, string $suit)
     {
         $this->rank = $rank;
         $this->suit = $suit;
@@ -48,6 +48,7 @@ class Card
 
     /**
      * Get the card as a JSON-compatible array.
+     * @return array<string>
      */
     public function getAsJson(): array
     {

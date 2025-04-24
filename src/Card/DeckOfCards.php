@@ -8,8 +8,9 @@ namespace App\Card;
  */
 class DeckOfCards
 {
-    protected $cardsArray;
-    protected $cardGraphic;
+    /** @var Card[] */
+    protected array $cardsArray;
+    protected CardGraphic $cardGraphic;
 
     /**
     * Initializes the deck with an empty cards array and a CardGraphic instance.
@@ -25,6 +26,7 @@ class DeckOfCards
      * Creates a deck of cards by generating cards for each suit
      * (spades, hearts, diamonds, clubs).
      * Merges the cards into a single array and returns it.
+     * @return Card[] Array of Card objects.
      */
     public function createDeck(): array
     {
@@ -41,6 +43,7 @@ class DeckOfCards
 
     /**
      * Shuffles the deck of cards and returns the shuffled array.
+     * @return Card[]
      */
     public function shuffleCards(): array
     {
@@ -52,7 +55,7 @@ class DeckOfCards
     /**
      * Converts an array of cards into a string representation.
      *
-     * @param array $arrayOfCards An array of Card objects.
+     * @param Card[] $arrayOfCards An array of Card objects.
      * @return string A string representation of the cards.
      */
     public function getAsString(array $arrayOfCards): string
@@ -64,7 +67,7 @@ class DeckOfCards
     /**
      * Converts the deck of cards into a JSON-compatible array.
      *
-     * @return array An array representation of the deck.
+     * @return array<int, array<string, string>> An array representation of the deck.
      */
     public function getAsJson(): array
     {
@@ -74,4 +77,30 @@ class DeckOfCards
         }
         return $deckData;
     }
+
+    /////
+    //     public function drawCards(int $num, array $shuffledCards): array
+    // {
+    //     $removedCards = [];
+    //     $count = 0;
+    //     $cardString = '';
+
+    //     while ($count < $num && !empty($shuffledCards)) {
+    //         $removedCards[] = array_pop($shuffledCards);
+    //         $count++;
+    //     }
+
+    //     // Bygg cardString här
+    //     foreach ($removedCards as $card) {
+    //         $cardString .= $card->getRank() . ' ';
+    //     }
+
+    //     return [
+    //         'cardString' => $cardString,
+    //         'remainingCards' => $shuffledCards, // Kvarvarande kort (inte count)
+    //         'count' => $count // Antal dragna kort
+    //     ];
+    //}
+
+
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Dice\Dice;
 use App\Dice\DiceGraphic;
 use App\Dice\DiceHand;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +37,7 @@ class DiceGameController extends AbstractController
     public function testRollDices(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can not roll more than 99 dices!");
         }
 
         $diceRoll = [];
@@ -59,16 +60,21 @@ class DiceGameController extends AbstractController
     public function testDiceHand(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can not roll more than 99 dices!");
         }
 
         $hand = new DiceHand();
         for ($i = 1; $i <= $num; $i++) {
             if ($i % 2 === 1) {
                 $hand->add(new DiceGraphic());
-            } else {
-                $hand->add(new Dice());
+                continue;
             }
+
+            $hand->add(new Dice());
+            // Tidigare kod, ändrades pga php md.
+            // else {
+            //     $hand->add(new Dice());
+            // }
         }
 
         $hand->roll();
@@ -115,6 +121,7 @@ class DiceGameController extends AbstractController
     public function play(
         SessionInterface $session
     ): Response {
+        /** @var \App\Dice\DiceHand $dicehand */
         $dicehand = $session->get("pig_dicehand");
 
         $data = [
@@ -131,10 +138,13 @@ class DiceGameController extends AbstractController
     public function roll(
         SessionInterface $session
     ): Response {
+        /** @var \App\Dice\DiceHand $hand */
         $hand = $session->get("pig_dicehand");
         $hand->roll();
 
-        $roundTotal = $session->get("pig_round");
+        // $roundTotal = $session->get("pig_round");
+        $roundTotal = is_int($session->get("pig_round")) ? $session->get("pig_round") : 0;
+
         $round = 0;
         $values = $hand->getValues();
         foreach ($values as $value) {
@@ -147,6 +157,7 @@ class DiceGameController extends AbstractController
                 $roundTotal = 0;
                 break;
             }
+
             $round += $value;
         }
 
@@ -159,8 +170,12 @@ class DiceGameController extends AbstractController
     public function save(
         SessionInterface $session
     ): Response {
-        $roundTotal = $session->get("pig_round");
-        $gameTotal = $session->get("pig_total");
+        // $roundTotal = $session->get("pig_round");
+        // $gameTotal = $session->get("pig_total");
+
+        $roundTotal = is_int($session->get("pig_round")) ? $session->get("pig_round") : 0;
+        $gameTotal = is_int($session->get("pig_total")) ? $session->get("pig_total") : 0;
+
 
         $session->set("pig_round", 0);
         $session->set("pig_total", $roundTotal + $gameTotal);

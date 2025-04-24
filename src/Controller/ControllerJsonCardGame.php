@@ -57,6 +57,7 @@ class ControllerJsonCardGame extends AbstractController
     #[Route("api/deck/draw", name: "api-deck-draw", methods: ["POST"])]
     public function apiDeckDraw(SessionInterface $session): Response
     {
+        /** @var \App\Card\Card[] $cards */
         $cards = $session->get("shuffled_cards_json");
 
         $drawCard = array_pop($cards);
@@ -85,6 +86,8 @@ class ControllerJsonCardGame extends AbstractController
         SessionInterface $session
     ): JsonResponse {
         $number = $request->request->get('num_cards');
+
+        /** @var \App\Card\Card[] $cards */
         $cards = $session->get("shuffled_cards_json", []);
 
         $drawn = [];
@@ -107,6 +110,12 @@ class ControllerJsonCardGame extends AbstractController
 
     }
 
+    /**
+     * Helper method to return a JSON response.
+     *
+     * @param array<string, mixed> $data Data to be included in the JSON response
+     * @return JsonResponse
+     */
     private function responseHelper(array $data): JsonResponse
     {
         $response = new JsonResponse($data);

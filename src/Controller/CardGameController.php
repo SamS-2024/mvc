@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,6 +57,7 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
 
+        /** @var \App\Card\Card[] $shuffledCards */
         $shuffledCards = $session->get("shuffled_cards");
 
         if (empty($shuffledCards)) {
@@ -118,14 +120,22 @@ class CardGameController extends AbstractController
 
     }
 
+    /**
+     * Helper method for drawing multiple cards from the deck.
+     *
+     * @param int $num The number of cards to draw.
+     * @param SessionInterface $session The session interface to retrieve shuffled cards.
+     * @return array<string, mixed> An array containing the card string and remaining cards count.
+     */
     private function drawCardsHelper(
-        $num,
+        int $num,
         SessionInterface $session
-    ) {
+    ): array {
         if ($num > 52) {
-            throw new \Exception("Can not draw more than 52 cards!");
+            throw new Exception("Can not draw more than 52 cards!");
         }
 
+        /** @var \App\Card\Card[] $shuffledCards */
         $shuffledCards = $session->get("shuffled_cards");
 
         $removedCards = [];
@@ -144,6 +154,8 @@ class CardGameController extends AbstractController
             $symbol = $card->getRank();
             if ($card->getColor() === 'red') {
                 $cardString .= '<span class="red">' . $symbol . ' ' . '</span>';
+                // 'else' är ett enkelt och läsbart alternativ i detta fall trots php md
+                // ska försöka undvika användning av 'else' i fortsättningen dock.
             } else {
                 $cardString .= $symbol . ' ';
             }

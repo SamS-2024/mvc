@@ -8,10 +8,18 @@ namespace App\Card;
  */
 class CardGraphic extends Card
 {
-    protected $spades;
-    protected $hearts;
-    protected $diamonds;
-    protected $clubs;
+    /** @var string[] */
+    protected array $spades;
+
+    /** @var string[] */
+    protected array $hearts;
+
+    /** @var string[] */
+    protected array $diamonds;
+
+    /** @var string[] */
+    protected array $clubs;
+
     public const MIN_VALUE = 2;
     public const MAX_VALUE = 14;
 
@@ -29,7 +37,7 @@ class CardGraphic extends Card
     /**
      * Creates card objects for spades using Unicode symbols.
      *
-     * @return array Array of spade card objects.
+     * @return Card[] Array of spade card objects.
      */
     public function createSpades(): array
     {
@@ -47,7 +55,7 @@ class CardGraphic extends Card
     /**
      * Creates card objects for hearts using Unicode symbols.
      *
-     * @return array Array of hearts card objects.
+     * @return Card[] Array of hearts card objects.
      */
     public function createHearts(): array
     {
@@ -65,7 +73,7 @@ class CardGraphic extends Card
     /**
      * Creates card objects for diamonds using Unicode symbols.
      *
-     * @return array Array of diamonds card objects.
+     * @return Card[] Array of diamonds card objects.
      */
     public function createDiamonds(): array
     {
@@ -84,7 +92,7 @@ class CardGraphic extends Card
     /**
      * Creates card objects for clubs using Unicode symbols.
      *
-     * @return array Array of clubs card objects.
+     * @return Card[] Array of clubs card objects.
      */
     public function createClubs(): array
     {
@@ -102,9 +110,9 @@ class CardGraphic extends Card
     /**
      * Creates card objects from a symbol array and suit name.
      *
-     * @param array $representation Array of card symbols.
+     * @param array<string> $representation Array of card symbols.
      * @param string $suit The suit of the cards.
-     * @return array Array of Card objects.
+     * @return Card[] Array of Card objects.
      */
     public function createCardObjects(array $representation, string $suit): array
     {
@@ -121,7 +129,7 @@ class CardGraphic extends Card
     /**
      * Returns a string representation of cards with HTML styling for red cards.
      *
-     * @param array $cardsArray Array of Card objects.
+     * @param Card[] $cardsArray Array of Card objects.
      * @return string String of card symbols with red coloring where applicable.
      */
     public function getAsString(array $cardsArray): string
@@ -133,6 +141,8 @@ class CardGraphic extends Card
 
             if ($card->getColor() === 'red') {
                 $strings[] = '<span class="red">' . $symbol . '</span>';
+                // I detta fall är 'else' en enkel och läsbar konstruktion trots php md.
+                // ska försöka undvika användning av 'else' i fortsättningen dock.
             } else {
                 $strings[] = $symbol;
             }
