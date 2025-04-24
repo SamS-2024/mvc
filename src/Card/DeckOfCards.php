@@ -78,29 +78,4 @@ class DeckOfCards
         return $deckData;
     }
 
-    /////
-    //     public function drawCards(int $num, array $shuffledCards): array
-    // {
-    //     $removedCards = [];
-    //     $count = 0;
-    //     $cardString = '';
-
-    //     while ($count < $num && !empty($shuffledCards)) {
-    //         $removedCards[] = array_pop($shuffledCards);
-    //         $count++;
-    //     }
-
-    //     // Bygg cardString här
-    //     foreach ($removedCards as $card) {
-    //         $cardString .= $card->getRank() . ' ';
-    //     }
-
-    //     return [
-    //         'cardString' => $cardString,
-    //         'remainingCards' => $shuffledCards, // Kvarvarande kort (inte count)
-    //         'count' => $count // Antal dragna kort
-    //     ];
-    //}
-
-
 }

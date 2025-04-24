@@ -127,27 +127,40 @@ class CardGraphic extends Card
     }
 
     /**
-     * Returns a string representation of cards with HTML styling for red cards.
+     * Returns a string representation of multiple cards with HTML styling for red cards.
      *
-     * @param Card[] $cardsArray Array of Card objects.
-     * @return string String of card symbols with red coloring where applicable.
+     * @param Card[] $cardsArray An array of Card objects.
+     * @return string A string of card symbols with red coloring where applicable.
      */
     public function getAsString(array $cardsArray): string
     {
         $strings = [];
 
         foreach ($cardsArray as $card) {
-            $symbol = $card->getRank();
-
-            if ($card->getColor() === 'red') {
-                $strings[] = '<span class="red">' . $symbol . '</span>';
-                // I detta fall är 'else' en enkel och läsbar konstruktion trots php md.
-                // ska försöka undvika användning av 'else' i fortsättningen dock.
-            } else {
-                $strings[] = $symbol;
-            }
+            // Reuse formatCard for each card
+            $strings[] = $this->formatCard($card);
         }
 
         return implode(" ", $strings);
     }
+
+
+    /**
+     * Formats a card as an HTML string, with handling for red cards.
+     *
+     * @param Card $card The card to be formatted.
+     *
+     * @return string The formatted card string.
+     */
+    public function formatCard(Card $card): string
+    {
+        $symbol = $card->getRank();
+
+        if ($card->getColor() === 'red') {
+            return '<span class="red">' . $symbol . '</span>';
+        }
+
+        return $symbol;
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use App\Card\CardGraphic;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,10 +68,9 @@ class CardGameController extends AbstractController
 
         $removedCard = array_pop($shuffledCards);
 
-        $symbol = $removedCard->getRank();
-        if ($removedCard->getColor() === 'red') {
-            $symbol = '<span class="red">' . $symbol . '</span>';
-        }
+        // Använder CardGraphic för att formatera kortet
+        $renderCard = new CardGraphic();
+        $symbol = $renderCard->formatCard($removedCard);
 
         // Uppdaterar sessionen
         $session->set("shuffled_cards", $shuffledCards);
@@ -105,7 +105,6 @@ class CardGameController extends AbstractController
     #[Route("card/deck/draw/num", name: "draw_cards_num_get", methods: ['GET'])]
     public function drawCardsGet(): Response
     {
-
         return $this->render('Cards/draw-cards-form.html.twig');
     }
 
@@ -120,13 +119,15 @@ class CardGameController extends AbstractController
 
     }
 
-    /**
-     * Helper method for drawing multiple cards from the deck.
-     *
-     * @param int $num The number of cards to draw.
-     * @param SessionInterface $session The session interface to retrieve shuffled cards.
-     * @return array<string, mixed> An array containing the card string and remaining cards count.
-     */
+/**
+ * Helper function to draw cards and prepare data for rendering.
+ *
+ * @param int $num The number of cards to draw.
+ * @param SessionInterface $session The current session storing the shuffled deck.
+ *
+ * @return array{cardString: string, remainigCards: int}
+ * An associative array with a string of cards and the count of remaining cards.
+ */
     private function drawCardsHelper(
         int $num,
         SessionInterface $session
@@ -146,20 +147,11 @@ class CardGameController extends AbstractController
             $count++;
         }
 
-        // Uppdaterar sessionen
         $session->set("shuffled_cards", $shuffledCards);
 
-        $cardString = '';
-        foreach ($removedCards as $card) {
-            $symbol = $card->getRank();
-            if ($card->getColor() === 'red') {
-                $cardString .= '<span class="red">' . $symbol . ' ' . '</span>';
-                // 'else' är ett enkelt och läsbart alternativ i detta fall trots php md
-                // ska försöka undvika användning av 'else' i fortsättningen dock.
-            } else {
-                $cardString .= $symbol . ' ';
-            }
-        }
+        // Använder den nya metoden för att formatera korten
+        $renderCards = new CardGraphic();
+        $cardString = $renderCards->getAsString($removedCards);
 
         $data = [
             "cardString" => $cardString,
