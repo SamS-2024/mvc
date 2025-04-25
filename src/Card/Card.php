@@ -58,4 +58,6 @@ class Card
             'suit' => $this->getSuit()
         ];
     }
+
+
 }

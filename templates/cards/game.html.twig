@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+<h1>Välkommen till kortspelet 21</h1>
+
+
+{{ include('flash.html.twig') }}
+
+<h2>Om spelet</h2>
+
+<p>
+    I detta kortspel spelar du mot banken. Målet är att komma så nära 21 som möjligt utan att gå över.
+    Du får ta ett eller flera kort, och sedan är det bankens tur att försöka slå ditt resultat.
+    Ess kan vara värt 1 eller 14. Om du får över 21 förlorar du direkt. Banken drar kort tills den
+    har minst 17 poäng. Vid lika eller om banken har mer, vinner banken.
+</p><br>
+
+<p>
+    Tryck på "Starta spel" för att börja en ny omgång!
+</p><br>
+
+<div class="link-container">
+    <a href="{{ path('init_game') }}" class="links">Start the game</a>
+
+</div>
+{% endblock %}

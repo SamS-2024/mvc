@@ -40,14 +40,14 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        $cards = new DeckOfCards();
-        $cards->createDeck();
-        $shuffledCards = $cards->shuffleCards();
+        $deck = new DeckOfCards();
+        $deck->createDeck();
+        $shuffledCards = $deck->shuffleCards();
 
-        $session->set("shuffled_cards", $shuffledCards);
+        $session->set("deck", $deck);
 
         $data = [
-            "cardString" => $cards->getAsString($shuffledCards)
+            "cardString" => $deck->getAsString($shuffledCards)
         ];
 
         return $this->render('Cards/card-shuffle.html.twig', $data);
@@ -59,25 +59,26 @@ class CardGameController extends AbstractController
     ): Response {
 
         /** @var \App\Card\Card[] $shuffledCards */
-        $shuffledCards = $session->get("shuffled_cards");
+        $deck = $session->get("deck");
 
-        if (empty($shuffledCards)) {
+        if (!$deck || $deck->getRemainingCount() === 0) {
 
             return $this->redirectToRoute("card_shuffle");
         }
 
-        $removedCard = array_pop($shuffledCards);
+        $removedCard = $deck->drawCard();
 
-        // Använder CardGraphic för att formatera kortet
-        $renderCard = new CardGraphic();
-        $symbol = $renderCard->formatCard($removedCard);
+        $count = $deck->getRemainingCount();
+
+        // Använder CardGraphic genom DeckOfCards för att formatera kortet
+        $symbol = $deck->getCardAsString($removedCard);
 
         // Uppdaterar sessionen
-        $session->set("shuffled_cards", $shuffledCards);
+        $session->set("deck", $deck);
 
         $data = [
             "cardString" => $symbol,
-            "remainigCards" => count($shuffledCards)
+            "remainigCards" => $count
         ];
 
         return $this->render('Cards/card-draw.html.twig', $data);
@@ -90,12 +91,13 @@ class CardGameController extends AbstractController
     ): Response {
 
         // Kollar om kortleken är tom innan anrop till hjälpfunktionen.
-        $shuffledCards = $session->get("shuffled_cards", []);
+        $deck = $session->get("deck", []);
 
-        if (empty($shuffledCards)) {
+        if (!$deck || $deck->getRemainingCount() === 0 || $num > $deck->getRemainingCount()) {
 
             return $this->redirectToRoute("card_shuffle");
         }
+
 
         $data = $this->drawCardsHelper($num, $session);
 
@@ -116,7 +118,6 @@ class CardGameController extends AbstractController
         $numCards = $request->request->get('num_cards');
 
         return $this->redirectToRoute('draw_cards', ['num' => $numCards]);
-
     }
 
 /**
@@ -137,30 +138,26 @@ class CardGameController extends AbstractController
         }
 
         /** @var \App\Card\Card[] $shuffledCards */
-        $shuffledCards = $session->get("shuffled_cards");
+        $deck = $session->get("deck");
 
         $removedCards = [];
-        $count = 0;
 
-        while ($count < $num && !empty($shuffledCards)) {
-            $removedCards[] = array_pop($shuffledCards);
-            $count++;
-        }
+        $removedCards = $deck->drawCards($num);
 
-        $session->set("shuffled_cards", $shuffledCards);
+        $remainingCards = $deck->getRemainingCount();
 
-        // Använder den nya metoden för att formatera korten
-        $renderCards = new CardGraphic();
-        $cardString = $renderCards->getAsString($removedCards);
+        $session->set("deck", $deck);
+
+        // $renderCards = new DeckOfCards();
+        $cardString = $deck->getAsString($removedCards);
 
         $data = [
             "cardString" => $cardString,
-            "remainigCards" => count($shuffledCards)
+            "remainigCards" => $remainingCards
         ];
 
         return $data;
     }
-
 
     #[Route("/session", name: "show_session")]
     public function session(
@@ -188,4 +185,19 @@ class CardGameController extends AbstractController
 
         return $this->redirectToRoute('show_session');
     }
+
+    #[Route("/game", name: "game")]
+    public function game(): Response
+    {
+
+        return $this->render('Cards/game.html.twig');
+    }
+
+    #[Route("/game/init", name: "init_game")]
+    public function initGame(): Response
+    {
+
+        return $this->render('Cards/init-game.html.twig');
+    }
+
 }

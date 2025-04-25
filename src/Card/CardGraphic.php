@@ -132,7 +132,7 @@ class CardGraphic extends Card
      * @param Card[] $cardsArray An array of Card objects.
      * @return string A string of card symbols with red coloring where applicable.
      */
-    public function getAsString(array $cardsArray): string
+    public function formatCards(array $cardsArray): string
     {
         $strings = [];
 

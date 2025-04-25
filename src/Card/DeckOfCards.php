@@ -53,6 +53,18 @@ class DeckOfCards
     }
 
     /**
+     * Converts a cards object into a string representation.
+     *
+     * @param Card $cards A Card objects.
+     * @return string A string representation of the card.
+     */
+    public function getCardAsString(Card $card): string
+    {
+
+        return $this->cardGraphic->formatCard($card);
+    }
+
+    /**
      * Converts an array of cards into a string representation.
      *
      * @param Card[] $arrayOfCards An array of Card objects.
@@ -61,7 +73,7 @@ class DeckOfCards
     public function getAsString(array $arrayOfCards): string
     {
 
-        return $this->cardGraphic->getAsString($arrayOfCards);
+        return $this->cardGraphic->formatCards($arrayOfCards);
     }
 
     /**
@@ -76,6 +88,28 @@ class DeckOfCards
             $deckData[] = $card->getAsJson(); // Använder getAsJson på varje kort
         }
         return $deckData;
+    }
+
+
+    public function drawCard(): Card {
+        $removedCard = array_pop($this->cardsArray);
+        return $removedCard;
+    }
+
+    public function getRemainingCount(): int
+    {
+        return count($this->cardsArray);
+    }
+
+    public function drawCards(int $num): array {
+
+        $removedCards = [];
+
+        for ($i = 0; $i < $num && !empty($this->cardsArray); $i++) {
+            $removedCards[] = array_pop($this->cardsArray);
+        }
+
+        return $removedCards;
     }
 
 }
