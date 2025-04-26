@@ -7,6 +7,20 @@
 <h1>Kortspelet 21 [Start]</h1>
 
 
+<h2>Hand test</h2>
+
+<p>Draw a card</p>
+
+<form method="post" action="{{ path('init_game_draw') }}">
+    <button type="submit" name="draw_card" class="links">Dra kort</button>
+</form>
+
+
+<div class="card-container">
+    {{ cards|raw }}
+</div>
+
+<h3>Poäng: {{ points }}</h3>
 
 
 {{ include('flash.html.twig') }}

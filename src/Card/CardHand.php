@@ -7,6 +7,36 @@ namespace App\Card;
  */
 class CardHand
 {
+    protected array $cardsArray = [];
 
+    public function addCard(Card $card): void {
+        // Lägger till ett kort i handen
+        $this->cardsArray[] = $card;
+    }
+
+    // public function addCards(array $cards): void {
+
+    //     foreach ($cards as $card) {
+    //         // Lägger till varje kort i handen
+    //         $this->cardsArray[] = $card;
+    //     }
+    // }
+
+    public function getCards(): array {
+        // Hämtar alla kort i handen
+        return $this->cardsArray;
+    }
+
+
+    public function getPoints(): int
+    {
+        $points = 0;
+        foreach ($this->cardsArray as $card) {
+            // Anropar getCardValue() från Card-klassen för att beräkna poäng för varje kort.
+            $points += $card->getCardValue();
+        }
+
+        return $points;
+    }
 
 }
