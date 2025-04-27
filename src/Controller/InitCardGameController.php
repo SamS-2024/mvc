@@ -7,6 +7,7 @@ use App\Card\Bank;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use App\Card\Player;
+use App\Card\Status;
 use Exception;
 use SessionIdInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +46,7 @@ class InitCardGameController extends AbstractController
 
     #[Route("/game/init/draw", name: "init_game_draw", methods: ['POST'] )]
     public function initGamePost(SessionInterface $session): Response
-{
+    {
     // Hämtar spelarens tillstånd
     $player = $session->get('player');
 
@@ -69,53 +70,68 @@ class InitCardGameController extends AbstractController
     ]);
 }
 
+    #[Route("/game/init/stop", name: "init_game_stop", methods: ['POST'] )]
+    public function initGameStop(SessionInterface $session): Response
+    {
+        $player = $session->get('player');
+        $player->stop();
 
-#[Route("/game/init/stop", name: "init_game_stop", methods: ['POST'] )]
-public function initGameStop(SessionInterface $session): Response
-{
-    $player = $session->get('player');
-    $player->stop();  // Stoppar spelaren
+        $bank = $session->get('bank');
 
-    // Spelarens status
-    $playerStatus = '';
+        if ($bank->isPlaying()) {
+            $this->handleBankDraw($session);
+        }
 
-    $playerStatus = $player->checkstatus();
+        $finalResult = $this->endGame($session);
+        $session->set('final_result', $finalResult);
 
-    // Om banken fortfarande spelar
-    $bank = $session->get('bank');
-    $dataBank = [];
+        return $this->redirectToRoute('init_game_result');
+    }
 
-    if ($bank->isPlaying()) {
-        $dataBank = $this->handleBankDraw($session);  // Hämtar bankens data
+    #[Route("/game/init/result", name: "init_game_result", methods: ['GET'] )]
+    public function initGameResult(SessionInterface $session): Response
+    {
+        $player = $session->get('player');
+        $bank = $session->get('bank');
+
+        $data = [
+            'cards' => $player->getHand()->getCardsAsString(),
+            'points' => $player->getPoints(),
+            'status' => $player->checkStatus(),
+        ];
+
+        $dataBank = [
+            'cards' => $bank->getHand()->getCardsAsString(),
+            'points' => $bank->getPoints(),
+            'status' => $bank->checkStatus(),
+        ];
+
+        $finalResult = $session->get('final_result');
+
         return $this->render('Cards/init-game.html.twig', [
+            'data' => $data,
             'dataBank' => $dataBank,
-            'turn' => 'bank',
-            'data' => [
-                'status' => $playerStatus, // Spelarens status skickas här
-            ]
+            'turn' => 'end',
+            'finalResult' => $finalResult,
         ]);
     }
 
-    // Hämtar bankens status också
-    $bankStatus = $bank->checkStatus();  // Bankens status
 
-    // Här definieras dataBank när banken är klar
-    $dataBank = [
-        'cards' => $bank->getHand()->getCardsAsString(),
-        'points' => $bank->getPoints(),
-        'status' => $bankStatus,
-    ];
 
-    return $this->render('Cards/init-game.html.twig', [
-        'data' => [
-            'cards' => $player->getHand()->getCardsAsString(),
-            'points' => $player->getPoints(),
-            'status' => $playerStatus,  // Lägger till spelarens status här
-        ],
-        'dataBank' => $dataBank,
-        'turn' => 'end',  // Spelet är slut
-    ]);
-}
+    private function endGame(SessionInterface $session): string {
+        $player = $session->get('player');
+        $bank = $session->get('bank');
+        if ($player && $bank) {
+            $finalStatus = new Status($player, $bank);
+            // $session->set('final_status', $finalStatus);
+            var_dump($finalStatus->winner()); // Debugg!!!
+            return $finalStatus->winner();
+        }
+
+        // Om player eller bank saknas, returneras en sträng som ett felmeddelande
+        return 'Error: Missing player or bank data';
+    }
+
 
     private function handlePlayerDraw(SessionInterface $session): array {
         $deck = $session->get('deck');
@@ -177,6 +193,7 @@ public function initGameStop(SessionInterface $session): Response
 
         return $data;
     }
+
 
     // Hjälpmetoderna
     private function initDeck(SessionInterface $session): void

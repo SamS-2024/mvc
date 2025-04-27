@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\CardHand;
 
 /**
  * Represents the bank.
@@ -27,17 +26,6 @@ class Bank
         $this->isPlaying = false;
     }
 
-    public function hasWon(): string {
-        $message = "The bank won!";
-        $this->isPlaying = false;
-        return $message ;
-        }
-
-    public function hasLost(): string {
-        $message = "The bank lost!";
-        $this->isPlaying = false;
-        return $message;
-        }
 
     public function getPoints(): int
     {
@@ -49,20 +37,12 @@ class Bank
         return $this->getPoints() >= self::STOP_VALUE;
     }
 
-    public function isWinning(): bool
-    {
-        return $this->getPoints() == self::MAX_VALUE;
-    }
 
     public function isBust(): bool
     {
         return $this->getPoints() > self::MAX_VALUE;
     }
 
-    public function pointsDifference(): int
-    {
-        return self::MAX_VALUE - $this->getPoints();
-    }
 
     public function isPlaying(): bool
     {
@@ -71,9 +51,7 @@ class Bank
 
     public function checkStatus(): string
     {
-        if ($this->isWinning()) {
-            return $this->hasWon();
-        } else if ($this->isBust()) {
+        if ($this->isBust()) {
             return "Bank is bust";
         } else if ($this->shouldStop()) {
             return "Has stopped";

@@ -2,8 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\CardHand;
-
 /**
  * Represents a player.
  */
@@ -27,36 +25,14 @@ class Player
         $this->isPlaying = false;
     }
 
-    public function hasWon(): string {
-        $message = "The player won!";
-        $this->isPlaying = false;
-        return $message;
-        }
-
-    public function hasLost(): string {
-        $message = "The player lost!";
-        $this->isPlaying = false;
-        return $message;
-        }
-
     public function getPoints(): int
     {
         return $this->hand->getPoints();
     }
 
-    public function isWinning(): bool
-    {
-        return $this->getPoints() == self::MAX_VALUE;
-    }
-
     public function isBust(): bool
     {
         return $this->getPoints() > self::MAX_VALUE;
-    }
-
-    public function pointsDifference(): int
-    {
-        return self::MAX_VALUE - $this->getPoints();
     }
 
     public function isPlaying(): bool
@@ -66,10 +42,9 @@ class Player
 
     public function checkStatus(): string
     {
-        if ($this->isWinning()) {
-            return $this->hasWon();
-        } else if ($this->isBust()) {
-            return $this->hasLost();
+
+        if ($this->isBust()) {
+            return "Player is bust";
         }
         return "Game still going..";
     }

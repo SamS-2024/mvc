@@ -11,9 +11,7 @@
         {{ data.cards|raw }}
         <h4>Poäng: {{ data.points }}</h4>
 
-        {% if data.status is not defined %}
-            <p>Ingen status än.</p>
-        {% elseif data.status is not empty %}
+        {% if data.status is not empty %}
             <p>{{ data.status|raw }}</p>
         {% endif %}
 
@@ -25,6 +23,7 @@
             <button type="submit" class="links">Stoppa</button>
         </form>
     </div>
+
 {% elseif turn == 'bank' %}
     <h2>Bank</h2>
     <div class="card-container">
@@ -37,10 +36,29 @@
             {% endif %}
         {% else %}
             <p>Banken har inte spelat än.</p>
-
-
         {% endif %}
     </div>
+
+{% elseif turn == 'end' %}
+    <h2>Game over</h2>
+
+    <h3>Spelare</h3>
+    <div class="card-container">
+        {{ data.cards|raw }}
+        <h4>Poäng: {{ data.points }}</h4>
+        <p>Status: {{ data.status|raw }}</p>
+    </div>
+
+    <h3>Bank</h3>
+    <div class="card-container">
+        {{ dataBank.cards|raw }}
+        <h4>Poäng: {{ dataBank.points }}</h4>
+        <p>Status: {{ dataBank.status|raw }}</p>
+    </div>
+
+    <h2>Resultat:</h2>
+    <p>{{ finalResult }}</p>
+
 {% endif %}
 
 {{ include('flash.html.twig') }}
