@@ -110,6 +110,37 @@ class ControllerJsonCardGame extends AbstractController
 
     }
 
+    #[Route("api/game", name: "api-game", methods: ["GET"])]
+    public function apiGame(SessionInterface $session): Response
+    {
+        $player = $session->get('player');
+        $bank = $session->get('bank');
+
+        $data = [
+            'cards' => $player->getHand()->getCardsAsString(),
+            'points' => $player->getPoints(),
+            'status' => $player->checkStatus(),
+        ];
+
+        $dataBank = [
+            'cards' => strip_tags($bank->getHand()->getCardsAsString()),
+            'points' => $bank->getPoints(),
+            'status' => $bank->checkStatus(),
+        ];
+
+        $finalResult = $session->get('final_result');
+
+        $responsData = [
+            'data' => $data,
+            'dataBank' => $dataBank,
+            'finalResult' => $finalResult
+        ];
+
+
+        $response = $this->responseHelper($responsData);
+        return $response;
+    }
+
     /**
      * Helper method to return a JSON response.
      *
