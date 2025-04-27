@@ -3,27 +3,45 @@
 {% block title %}Init Game{% endblock %}
 
 {% block body %}
-
 <h1>Kortspelet 21 [Start]</h1>
 
+{% if turn == 'player' %}
+    <h2>Spelare</h2>
+    <div class="card-container">
+        {{ data.cards|raw }}
+        <h4>Poäng: {{ data.points }}</h4>
 
-<h2>Hand test</h2>
+        {% if data.status is not defined %}
+            <p>Ingen status än.</p>
+        {% elseif data.status is not empty %}
+            <p>{{ data.status|raw }}</p>
+        {% endif %}
 
-<p>Draw a card</p>
+        <form method="post" action="{{ path('init_game_draw') }}">
+            <button type="submit" class="links">Dra kort</button>
+        </form>
 
-<form method="post" action="{{ path('init_game_draw') }}">
-    <button type="submit" name="draw_card" class="links">Dra kort</button>
-</form>
+        <form method="post" action="{{ path('init_game_stop') }}">
+            <button type="submit" class="links">Stoppa</button>
+        </form>
+    </div>
+{% elseif turn == 'bank' %}
+    <h2>Bank</h2>
+    <div class="card-container">
+        {% if dataBank is defined %}
+            {{ dataBank.cards|raw }}
+            <h4>Poäng: {{ dataBank.points }}</h4>
+
+            {% if dataBank.status is not empty %}
+                <p>{{ dataBank.status|raw }}</p>
+            {% endif %}
+        {% else %}
+            <p>Banken har inte spelat än.</p>
 
 
-<div class="card-container">
-    {{ cards|raw }}
-</div>
-
-<h3>Poäng: {{ points }}</h3>
-
+        {% endif %}
+    </div>
+{% endif %}
 
 {{ include('flash.html.twig') }}
-
-
 {% endblock %}

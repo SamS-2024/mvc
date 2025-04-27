@@ -14,14 +14,6 @@ class CardHand
         $this->cardsArray[] = $card;
     }
 
-    // public function addCards(array $cards): void {
-
-    //     foreach ($cards as $card) {
-    //         // Lägger till varje kort i handen
-    //         $this->cardsArray[] = $card;
-    //     }
-    // }
-
     public function getCards(): array {
         // Hämtar alla kort i handen
         return $this->cardsArray;
@@ -39,4 +31,10 @@ class CardHand
         return $points;
     }
 
+    public function getCardsAsString(): string
+    {   // Skapar ett CardGraphic-objekt
+        $cardGraphic = new CardGraphic();
+        // Skickar alla kort till formatCards-metoden
+        return $cardGraphic->formatCards($this->cardsArray);
+    }
 }

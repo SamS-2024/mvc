@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
-use App\Card\DeckOfCards;
+
+use App\Card\Bank;
 use App\Card\CardHand;
+use App\Card\DeckOfCards;
+use App\Card\Player;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -192,60 +195,5 @@ class CardGameController extends AbstractController
 
         return $this->render('Cards/game.html.twig');
     }
-
-
-    #[Route("/game/init", name: "init_game")]
-    public function initGame(SessionInterface $session): Response
-    {
-        if ($session->get('deck') === null) {
-            $deck = new DeckOfCards();
-            $deck->createDeck();
-            $deck->shuffleCards();
-            $session->set('deck', $deck);
-        }
-
-        if ( $session->get('hand') === null) {
-            $hand = new CardHand();
-            $session->set('hand', $hand);
-        }
-
-        $data = [
-            'cards' => '',
-            'points' => 0
-        ];
-
-        return $this->render('Cards/init-game.html.twig', $data);
-    }
-
-
-#[Route("/game/init/draw", name: "init_game_draw", methods: ['POST'] )]
-public function initGamePost(
-    SessionInterface $session
-): Response {
-    $deck = $session->get('deck');
-    $hand = $session->get('hand');
-
-    // Drar ett kort från DeckOfCards
-    $card = $deck->drawCard();
-    $formatedCard = $deck->getCardAsString($card);
-
-    // Lägg till kortet i handen
-    $hand->addCard($card);
-
-    // Uppdatera session
-    $session->set('hand', $hand);
-    $session->set('deck', $deck);
-
-    // Hämta poängen från handen
-    $points = $hand->getPoints();
-
-    $data = [
-        'cards' => $formatedCard,
-        'points' => $points
-    ];
-
-    return $this->render('Cards/init-game.html.twig', $data);
-}
-
 
 }
