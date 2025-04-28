@@ -46,6 +46,7 @@ class Player
         if ($this->isBust()) {
             return "Player is bust";
         }
+
         return "Game still going..";
     }
 

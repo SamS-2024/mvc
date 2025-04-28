@@ -54,7 +54,7 @@ class Bank
         if ($this->isBust()) {
             return "Bank is bust";
         } else if ($this->shouldStop()) {
-            return "Has stopped";
+            return "Bank has stopped";
         }
         return "Game still going..";
     }

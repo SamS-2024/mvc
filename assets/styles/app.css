@@ -264,3 +264,34 @@ input {
     justify-content: center;
     margin-bottom: 2em;
 }
+
+.points-text, .winner-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgb(2, 42, 71);
+    text-align: center;
+}
+
+.winner-text {
+    color: green;
+    margin-bottom: 1.4rem;
+}
+
+.player {
+    text-align: center;
+    margin-top: 1.4rem;
+    font-size: 2rem;
+    color: rgb(4, 62, 80);
+}
+
+.game-over {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.status-text {
+    font-size: 1.15rem;
+    text-align: center;
+    margin-top: 1.4rem;
+    color: rgb(172, 79, 4);
+}

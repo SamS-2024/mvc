@@ -116,6 +116,20 @@ class InitCardGameController extends AbstractController
         ]);
     }
 
+    #[Route("/game/reset", name: "game_reset", methods: ['POST'] )]
+    public function newGameRound(SessionInterface $session): Response
+    {
+        $session->remove('player');
+        $session->remove('bank');
+        $session->remove('deck');
+        $session->remove('hand_player');
+        $session->remove('hand_bank');
+        $session->remove('final_result');
+
+
+        return $this->redirectToRoute('init_game');
+    }
+
 
 
     private function endGame(SessionInterface $session): string {
@@ -166,7 +180,7 @@ class InitCardGameController extends AbstractController
         $handBank = $session->get('hand_bank');
         $bank = $session->get('bank');
 
-        // Banken drar tills den ska stoppa
+        // Banken drar tills den når 17 eller mer.
         while ($bank->isPlaying()) {
             $card = $deck->drawCard();
             $handBank->addCard($card);
