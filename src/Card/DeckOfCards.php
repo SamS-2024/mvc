@@ -55,7 +55,7 @@ class DeckOfCards
     /**
      * Converts a cards object into a string representation.
      *
-     * @param Card $cards A Card objects.
+     * @param Card $card A Card objects.
      * @return string A string representation of the card.
      */
     public function getCardAsString(Card $card): string
@@ -90,18 +90,36 @@ class DeckOfCards
         return $deckData;
     }
 
+    /**
+     * Draws and returns a single card from the deck.
+     *
+     * @return Card The card that was drawn from the deck.
+     */
 
-    public function drawCard(): Card {
+    public function drawCard(): ?Card
+    {
         $removedCard = array_pop($this->cardsArray);
         return $removedCard;
     }
 
+    /**
+     * Returns the number of remaining cards in the deck.
+     *
+     * @return int The count of remaining cards in the deck.
+     */
     public function getRemainingCount(): int
     {
         return count($this->cardsArray);
     }
 
-    public function drawCards(int $num): array {
+    /**
+     * Draws a specified number of cards from the deck.
+     *
+     * @param int $num The number of cards to draw.
+     * @return Card[] An array of Card objects drawn from the deck.
+     */
+    public function drawCards(int $num): array
+    {
 
         $removedCards = [];
 
@@ -111,5 +129,4 @@ class DeckOfCards
 
         return $removedCards;
     }
-
 }

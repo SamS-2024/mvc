@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Card\Bank;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
@@ -61,7 +60,7 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        /** @var \App\Card\Card[] $shuffledCards */
+        /** @var \App\Card\DeckOfCards|null $deck */
         $deck = $session->get("deck");
 
         if (!$deck || $deck->getRemainingCount() === 0) {
@@ -70,6 +69,11 @@ class CardGameController extends AbstractController
         }
 
         $removedCard = $deck->drawCard();
+
+        // Lägger till kontroll efter phpstan fel.
+        if (!$removedCard) {
+            return $this->redirectToRoute("card_shuffle");
+        }
 
         $count = $deck->getRemainingCount();
 
@@ -93,8 +97,8 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        // Kollar om kortleken är tom innan anrop till hjälpfunktionen.
-        $deck = $session->get("deck", []);
+        /** @var \App\Card\DeckOfCards|null $deck */
+        $deck = $session->get("deck");
 
         if (!$deck || $deck->getRemainingCount() === 0 || $num > $deck->getRemainingCount()) {
 
@@ -123,15 +127,15 @@ class CardGameController extends AbstractController
         return $this->redirectToRoute('draw_cards', ['num' => $numCards]);
     }
 
-/**
- * Helper function to draw cards and prepare data for rendering.
- *
- * @param int $num The number of cards to draw.
- * @param SessionInterface $session The current session storing the shuffled deck.
- *
- * @return array{cardString: string, remainigCards: int}
- * An associative array with a string of cards and the count of remaining cards.
- */
+    /**
+     * Helper function to draw cards and prepare data for rendering.
+     *
+     * @param int $num The number of cards to draw.
+     * @param SessionInterface $session The current session storing the shuffled deck.
+     *
+     * @return array{cardString: string, remainigCards: int}
+     * An associative array with a string of cards and the count of remaining cards.
+     */
     private function drawCardsHelper(
         int $num,
         SessionInterface $session
@@ -140,7 +144,7 @@ class CardGameController extends AbstractController
             throw new Exception("Can not draw more than 52 cards!");
         }
 
-        /** @var \App\Card\Card[] $shuffledCards */
+        /** @var \App\Card\DeckOfCards $deck */
         $deck = $session->get("deck");
 
         $removedCards = [];

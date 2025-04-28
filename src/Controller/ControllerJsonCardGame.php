@@ -113,7 +113,10 @@ class ControllerJsonCardGame extends AbstractController
     #[Route("api/game", name: "api-game", methods: ["GET"])]
     public function apiGame(SessionInterface $session): Response
     {
+        /** @var \App\Card\Player $player */
         $player = $session->get('player');
+
+        /** @var \App\Card\Bank $bank */
         $bank = $session->get('bank');
 
         $data = [

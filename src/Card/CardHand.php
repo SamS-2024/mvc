@@ -7,19 +7,38 @@ namespace App\Card;
  */
 class CardHand
 {
+    /**
+     * @var Card[] List of cards in the hand.
+     */
     protected array $cardsArray = [];
 
-    public function addCard(Card $card): void {
+    /**
+     * Adds a card to the hand.
+     *
+     * @param Card $card The card to be added to the hand.
+     */
+    public function addCard(Card $card): void
+    {
         // Lägger till ett kort i handen
         $this->cardsArray[] = $card;
     }
 
-    public function getCards(): array {
+    /**
+     * Retrieves all cards in the hand.
+     *
+     * @return \App\Card\Card[] An array of Card objects.
+     */
+    public function getCards(): array
+    {
         // Hämtar alla kort i handen
         return $this->cardsArray;
     }
 
-
+    /**
+     * Calculates and returns the total points for the hand based on the cards.
+     *
+     * @return int The total points of the hand.
+     */
     public function getPoints(): int
     {
         $points = 0;
@@ -31,6 +50,11 @@ class CardHand
         return $points;
     }
 
+    /**
+     * Retrieves all cards in the hand as a string formatted for display.
+     *
+     * @return string A string representing all the cards in the hand, formatted.
+     */
     public function getCardsAsString(): string
     {   // Skapar ett CardGraphic-objekt
         $cardGraphic = new CardGraphic();

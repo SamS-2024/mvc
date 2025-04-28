@@ -59,6 +59,11 @@ class Card
         ];
     }
 
+    /**
+     * Returns the point value of the card based on its symbol.
+     *
+     * @return int The point value of the card.
+     */
     public function getCardValue(): int
     {
         $symbolToValue = [
@@ -86,7 +91,7 @@ class Card
         if (array_key_exists($this->rank, $symbolToValue)) {
             return $symbolToValue[$this->rank];
         }
-         // Om ranken inte hittas, returnerar 0 som standard
-         return 0;
+        // Om ranken inte hittas, returnerar 0 som standard
+        return 0;
     }
 }
