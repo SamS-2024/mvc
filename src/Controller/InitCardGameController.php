@@ -7,16 +7,26 @@ use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use App\Card\Player;
 use App\Card\Status;
-use Exception;
-use SessionIdInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class InitCardGameController extends AbstractController
 {
+    #[Route("/game", name: "game")]
+    public function game(): Response
+    {
+
+        return $this->render('Cards/game.html.twig');
+    }
+
+    #[Route("/game/doc", name: "game_doc")]
+    public function gameDoc(): Response
+    {
+        return $this->render('Cards/game-doc.html.twig');
+    }
+
     #[Route("/game/init", name: "init_game")]
     public function initGame(SessionInterface $session): Response
     {
@@ -73,7 +83,7 @@ class InitCardGameController extends AbstractController
     {
         /** @var \App\Card\Player|null $player */
         $player = $session->get('player');
-        if ($player) {
+        if ($player && $player->getPoints() > 0) {
             $player->stop();
         }
 
@@ -99,7 +109,7 @@ class InitCardGameController extends AbstractController
         /** @var \App\Card\Bank|null $bank */
         $bank = $session->get('bank');
 
-        if (!$player || !$bank) {
+        if (!$player || !$bank) { //(phpstan)
             return $this->redirectToRoute('init_game');
         }
 

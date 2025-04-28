@@ -295,3 +295,30 @@ input {
     margin-top: 1.4rem;
     color: rgb(172, 79, 4);
 }
+
+.doc-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+}
+
+.flowchart {
+    padding: 1rem;
+}
+
+.flowchart-img {
+    border: 1px solid rgb(115, 114, 114);
+    width: 90%;
+}
+
+.code {
+    background-color: rgb(223, 222, 222);
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    border-radius: 7px;
+}
+
+.doc-text {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}

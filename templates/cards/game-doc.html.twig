@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentation{% endblock %}
+
+{% block body %}
+<h1>Dokumentation</h1>
+
+<div class="doc-text">
+
+    <h2>Spelklasser - Kortspel 21</h2>
+    <p>
+        <strong>CardHand</strong>: Representerar handen som spelaren håller och består av olika kortobjekt,
+        samt innehåller logik för att lägga till kort och beräkna poäng.
+    </p><br>
+    <p>
+        <strong>Player</strong>: Representerar användaren eller spelaren och består av ett handobjekt samt
+        logik för att spela, stanna, spricka, hämta hand, hämta poäng och visa viss status under spelet.
+    </p><br>
+
+    <p>
+        <strong>Bank</strong>: Samma som i Player, men med extra logik för att automatiskt stanna vid rätt poängnivå.
+    </p><br>
+
+    <p>
+        <strong>Status</strong>: Lades till i ett senare skede för att innehålla logik för att jämföra spelare och bank och utse vinnare.
+        Klassen består av Player- och Bank-objekt.
+    </p><br>
+</div>
+
+<div class="doc-container">
+    <div class="pseudo">
+        <h2>Pseudokod</h2>
+        <pre class="code"><code>
+        Start game round
+            Player draws cards
+                - Add card to hand
+                - Update points
+            If player chooses to stop
+                Bank draws until points >= 17
+
+            Evaluate result:
+                If player points > 21
+                then Bank wins
+                If bank points > 21
+                then Player wins
+                If player points == 21 and bank != 21
+                then Player wins
+                If bank points == 21
+                then Bank wins
+                If player points == bank points
+                then Bank wins
+                If player points > bank points and < 21
+                then Player wins
+                If bank points > player points and bank points < 21
+                then Bank wins
+
+        Reset and start new game
+
+        </code></pre>
+    </div>
+
+    <div class="flowchart">
+    <h2>Flödesschema</h2>
+        <img src="{{ asset('img/flowchart.webp') }}" class ="flowchart-img" alt="flowchart">
+    </div>
+</div>
+
+
+{% endblock %}
