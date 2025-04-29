@@ -19,7 +19,7 @@ class ControllerJson extends AbstractController
             '/api/deck/shuffle' => 'Visar en vy där man kan välja att blandade korten och välja kort.',
             '/api/deck/draw' => 'Visar en vy där man kan dra ett kort från kortleken.',
             '/api/deck/draw/number' => 'Visar en vy men formulär där man kan dra flera kort från kortleken.',
-            'api/game' => 'Visar den aktuella ställningen för kortspelet 21.'
+            '/api/game' => 'Visar den aktuella ställningen för kortspelet 21.'
         ];
 
         return $this->render('api-overview.html.twig', ['data' => $data]);
