@@ -122,13 +122,11 @@ class ControllerJsonCardGame extends AbstractController
         $data = [
             'cards' => strip_tags($player->getHand()->getCardsAsString()),
             'points' => $player->getPoints(),
-            'status' => $player->checkStatus(),
         ];
 
         $dataBank = [
             'cards' => strip_tags($bank->getHand()->getCardsAsString()),
             'points' => $bank->getPoints(),
-            'status' => $bank->checkStatus(),
         ];
 
         $finalResult = $session->get('final_result');
