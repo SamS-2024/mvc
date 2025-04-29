@@ -67,72 +67,127 @@
 
                 <div id="kmom02">
                     <h2>Kmom02</h2>
+                    <p><strong>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP</strong></p><br>
 
-                        <p><strong>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP</strong></p><br>
+                    <p><strong>Arv</strong><br>
+                    <p>Arv används för att skapa en ny klass baserad på en befintlig klass. Den nya klassen kallas subklass och ärver egenskaper och metoder
+                    från basklassen. Detta gör att kod kan återanvändas och organiseras bättre. I PHP stöds bara enkel arv, vilket betyder att en klass bara
+                    kan ärva från en annan klass. Arv används när flera klasser delar ett gemensamt beteende.</p><br>
 
-                        <p><strong>Arv</strong><br>
-                        <p>Arv används för att skapa en ny klass baserad på en befintlig klass. Den nya klassen kallas subklass och ärver egenskaper och metoder
-                        från basklassen. Detta gör att kod kan återanvändas och organiseras bättre. I PHP stöds bara enkel arv, vilket betyder att en klass bara
-                        kan ärva från en annan klass. Arv används när flera klasser delar ett gemensamt beteende.</p><br>
+                    <p><strong>Komposition</strong><br>
+                    <p>Komposition används för att sätta ihop klasser genom att en klass innehåller andra objekt. Istället för att ärva beteenden används
+                    andra klasser som byggstenar. Detta ger mer flexibilitet än arv, eftersom klasser kan kombineras på olika sätt utan att vara kopplade genom arv.
+                    Komposition används när man vill bygga upp funktionalitet genom att använda flera mindre delar.</p><br>
 
-                        <p><strong>Komposition</strong><br>
-                        <p>Komposition används för att sätta ihop klasser genom att en klass innehåller andra objekt. Istället för att ärva beteenden används
-                        andra klasser som byggstenar. Detta ger mer flexibilitet än arv, eftersom klasser kan kombineras på olika sätt utan att vara kopplade genom arv.
-                        Komposition används när man vill bygga upp funktionalitet genom att använda flera mindre delar.</p><br>
+                    <p><strong>Interface</strong><br>
+                    <p>Ett interface i PHP definierar en uppsättning metoder som en klass måste implementera. Det innehåller bara metodsignaturer, men ingen
+                    faktisk kod. Det fungerar som ett kontrakt eller en mall för vad som måste finnas, och används när man vill tvinga flera olika
+                    klasser att följa en gemensam struktur.</p><br>
 
-                        <p><strong>Interface</strong><br>
-                        <p>Ett interface i PHP definierar en uppsättning metoder som en klass måste implementera. Det innehåller bara metodsignaturer, men ingen
-                        faktisk kod. Det fungerar som ett kontrakt eller en mall för vad som måste finnas, och används när man vill tvinga flera olika
-                        klasser att följa en gemensam struktur.</p><br>
+                    <p><strong>Trait</strong><br>
+                    <p>Ett trait är ett sätt att återanvända kod mellan flera klasser. Till skillnad från ett interface kan ett trait innehålla färdig kod.
+                    Det löser begränsningen att PHP endast stödjer enkel arv, och gör det enklare att dela gemensam funktionalitet mellan olika klasser.</p><br>
 
-                        <p><strong>Trait</strong><br>
-                        <p>Ett trait är ett sätt att återanvända kod mellan flera klasser. Till skillnad från ett interface kan ett trait innehålla färdig kod.
-                        Det löser begränsningen att PHP endast stödjer enkel arv, och gör det enklare att dela gemensam funktionalitet mellan olika klasser.</p><br>
+                    <p><strong>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du
+                    i din koden och dina klasser?</strong></p><br>
 
-                        <p><strong>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du
-                        i din koden och dina klasser?</strong></p><br>
+                    <p>Arbetet delades upp i flera delar för att på ett strukturerat sätt lösa uppgiften. Först implementerades de grundläggande klasserna
+                    för att representera spelkort. Klassen Card skapades för att hantera varje korts rang och svit. Därefter utökades funktionaliteten med CardGraphic,
+                    som ansvarar för att associera varje svit med rätt grafisk symbol och generera färdiga uppsättningar av kort för spader, hjärter, ruter och klöver.</p><br>
 
-                        <p>Arbetet delades upp i flera delar för att på ett strukturerat sätt lösa uppgiften. Först implementerades de grundläggande klasserna
-                        för att representera spelkort. Klassen Card skapades för att hantera varje korts rang och svit. Därefter utökades funktionaliteten med CardGraphic,
-                        som ansvarar för att associera varje svit med rätt grafisk symbol och generera färdiga uppsättningar av kort för spader, hjärter, ruter och klöver.</p><br>
+                    <p>För att hantera hela kortleken implementerades DeckOfCards. I denna klass samlades alla kort ihop, och metoder lades till för
+                    att skapa, blanda och hämta kortleken i olika format. Metoder för att konvertera kort och kortlekar till JSON-format eller strängar för
+                    HTML-visning tillkom för att möjliggöra användning både i API och webbsida.<br>
+                    Två separata kontroller skapades: en för spelets gränssnitt och en för JSON-baserat API.</p><br>
 
-                        <p>För att hantera hela kortleken implementerades DeckOfCards. I denna klass samlades alla kort ihop, och metoder lades till för
-                        att skapa, blanda och hämta kortleken i olika format. Metoder för att konvertera kort och kortlekar till JSON-format eller strängar för
-                        HTML-visning tillkom för att möjliggöra användning både i API och webbsida.<br>
-                        Två separata kontroller skapades: en för spelets gränssnitt och en för JSON-baserat API.</p><br>
+                    <p>I spelets kontroller (CardGameController) hanterades sidvisningar och spelrelaterade actions, som att visa en blandad kortlek eller dra
+                    kort och visa dem på en webbsida. För detta användes sessionen för att bevara kortlekens tillstånd mellan anrop.</p><br>
 
-                        <p>I spelets kontroller (CardGameController) hanterades sidvisningar och spelrelaterade actions, som att visa en blandad kortlek eller dra
-                        kort och visa dem på en webbsida. För detta användes sessionen för att bevara kortlekens tillstånd mellan anrop.</p><br>
+                    <p>I API-kontrollern (ControllerJsonCardGame) hanterades motsvarande funktioner fast med JSON-svar. Routes implementerades för att visa en ny kortlek,
+                    blanda korten och dra kort, både ett och flera. Även här sparades kortleken i sessionen för att möjliggöra upprepade dragningar utan att återställa kortleken.</p><br>
 
-                        <p>I API-kontrollern (ControllerJsonCardGame) hanterades motsvarande funktioner fast med JSON-svar. Routes implementerades för att visa en ny kortlek,
-                        blanda korten och dra kort, både ett och flera. Även här sparades kortleken i sessionen för att möjliggöra upprepade dragningar utan att återställa kortleken.</p><br>
+                    <p>En hjälpfunktion för att strukturera JSON-responsen skapades i API-kontrollern för att undvika upprepning och göra koden mer läsbar.</p><br>
 
-                        <p>En hjälpfunktion för att strukturera JSON-responsen skapades i API-kontrollern för att undvika upprepning och göra koden mer läsbar.</p><br>
+                    <p>Det finns flera delar i koden som hade kunnat förbättras, både när det gäller struktur och styling. Eftersom uppgiften var relativt omfattande,
+                    fanns det begränsat med tid för att finjustera och optimera alla delar. En förbättrad användargränssnitt för spelet hade till exempel kunnat bidra till en mer
+                    tilltalande visuell presentation.</p><br>
 
-                        <p>Det finns flera delar i koden som hade kunnat förbättras, både när det gäller struktur och styling. Eftersom uppgiften var relativt omfattande,
-                        fanns det begränsat med tid för att finjustera och optimera alla delar. En förbättrad användargränssnitt för spelet hade till exempel kunnat bidra till en mer
-                        tilltalande visuell presentation.</p><br>
+                    <p>Även kontrollernas struktur hade kunnat göras tydligare. Vissa krav var svårtolkade, vilket kan ha lett till lösningar som blev mer komplicerade än nödvändigt.
+                    Samtidigt fungerar kärnan i 'src'-katalogen väl, med klasserna för kort, grafisk representation och kortlek. Dessa delar är jag i alla fall nöjd med.</p><br>
 
-                        <p>Även kontrollernas struktur hade kunnat göras tydligare. Vissa krav var svårtolkade, vilket kan ha lett till lösningar som blev mer komplicerade än nödvändigt.
-                        Samtidigt fungerar kärnan i 'src'-katalogen väl, med klasserna för kort, grafisk representation och kortlek. Dessa delar är jag i alla fall nöjd med.</p><br>
+                    <p><strong>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC.</strong></p><br>
 
-                        <p><strong>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC.</strong></p><br>
+                    <p>Att arbeta med Symfony enligt MVC har hjälpt till att strukturera koden tydligare genom att separera ansvar. Det blir enklare att förstå var
+                    olika delar av logiken hör hemma. Modellerna fokuserar på spelregler och data, medan kontrollern hanterar flödet och skickar data till vyn. Det gör det
+                    även lättare att felsöka och vidareutveckla applikationen.</p><br>
 
-                        <p>Att arbeta med Symfony enligt MVC har hjälpt till att strukturera koden tydligare genom att separera ansvar. Det blir enklare att förstå var
-                        olika delar av logiken hör hemma. Modellerna fokuserar på spelregler och data, medan kontrollern hanterar flödet och skickar data till vyn. Det gör det
-                        även lättare att felsöka och vidareutveckla applikationen.</p><br>
+                    <p>En utmaning har varit API-delen och arbetet med JSON-kontrollern. Att hantera data och sessioner över flera rutter och kontroller har ibland varit komplicerat,
+                    vilket krävde extra uppmärksamhet på logikens placering. Detta har dock gett värdefulla insikter i hur man bättre organiserar och hanterar applikationsflödet i
+                    framtida projekt.</p><br>
 
-                        <p>En utmaning har varit API-delen och arbetet med JSON-kontrollern. Att hantera data och sessioner över flera rutter och kontroller har ibland varit komplicerat,
-                        vilket krävde extra uppmärksamhet på logikens placering. Detta har dock gett värdefulla insikter i hur man bättre organiserar och hanterar applikationsflödet i
-                        framtida projekt.</p><br>
+                    <p><strong>Vilken är din TIL för detta kmom?</strong></p><br>
 
-                        <p><strong>Vilken är din TIL för detta kmom?</strong></p><br>
-
-                        <p>I det här momentet har jag lärt mig mer om klasser, arv och komposition, vilket har varit användbart för att strukturera koden i uppgiften. Jag har också fått
-                        en bättre förståelse för hur man använder sessioner effektivt i Symfony för att hantera data mellan olika requests. Jag har också fått en bättre förståelse för
-                        utf-8 och hur det kan användas i spelkort och specialtecken.</p>
-                    </div>
+                    <p>I det här momentet har jag lärt mig mer om klasser, arv och komposition, vilket har varit användbart för att strukturera koden i uppgiften. Jag har också fått
+                    en bättre förståelse för hur man använder sessioner effektivt i Symfony för att hantera data mellan olika requests. Jag har också fått en bättre förståelse för
+                    utf-8 och hur det kan användas i spelkort och specialtecken.</p>
                 </div>
+
+                <div id="kmom03">
+                    <h2>Kmom03</h2>
+                   <p>
+                    Att modellera ett kortspel med flödesdiagram och pseudokod kändes okej, men lite svårt i början att veta var man skulle börja.
+                    Det mesta av planeringen gjordes först i huvudet och senare på papper och sist skissades dessa i verktyg så de kan visas på webbsidan.
+                    Själva flödet är inte alltid problemet, utan det är hur koden ska struktureras och kopplas till controllern som är den största utmaningen.
+                    </p>
+                    <p><br>
+                    Problemlösningsverktyg är absolut hjälpsamma, men för just den här uppgiften kändes det som att UML skulle ha varit mer användbart
+                    än pseudokod och flödesschema.
+                    </p><br>
+
+                    <p>
+                    Uppgiften hade en något längre planeringsfas än vanligt. Mycket av planeringen skedde först i form av tankar och skisser på papper.
+                    Arbetet började med att implementera en första del av spelet, och det var klassen CardHand som hanterar själva korten. Denna testades
+                    initialt i en enkel controller och visades på webbsidan. Därefter designades och implementerades Player- och Bank-klasserna.
+                    </p><br>
+
+                    <p>
+                    En separat controller skapades för att initiera spelet, så att koden hölls åtskild från tidigare kursmoment. Denna del tog längst
+                    tid att få rätt, framför allt vad gäller turordning och visning på webbsidan.
+                    </p><br>
+
+                    <p>
+                    Poängräkning och spelstatus låg från början i respektive klass, men ganska snabbt blev det tydligt att en gemensam klass behövdes
+                    för att jämföra resultaten. Därför skapades Status-klassen, som ansvarar för att jämföra poängen och returnera en sträng med vinnarens namn.
+                    </p><br>
+
+                    <p>
+                    Jag är delvis nöjd med lösningen med tanke på uppgiftens omfattning, men hade gärna haft mer tid till att förbättra designen,
+                    finslipa controllerns kod och införa bättre felhantering.
+                    </p><br>
+
+                    <p>
+                    Att koda i ramverket Symfony känns bra och praktiskt. Det börjar bli tydligare hur flödet hänger ihop mellan routes, controllers,
+                    templates och klasser.
+                    </p><br>
+
+                    <p>
+                    Det finns dock fortfarande vissa delar som kräver eftertanke, som t.ex strukturering av controllerkod. Men generellt känns det som
+                    att man får mer kontroll och struktur i projektet jämfört med andra lösningar.
+                    </p><br>
+
+                    <p>
+                    Min TIL för detta kursmoment är att jag har fått mer användbar kunskap om objektorienterad programmering och PHP-syntax.
+                    Det var intressant att strukturera klasserna och skriva logiken däri. I controllern var det lärorikt att arbeta mer med
+                    sessionshantering och associativa arrayer, som visat sig vara mycket hjälpsamma.
+                    </p><br>
+
+                    <p>
+                    Ett steg i rätt riktning var att lära sig separera logik mellan modeller och controller så mycket som möjligt.
+                    Jag har också börjat använda små metoder i controllern kopplade till routes, vilket gör koden mer läsbar och lättare att underhålla.
+                    Jag har även fått mer förståelse för Twig och hur det kan användas för att presentera sidor på ett tydligt och önskvärt sätt.
+                    </p>
+                </div>
+            </div>
 
             <div class="kmom-links">
                 <h2 class ="kmom-links-titel">Kursmoment</h2>
