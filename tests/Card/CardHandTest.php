@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\Length;
 class CardHandTest extends TestCase
 {
     /**
-     * Test that a CardHands object can be created.
+     * Test that a CardHand object can be created.
      */
     public function testCardHandCards()
     {
