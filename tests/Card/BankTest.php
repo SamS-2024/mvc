@@ -9,12 +9,11 @@ use Symfony\Component\Validator\Constraints\Length;
  * Test cases for the Bank class.
  */
 class BankTest extends TestCase
-
 {
     /**
      * Test that a Bank object can be created.
      */
-    public function testBank()
+    public function testBank(): void
     {
         $bank = new Bank();
         $this->assertInstanceOf(Bank::class, $bank);
@@ -23,7 +22,7 @@ class BankTest extends TestCase
     /**
      * Test that a Bank can start a new round of play with the given hand.
      */
-    public function testBankRound()
+    public function testBankRound(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -38,7 +37,7 @@ class BankTest extends TestCase
     /**
      * Test that a Bank gets correct points in a round.
      */
-    public function testRoundPoints()
+    public function testRoundPoints(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -55,7 +54,7 @@ class BankTest extends TestCase
     /**
      * Test that a Bank can stop.
      */
-    public function testBankStop()
+    public function testBankStop(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -74,7 +73,7 @@ class BankTest extends TestCase
     /**
      * Test if a Bank is bust (gets more than 21 points).
      */
-    public function testBankBust()
+    public function testBankBust(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -92,7 +91,7 @@ class BankTest extends TestCase
     /**
      * Test if a Bank should stop (gets >= 17 points).
      */
-    public function testBankShouldStop()
+    public function testBankShouldStop(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -110,7 +109,7 @@ class BankTest extends TestCase
      * Test Bank's status wheather it is bust or game still going based on
      * returned string text.
      */
-    public function testBankStatusBust()
+    public function testBankStatusBust(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -128,7 +127,7 @@ class BankTest extends TestCase
     /**
      * Test Bank's status wheather it shoud stop, points >= 17 and less than 21.
      */
-    public function testBankStatusShouldStop()
+    public function testBankStatusShouldStop(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();
@@ -146,7 +145,7 @@ class BankTest extends TestCase
      * Test Bank's status wheather it is bust or game still going based on
      * returned string text.
      */
-    public function testBankStatusGameStillGoing()
+    public function testBankStatusGameStillGoing(): void
     {
         $bank = new Bank();
         $cardHand = new CardHand();

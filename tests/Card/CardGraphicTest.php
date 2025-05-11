@@ -13,7 +13,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test that a CardGraphic object can be created.
      */
-    public function testCreateCardGraphic()
+    public function testCreateCardGraphic(): void
     {
         $card = new CardGraphic();
         $this->assertInstanceOf(CardGraphic::class, $card);
@@ -22,7 +22,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test that createDiamonds returns an array of 13 cards.
      */
-    public function testCardsCountDiamonds()
+    public function testCardsCountDiamonds(): void
     {
         $exp = 13;
         $card = new CardGraphic();
@@ -33,7 +33,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test that createHearts returns an array of 13 cards.
      */
-    public function testCardsCountHearts()
+    public function testCardsCountHearts(): void
     {
         $exp = 13;
         $card = new CardGraphic();
@@ -44,7 +44,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test that createClubs returns an array of 13 cards.
      */
-    public function testCardsCountClubs()
+    public function testCardsCountClubs(): void
     {
         $exp = 13;
         $card = new CardGraphic();
@@ -55,7 +55,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test that createSpades returns an array of 13 cards.
      */
-    public function testCardsCountSpades()
+    public function testCardsCountSpades(): void
     {
         $exp = 13;
         $card = new CardGraphic();
@@ -66,26 +66,26 @@ class CardGraphicTest extends TestCase
     /**
      * Test that formatCards returns a string with red span for red suits.
      */
-    public function testFormatCardsDiamonds()
+    public function testFormatCardsDiamonds(): void
     {
         $cardGraphic = new CardGraphic();
         $cards = $cardGraphic->createDiamonds(); // Röda kort
         $result = $cardGraphic->formatCards($cards);
 
-        $this->assertIsString($result);
+        // $this->assertIsString($result);
         $this->assertStringContainsString('<span class="red">', $result);
     }
 
     /**
      * Test that formatCard returns the symbol for a black card.
      */
-    public function testFormatCardReturnsSymbol()
+    public function testFormatCardReturnsSymbol(): void
     {
         $card = new CardGraphic();
         $inputCard = new Card('🂡', 'spades');
 
         $result = $card->formatCard($inputCard);
-        $exp= '🂡';
+        $exp = '🂡';
 
         $this->assertEquals($exp, $result);
     }

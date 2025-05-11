@@ -13,7 +13,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that a DeckOfCards object can be created.
      */
-    public function testCreateDeckOfCards()
+    public function testCreateDeckOfCards(): void
     {
         $card = new DeckOfCards();
         $this->assertInstanceOf(DeckOfCards::class, $card);
@@ -22,7 +22,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that createDeck returns 52 cards.
      */
-    public function testCreateDeckReturns52Cards()
+    public function testCreateDeckReturns52Cards(): void
     {
         $deck = new DeckOfCards();
         $cards = $deck->createDeck();
@@ -32,7 +32,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that shuffleCards returns shuffled deck (same size, different order).
      */
-    public function testShuffleDeck()
+    public function testShuffleDeck(): void
     {
         $deck = new DeckOfCards();
         $original = $deck->createDeck();
@@ -45,7 +45,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that drawCard returns a single Card and deck size decreases.
      */
-    public function testDrawCardReducesDeck()
+    public function testDrawCardReducesDeck(): void
     {
         $deck = new DeckOfCards();
         $deck->createDeck();
@@ -59,7 +59,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test drawing multiple cards reduces deck correctly.
      */
-    public function testDrawCardsReducesDeckCorrectly()
+    public function testDrawCardsReducesDeckCorrectly(): void
     {
         $deck = new DeckOfCards();
         $deck->createDeck();
@@ -72,13 +72,13 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test getAsJson returns structured array.
      */
-    public function testDeckAsJson()
+    public function testDeckAsJson(): void
     {
         $deck = new DeckOfCards();
         $deck->createDeck();
         $json = $deck->getAsJson();
 
-        $this->assertIsArray($json);
+        // $this->assertIsArray($json);
         $this->assertCount(52, $json);
         $this->assertArrayHasKey('rank', $json[0]);
         $this->assertArrayHasKey('suit', $json[0]);
@@ -87,24 +87,26 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that getCardAsString returns a string for a single card.
      */
-    public function testGetCardAsString()
+    public function testGetCardAsString(): void
     {
         $deck = new DeckOfCards();
         $deck->createDeck();
         $card = $deck->drawCard();
-        $result = $deck->getCardAsString($card);
-        $this->assertIsString($result);
+        if ($card !== null) {
+            $result = $deck->getCardAsString($card);
+            $this->assertNotEmpty($result);
+        }
     }
 
     /**
      * Test that getAsString returns a string for an array of cards.
      */
-    public function testGetAsString()
+    public function testGetAsString(): void
     {
         $deck = new DeckOfCards();
         $cards = $deck->createDeck();
         $result = $deck->getAsString($cards);
-        $this->assertIsString($result);
+        $this->assertNotEmpty($result);
     }
 
 }

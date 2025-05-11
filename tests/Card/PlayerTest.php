@@ -9,12 +9,11 @@ use Symfony\Component\Validator\Constraints\Length;
  * Test cases for the Player class.
  */
 class PlayerTest extends TestCase
-
 {
     /**
      * Test that a Player object can be created.
      */
-    public function testPlayer()
+    public function testPlayer(): void
     {
         $player = new Player();
         $this->assertInstanceOf(Player::class, $player);
@@ -23,7 +22,7 @@ class PlayerTest extends TestCase
     /**
      * Test that a Player can start a new round of play with the given hand.
      */
-    public function testPlayerRound()
+    public function testPlayerRound(): void
     {
         $player = new Player();
         $cardHand = new CardHand();
@@ -38,7 +37,7 @@ class PlayerTest extends TestCase
     /**
      * Test that a Player gets correct points in a round.
      */
-    public function testRoundPoints()
+    public function testRoundPoints(): void
     {
         $player = new Player();
         $cardHand = new CardHand();
@@ -55,7 +54,7 @@ class PlayerTest extends TestCase
     /**
      * Test that a Player can stop.
      */
-    public function testPlayerStop()
+    public function testPlayerStop(): void
     {
         $player = new Player();
         $cardHand = new CardHand();
@@ -74,7 +73,7 @@ class PlayerTest extends TestCase
     /**
      * Test if a Player is bust (gets more than 21 points).
      */
-    public function testPlayerBust()
+    public function testPlayerBust(): void
     {
         $player = new Player();
         $cardHand = new CardHand();
@@ -93,7 +92,7 @@ class PlayerTest extends TestCase
      * Test Player's status wheather it is bust or game still going based on
      * returned string text.
      */
-    public function testPlayerStatusBust()
+    public function testPlayerStatusBust(): void
     {
         $player = new Player();
         $cardHand = new CardHand();
@@ -112,7 +111,7 @@ class PlayerTest extends TestCase
      * Test Player's status wheather it is bust or game still going based on
      * returned string text.
      */
-    public function testPlayerStatusGameStillGoing()
+    public function testPlayerStatusGameStillGoing(): void
     {
         $player = new Player();
         $cardHand = new CardHand();

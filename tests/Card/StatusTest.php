@@ -9,12 +9,11 @@ use Symfony\Component\Validator\Constraints\Length;
  * Test cases for the Status class.
  */
 class StatusTest extends TestCase
-
 {
     /**
      * Test that a Status object can be created.
      */
-    public function testStatus()
+    public function testStatus(): void
     {
         $player = new Player();
         $bank = new Bank();
@@ -25,7 +24,7 @@ class StatusTest extends TestCase
     /**
      * Tests that the player wins when having more points than the bank.
      */
-    public function testPlayerWinsWithMorePoints()
+    public function testPlayerWinsWithMorePoints(): void
     {
         $playerHand = new CardHand();
         $playerHand->addCard(new Card('🂸', 'hearts')); // 8
@@ -48,7 +47,7 @@ class StatusTest extends TestCase
     /**
      * Tests that the bank wins when having more points than the player.
      */
-    public function testBankWinsWithMorePoints()
+    public function testBankWinsWithMorePoints(): void
     {
         $playerHand = new CardHand();
         $playerHand->addCard(new Card('🂳', 'hearts')); // 8
@@ -71,7 +70,7 @@ class StatusTest extends TestCase
     /**
      * Tests that the player wins when the bank goes bust (over 21).
      */
-    public function testPlayerWinsWhenBankIsBust()
+    public function testPlayerWinsWhenBankIsBust(): void
     {
         $playerHand = new CardHand();
         $playerHand->addCard(new Card('🂸', 'hearts')); // 8
@@ -94,7 +93,7 @@ class StatusTest extends TestCase
     /**
      * Tests that the player wins by reaching exactly 21 points.
      */
-    public function testPlayerWinsByPoints21()
+    public function testPlayerWinsByPoints21(): void
     {
         $playerHand = new CardHand();
         $playerHand->addCard(new Card('🂺', 'hearts')); // 10

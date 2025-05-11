@@ -13,7 +13,7 @@ class CardHandTest extends TestCase
     /**
      * Test that a CardHand object can be created.
      */
-    public function testCardHandCards()
+    public function testCardHandCards(): void
     {
         $card = new CardHand();
         $this->assertInstanceOf(CardHand::class, $card);
@@ -22,10 +22,10 @@ class CardHandTest extends TestCase
     /**
      * Test adding a card to the card hand.
      */
-    public function testAddCardToCardHand()
+    public function testAddCardToCardHand(): void
     {
         $cardHand = new CardHand();
-        $card = new Card(5, 'hearts');
+        $card = new Card('🂵', 'hearts');
         $cardHand->addCard($card);
 
         $cards = $cardHand->getCards();
@@ -35,7 +35,7 @@ class CardHandTest extends TestCase
     /**
      * Test that points are correctly calculated for a card hand.
      */
-    public function testGetCardHandPoints()
+    public function testGetCardHandPoints(): void
     {
         $cardHand = new CardHand();
         $card = new Card('🂵', 'hearts');
@@ -48,13 +48,13 @@ class CardHandTest extends TestCase
     /**
      * Test that the card hand returns a string representation of its cards.
      */
-    public function testGetCardAsString()
+    public function testGetCardAsString(): void
     {
         $cardHand = new CardHand();
-        $card = new Card(5, 'hearts');
+        $card = new Card('🂵', 'hearts');
         $cardHand->addCard($card);
 
-        $this->assertIsString($cardHand->getCardsAsString());
+        $this->assertNotEmpty($cardHand->getCardsAsString());
     }
 
 
