@@ -24,7 +24,8 @@ class LuckyControllerTwig extends AbstractController
     }
 
 
-    #[Route("/home", name: "home")]
+    // #[Route("/home", name: "home")]
+    #[Route("/", name: "home")]
     public function home(): Response
     {
         return $this->render('home.html.twig');

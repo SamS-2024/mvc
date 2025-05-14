@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Böcker:{% endblock %}
+{% block title %}Bok:{% endblock %}
 
 {% block body %}
 
 <div class="library-container">
-    {% for book in books %}
+
         <p>Titel: {{book.title}}</p>
         <p>ISBN: {{book.isbn}}</p>
         <p>Författare: {{book.author}}</p>
 
     <img src="{{book.image}}" alt="{{book.title}}" width=300 class="book-img">
-    {% endfor %}
+
 </div>
 
-<div class="book-link">
-     <a href="{{ path('library_create') }}" class="links">Lägg till böcker</a>
+ <div class=".book-link">
+     <a href="{{ path('book-links') }}" class="links">Tillbaka till boklistan</a>
 </div>
 
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boklänkar{% endblock %}
+
+{% block body %}
+    <h1>Våra böcker</h1>
+    <table class="book-table">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td><a href="{{ path('show_book_by_id', { 'id': book.id }) }}">Läs mer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

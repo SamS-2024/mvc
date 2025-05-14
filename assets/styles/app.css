@@ -338,3 +338,59 @@ input {
 .example-wrapper h1 {
     margin-bottom: 3rem;;
 }
+
+/* kmom05*/
+.book-img {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.4rem;
+}
+
+.book-link {
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.book-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-family: sans-serif;
+}
+
+.book-table th,
+.book-table td {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.book-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.book-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.book-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.book-table a:hover {
+    text-decoration: underline;
+}
+
+/* .links-center {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+
+} */

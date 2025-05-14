@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,7 +21,7 @@ final class ProductController extends AbstractController
 
     #[Route('/product/create', name: 'product_create')]
     public function createProduct(
-    ManagerRegistry $doctrine
+        ManagerRegistry $doctrine
     ): Response {
         $entityManager = $doctrine->getManager();
 

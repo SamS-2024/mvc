@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Book;
+use App\Repository\BookRepository;
 // use Doctrine\ORM\Mapping\PostPersist;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,10 +14,14 @@ use Symfony\Component\Routing\Attribute\Route;
 final class LibraryController extends AbstractController
 {
     #[Route('/library', name: 'app_library')]
-    public function index(): Response
+    public function index(BookRepository $bookRepository): Response
     {
+
+        $books = $bookRepository
+            ->findAll();
+
         return $this->render('library/index.html.twig', [
-            'controller_name' => 'LibraryController',
+            'books' => $books
         ]);
     }
 
@@ -40,9 +46,52 @@ final class LibraryController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        dump($book);
-
-
         return new Response('Saved new book with id ' . $book->getId());
     }
+
+    #[Route('/library/show/{id}', name: 'show_book_by_id')]
+    public function showBookById(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+        $book = $bookRepository
+            ->find($id);
+
+        return $this->render('library/show-book.html.twig', [
+            'book' => $book
+        ]);
+    }
+    // Tabell för att visa titel och länka till mer info.
+    #[Route('/library/links', name: 'book-links')]
+    public function bookLinks(
+        BookRepository $bookRepository,
+    ): Response {
+        $books = $bookRepository
+            ->findAll();
+
+        return $this->render('library/book-table.html.twig', [
+            'books' => $books
+        ]);
+    }
+
+    // #[Route('/library/update/{id}', name: 'product_update')]
+    // public function updateProduct(
+    //     ManagerRegistry $doctrine,
+    //     int $id,
+    //     int $value
+    // ): Response {
+    //     $entityManager = $doctrine->getManager();
+    //     $product = $entityManager->getRepository(Product::class)->find($id);
+
+    //     if (!$product) {
+    //         throw $this->createNotFoundException(
+    //             'No product found for id '.$id
+    //         );
+    //     }
+
+    //     $product->setValue($value);
+    //     $entityManager->flush();
+
+    //     return $this->redirectToRoute('product_show_all');
+    // }
 }
