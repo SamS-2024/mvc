@@ -49,7 +49,8 @@ final class LibraryController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        return new Response('Saved new book with id ' . $book->getId());
+        // return new Response('Saved new book with id ' . $book->getId());
+        return $this->redirectToRoute('app_library');
     }
 
     #[Route('/library/find', name: 'find_book_form')]

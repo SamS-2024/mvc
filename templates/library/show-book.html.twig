@@ -5,18 +5,21 @@
 {% block body %}
 
 <div class="library-container">
-
+    <div class="book-wrapper">
+      <div class="book-text">
         <p>Titel: {{book.title}}</p>
         <p>ISBN: {{book.isbn}}</p>
         <p>Författare: {{book.author}}</p>
-
-    <img src="{{book.image}}" alt="{{book.title}}" width=300 class="book-img">
-
+     </div>
+    <div class="book-image">
+        <img src="{{book.image}}" alt="{{book.title}}" width="300" class="img-radius">
+    </div>
 </div>
 
- <div class=".book-link">
+ <div class="book-link">
      <a href="{{ path('book-list') }}" class="links">Boklistan</a>
      <a href="{{ path('find_book_form') }}" class="links">Boksökning</a>
+     <a href="{{ path('app_library') }}" class="links">Bibliotek</a>
 </div>
 
 {% endblock %}

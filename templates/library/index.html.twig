@@ -4,15 +4,24 @@
 
 {% block body %}
 
+<h1>Biblioteket</h1>
+
 <div class="library-container">
-    {% for book in books %}
+  {% for book in books %}
+    <div class="book-wrapper">
+      <div class="book-text">
+        <p>Id-nummer: {{book.id}}</p>
         <p>Titel: {{book.title}}</p>
         <p>ISBN: {{book.isbn}}</p>
         <p>Författare: {{book.author}}</p>
-
-    <img src="{{book.image}}" alt="{{book.title}}" width=300 class="book-img">
-    {% endfor %}
+      </div>
+      <div class="book-image">
+        <img src="{{book.image}}" alt="{{book.title}}" width="300" class="img-radius">
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
 
 <div class="book-link">
      <a href="{{ path('library_create') }}" class="links">Lägg till böcker</a>
