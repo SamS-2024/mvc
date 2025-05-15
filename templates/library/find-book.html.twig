@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hitta en bok{% endblock %}
+
+{% block body %}
+
+<form method="GET" action="{{ path('find_book_by_id') }}" class="find-book-form">
+    <label for="id">Sök bok med ID:</label>
+    <input type="number" name="id" id="id" required>
+    <button type="submit">Sök</button>
+</form>
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bok:{% endblock %}
+{% block title %}Bok{% endblock %}
 
 {% block body %}
 
@@ -15,7 +15,8 @@
 </div>
 
  <div class=".book-link">
-     <a href="{{ path('book-links') }}" class="links">Tillbaka till boklistan</a>
+     <a href="{{ path('book-list') }}" class="links">Boklistan</a>
+     <a href="{{ path('find_book_form') }}" class="links">Boksökning</a>
 </div>
 
 {% endblock %}

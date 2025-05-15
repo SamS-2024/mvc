@@ -32,7 +32,10 @@ final class LibraryController extends AbstractController
     }
 
     #[Route('/library/create', name: 'library_create', methods: ['POST'])]
-    public function createBook(Request $request, ManagerRegistry $doctrine): Response
+    public function createBook(
+        Request $request,
+        ManagerRegistry $doctrine
+        ): Response
     {
         $entityManager = $doctrine->getManager();
 
@@ -49,7 +52,22 @@ final class LibraryController extends AbstractController
         return new Response('Saved new book with id ' . $book->getId());
     }
 
-    #[Route('/library/show/{id}', name: 'show_book_by_id')]
+    #[Route('/library/find', name: 'find_book_form')]
+    public function findBookForm(): Response
+    {
+        return $this->render('library/find-book.html.twig');
+    }
+
+    #[Route('/library/find-id', name: 'find_book_by_id', methods: ['GET'])]
+    public function findBookById(Request $request): Response
+    {
+        $id = $request->query->get('id');
+
+        return $this->redirectToRoute('show_book_by_id', ['id' => $id]);
+    }
+
+
+    #[Route('/library/show/{id<\d+>}', name: 'show_book_by_id')]
     public function showBookById(
         BookRepository $bookRepository,
         int $id
@@ -57,12 +75,17 @@ final class LibraryController extends AbstractController
         $book = $bookRepository
             ->find($id);
 
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
         return $this->render('library/show-book.html.twig', [
             'book' => $book
         ]);
     }
     // Tabell för att visa titel och länka till mer info.
-    #[Route('/library/links', name: 'book-links')]
+    #[Route('/library/list', name: 'book-list')]
     public function bookLinks(
         BookRepository $bookRepository,
     ): Response {
@@ -74,24 +97,59 @@ final class LibraryController extends AbstractController
         ]);
     }
 
-    // #[Route('/library/update/{id}', name: 'product_update')]
-    // public function updateProduct(
-    //     ManagerRegistry $doctrine,
-    //     int $id,
-    //     int $value
-    // ): Response {
-    //     $entityManager = $doctrine->getManager();
-    //     $product = $entityManager->getRepository(Product::class)->find($id);
+    // Update
+    #[Route('/library/show/update', name: 'show_update_form')]
+    public function showUpdateForm(Request $request): Response
+    {
+        $id = $request->query->get('id');
+        if ($id) {
+            return $this->redirectToRoute('show-book-to-update', ['id' => $id]);
+        }
 
-    //     if (!$product) {
-    //         throw $this->createNotFoundException(
-    //             'No product found for id '.$id
-    //         );
-    //     }
+        return $this->render('library/show-update-form.html.twig');
+    }
 
-    //     $product->setValue($value);
-    //     $entityManager->flush();
 
-    //     return $this->redirectToRoute('product_show_all');
-    // }
-}
+    #[Route('/library/update/{id<\d+>}', name: 'show-book-to-update', methods: ['GET'])]
+    public function findBook(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+
+        $book = $bookRepository
+        ->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException("No book with id $id is found.");
+        }
+
+        return $this->render('library/update-form.html.twig', [
+            'book' => $book
+            ]);
+    }
+
+    #[Route('/library/update', name: 'book_update', methods: ['POST'])]
+    public function updateBook(
+        Request $request,
+        BookRepository $bookRepository,
+        ManagerRegistry $doctrine,
+    ): Response {
+
+        $entityManager = $doctrine->getManager();
+        $id = $request->request->get('id');
+        $book = $bookRepository->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException("No book with id $id is found.");
+        }
+
+        $book->setTitle($request->request->get('title'));
+        $book->setIsbn($request->request->get('isbn'));
+        $book->setAuthor($request->request->get('author'));
+        $book->setImage($request->request->get('image'));
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_library');
+    }
+ }

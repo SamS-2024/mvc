@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Uppdatera en bok{% endblock %}
+
+{% block body %}
+
+<form method="GET" action="{{ path('show_update_form') }}" class="find-book-form">
+    <label for="id">Boken som ska uppdateras (ID):</label>
+    <input type="number" name="id" id="id" required>
+    <button type="submit">Hitta</button>
+</form>
+
+{% endblock %}
