@@ -13,7 +13,7 @@
         <p>Författare: {{book.author}}</p>
      </div>
     <div class="book-image">
-        <img src="/{{book.image}}" alt="{{book.title}}" width="300" class="img-radius">
+        <img src="{{ asset(book.image) }}" alt="{{book.title}}" width="300" class="img-radius">
     </div>
 </div>
 
