@@ -7,6 +7,7 @@
 <div class="library-container">
     <div class="book-wrapper">
       <div class="book-text">
+        <p>Id: {{book.id}}</p>
         <p>Titel: {{book.title}}</p>
         <p>ISBN: {{book.isbn}}</p>
         <p>Författare: {{book.author}}</p>
@@ -17,9 +18,10 @@
 </div>
 
  <div class="book-link">
-     <a href="{{ path('book-list') }}" class="links">Boklistan</a>
-     <a href="{{ path('find_book_form') }}" class="links">Boksökning</a>
      <a href="{{ path('app_library') }}" class="links">Bibliotek</a>
+     <a href="{{ path('show-book-to-update', {id: book.id}) }}" class="links">Uppdatera boken</a>
+     <a href="{{ path('book_delete_by_id', {id: book.id}) }}" class="links">Radera boken</a>
+
 </div>
 
 {% endblock %}

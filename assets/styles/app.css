@@ -64,7 +64,7 @@ nav {
 ul {
     list-style: none;
     display: flex;
-    justify-content: space-between; /* Sprida ut länkarna */
+    justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     height: 50px;
@@ -439,7 +439,6 @@ input {
 
 /* Bibliteket */
 .library-container {
-    display: grid;
     padding: 2rem;
     width: 80%;
     margin: 0 auto;
@@ -453,13 +452,3 @@ input {
     padding: 1rem;
 
 }
-
-
-/* .links-center {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    text-align: center;
-    margin: 0 auto;
-
-} */

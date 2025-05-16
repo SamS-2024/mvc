@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
-// use Doctrine\ORM\Mapping\PostPersist;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,7 +48,6 @@ final class LibraryController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        // return new Response('Saved new book with id ' . $book->getId());
         return $this->redirectToRoute('app_library');
     }
 
@@ -66,7 +64,6 @@ final class LibraryController extends AbstractController
 
         return $this->redirectToRoute('show_book_by_id', ['id' => $id]);
     }
-
 
     #[Route('/library/show/{id<\d+>}', name: 'show_book_by_id')]
     public function showBookById(
@@ -149,6 +146,27 @@ final class LibraryController extends AbstractController
         $book->setAuthor($request->request->get('author'));
         $book->setImage($request->request->get('image'));
 
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_library');
+    }
+
+    // Delete
+    #[Route('/library/delete/{id<\d+>}', name: 'book_delete_by_id')]
+    public function deleteProductById(
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $entityManager->remove($book);
         $entityManager->flush();
 
         return $this->redirectToRoute('app_library');
