@@ -25,7 +25,7 @@ final class LibraryController extends AbstractController
     }
 
     #[Route('/library/create', name: 'show-create-form', methods: ['GET'])]
-    public function showCreateForm()
+    public function showCreateForm(): Response
     {
         return $this->render('library/create.html.twig');
     }
@@ -34,16 +34,15 @@ final class LibraryController extends AbstractController
     public function createBook(
         Request $request,
         ManagerRegistry $doctrine
-        ): Response
-    {
+    ): Response {
         $entityManager = $doctrine->getManager();
 
         $book = new Book();
 
-        $book->setTitle($request->request->get('title'));
-        $book->setIsbn($request->request->get('isbn'));
-        $book->setAuthor($request->request->get('author'));
-        $book->setImage($request->request->get('image'));
+        $book->setTitle((string) $request->request->get('title'));
+        $book->setIsbn((string) $request->request->get('isbn'));
+        $book->setAuthor((string) $request->request->get('author'));
+        $book->setImage((string) $request->request->get('image'));
 
         $entityManager->persist($book);
         $entityManager->flush();
@@ -141,10 +140,10 @@ final class LibraryController extends AbstractController
             throw $this->createNotFoundException("No book with id $id is found.");
         }
 
-        $book->setTitle($request->request->get('title'));
-        $book->setIsbn($request->request->get('isbn'));
-        $book->setAuthor($request->request->get('author'));
-        $book->setImage($request->request->get('image'));
+        $book->setTitle((string) $request->request->get('title'));
+        $book->setIsbn((string) $request->request->get('isbn'));
+        $book->setAuthor((string) $request->request->get('author'));
+        $book->setImage((string) $request->request->get('image'));
 
         $entityManager->flush();
 
@@ -171,4 +170,4 @@ final class LibraryController extends AbstractController
 
         return $this->redirectToRoute('app_library');
     }
- }
+}
