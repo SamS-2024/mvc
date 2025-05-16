@@ -458,3 +458,7 @@ input {
     padding: 1rem;
 
 }
+
+.delete {
+    background-color: rgb(124, 123, 123);
+}
