@@ -40,4 +40,8 @@
 
     <extensions>
     </extensions>
+
+    <logging>
+        <junit outputFile="docs/junit.xml" />
+    </logging>
 </phpunit>
