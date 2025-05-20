@@ -1,0 +1,218 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <h1>Metrics analys</h1>
+    <div class="metrics">
+        <h2>Introduktion</h2>
+
+        <p>
+            I denna rapport används 6C-modellen för att analysera kodkvalitet. Dessa sex begrepp hjälper till att identifiera svagheter
+            och förbättringsmöjligheter i koden. Modellen fungerar som ett sätt att bedöma hur välstrukturerad, testbar och
+            underhållbar koden är.
+        </p>
+
+        <h2>6C om kodkvalitet</h2>
+
+        <h3>Codestyle</h3>
+        <p>
+            Kodens stil och formatering. Påverkar läsbarhet och enhetlighet. I scrutinizer fick koden ett generellt betyg
+            av 10 (very good) och betyg A. Under “Issues” fanns det några stilrelaterade problem, till exempel oanvänd kod
+            i 2 klasser (CardGraphic och CardGameController) på totalt 5 rader. Detta bör åtgärdas för att få bättre kodkvalitet.
+        </p>
+
+        <h3>Coverage</h3>
+        <p>
+            Hur stor del av koden som testas av automatiska tester. Hög täckning tyder på god testbarhet. Täckningen för hela
+            projektet låg på 23 % eftersom inte alla klasser är testade. De klasser som hade enhetstester fick 100 % täckning.
+        </p>
+
+        <h3>Complexity</h3>
+        <p>
+            Mäter hur komplicerade metoder och klasser är. För hög komplexitet försvårar förståelse och underhåll.
+            Klassen InitCardGameController hade högst komplexitet med ett värde på 35 enligt Scrutinizer, vilket bör förbättras.
+            I PhpMetrics låg samma värde på 21.<br><br> Metoderna i klassen hade maxvärde 5 i båda verktyg, vilket är inom acceptabel nivå.
+            En klass med låg komplexitet var CardHand, med totalvärde 5 och högst metodkomplexitet på 2. Medelvärdet på komplexitet i PhpMetrics
+            låg på 3.88 för klasserna.
+        </p>
+
+        <h3>Cohesion</h3>
+        <p>
+            Cohesion mäter hur väl olika delar i en klass hänger ihop. Hög sammanhållning är önskvärt.
+            Detta mäts med LCOM (Lack of Cohesion of Methods), där höga värden innebär låg cohesion.
+            Det betyder att metoderna i klassen inte samarbetar väl. Låga värden innebär hög cohesion och att klassens innehåll hänger bättre ihop.<br><br>
+            I PhpMetrics fick exempelklasserna 'ProductController' och 'ProductRepository' högsta värden på 4 respektive 3. Övriga klasser låg på 2 och 1
+            vilket anses vara ok.
+        </p>
+
+        <h3>Coupling</h3>
+        <p>
+            Coupling mäter beroenden mellan klasser. Mindre kopplingar gör koden mer flexibel och lättare att testa.
+        </p>
+
+        <p>
+            Två vanliga mått är <strong>Afferent Coupling (AC) </strong> - hur många klasser som använder en viss klass, och
+            <strong> Efferent Coupling (EC) </strong> - hur många klasser en viss klass själv använder. Hög coupling gör
+            systemet svårare att ändra, förstå och testa.
+        </p><br><br>
+        <p>
+            I PhpMetrics hade flera klasser ett Afferent Coupling-värde på 3, till exempel DeckOfCards och CardHand, vilket tyder
+            på att de används frekvent av andra. Två controller-klasser hade ett Efferent Coupling-värde på 8.
+            För att minska coupling är det bra att se till att klasser inte är onödigt beroende av många andra klasser.
+            Controllers klasserna anropar andra klasser, så det är naturligt att de använder flera klasser.
+        </p><br><br>
+
+
+        <h3>CRAP</h3>
+        <p>
+            CRAP är en kombination av komplexitet och dålig testtäckning. Ett högt CRAP-värde visar på problemområden i koden.
+            I Scrutinizer hade controller-metoderna höga CRAP-värden, vilket berodde på deras storlek, komplexitet och att de saknade enhetstester.
+            För att förbättra detta kan metoderna delas upp i mindre delar, eller så kan enhetstester implementeras för att täcka komplexiteten.
+        </p>
+
+        <h2>Phpmetrics</h2>
+
+        <p>
+            Denna analys täcker särskilt komplexitet, täckning (coverage) och kodkvalitet (code style/violations) enligt 6C-modellen.
+        </p>
+
+        <p>
+            De tre områden som kan förbättras enligt PhpMetrics är: komplexitet och underhållsbarhet (särskilt i vissa controllers),
+            låg kodtäckning för flera klasser samt ett antal kodbrott (violations) som bör ses över.<br><br>
+        </p>
+
+        <p>
+            På förstasidan i PhpMetrics visas en graf med cirklar där varje cirkel representerar en fil.
+            Cirkelns storlek visar cyklomatisk komplexitet medan cirkelns färg representerar underhållbarhet.
+            Större cirklar innebär mer komplex kod samtidigt som färgen visar underhållbarhetsindex.
+            Stora röda cirklar är ett tecken på svårunderhållen och komplex kod som bör åtgärdas.<br><br>
+        </p>
+
+        <p>
+            I rapporten sticker InitCardGameController och DiceGameController ut med stora röda cirklar.
+            LibraryController har en mellanstor röd cirkel. Målet är att minska cirklarnas storlek och få
+            bort den röda färgen, samtidigt som underhållsbarhetsindex höjs, helst över 70. Just nu ligger
+            den största cirkeln (InitCardGameController) på 65,28.
+        </p>
+
+        <p>
+            PhpMetrics mäter även kohesion (LCOM) och koppling (coupling). I rapporten syns till exempel att vissa
+            controllers har hög Efferent Coupling, vilket innebär att de är beroende av många andra klasser.
+            Detta påverkar både testbarhet och underhåll negativt, vilket enligt 6C är relevant för Coupling. Ett exempel är
+            klasserna ProductController och ProductRepository som har LCOM på 4 respektive 3.
+        </p>
+
+        <p>
+            Ett Afferent Coupling-värde på 3 mättes i till exempel DeckOfCards och CardHand, vilket tyder
+            på att de används frekvent av andra. Dessa är stabila kärnklasser i applikationen. Samtidigt hade flera controllers,
+            till exempel InitCardGameController och DiceGameController, ett Efferent Coupling-värde på 8 och en Instability-poäng på 1.
+            Det betyder att de är starkt beroende av andra klasser och därmed känsliga för förändringar.
+        </p>
+
+        <img src="{{ asset('img/phpmetrics.webp') }}" class="phpmetrics" alt="PhpMetrics" width="800">
+
+        <h2>Scrutinizer</h2>
+
+        <p>
+            I Scrutinizer finns flera områden som kan förbättras. Under 'issues' finns oanvänd kod i ungefär två klasser (CardGraphic och CardGameController),
+            totalt cirka 5 rader, som kan tas bort. Ett annat område är den allmänna kodtäckningen, som ligger på 23 %, och som kan förbättras genom att implementera fler enhetstester.
+            Den allmänna kodstilen fick däremot bra värden med betyget 10 och alla klasser har fått betyg A.
+        </p>
+
+         <div class="badges">
+            <a href="https://scrutinizer-ci.com/g/SamS-2024/mvc/?branch=main" target="_blank">
+                <img src="https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/build.png?b=main" alt="Scrutinizer build">
+            </a>
+
+            <a href="https://scrutinizer-ci.com/g/SamS-2024/mvc/?branch=main" target="_blank">
+                <img src="https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/coverage.png?b=main" alt="Scrutinizer coverage">
+            </a>
+
+            <a href="https://scrutinizer-ci.com/g/SamS-2024/mvc/?branch=main" target="_blank">
+                <img src="https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality">
+            </a>
+        </div>
+
+
+        <img src="{{ asset('img/scrutinizer1.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+        <p>
+            Ett tredje område är komplexiteten, som kan minskas genom att fördela koden på flera klasser eller metoder, eller genom att öka testtäckningen för dessa.
+            Att dela upp koden i fler metoder, särskilt i controllers, och skapa testfall för dessa kan också förbättra komplexiteten och CRAP-värdena.
+            Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardGameController::handlePlayerDraw()' höga CRAP-värden på 30 poäng vardera.
+        </p>
+
+        <img src="{{ asset('img/scrutinizer2.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+        <p>
+            Kodraderna för InitCardGameController är för många (322), och några metoder i den klassen har många fysiska rader,
+            men ingen metod har fler än 19 kodrader. De flesta av dessa rader handlar om sessioner och metodanrop.
+            I bilderna nedan visas ett exempel på hur det ser ut: först alla klasser, och sedan en översikt av InitCardGameControllers
+            resultat samt de två metoderna i den som har högst komplexitet och flest rader.
+        </p>
+
+        <img src="{{ asset('img/scrutinizer6.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+         <img src="{{ asset('img/scrutinizer3.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+         <img src="{{ asset('img/scrutinizer4.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+         <img src="{{ asset('img/scrutinizer5.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
+
+
+        <p>
+            Sammanfattningsvis visar Scrutinizer-rapporten att komplexitet (Complexity) och testtäckning (del av Coverage) är områden som behöver förbättras.
+            Oanvänd kod kan tas bort för att förenkla underhållet och förbättra kodstilen. Genom att minska antalet kodrader och dela upp större metoder i mindre,
+            samt införa fler enhetstester, kan både komplexitet och CRAP-värden förbättras. Det bidrar till bättre underhållbarhet och högre kodkvalitet.
+        </p>
+
+        <h2>Förbättringar</h2>
+
+        <p>
+            Baserat på analyserna från PhpMetrics och Scrutinizer har det identifierats tre huvudsakliga förbättringsområden: ta bort oanvänd kod,
+            minska antalet rader och komplexitet i vissa controllers samt att öka testtäckningen. Dessa förändringar syftar till att förbättra kodkvaliteten enligt 6C-modellen.
+        </p>
+
+        <h3>1. Ta bort oanvänd kod</h3>
+        <p>
+            I Scrutinizer identifierades ungefär 5 rader kod som är oanvänd, bland annat i CardGraphic och CardGameController.
+            Dessa ska tas bort. Det kommer att förbättra kodens läsbarhet, minska potentiell förvirring och förbättra värdet för
+            “codestyle” i analysverktygen.
+        </p>
+
+        <h3>2. Minska antalet kodrader i InitCardGameController</h3>
+        <p>
+            Klassen InitCardGameController har över 300 rader kod, vilket gör den svår att överblicka och underhålla.
+            Målet är att minska antalet rader till under 200 genom att extrahera delar av logiken till mindre hjälpfunktioner,
+            flytta ansvar till andra klasser eller eventuellt skapa en ny controllerklass. Detta påverkar inte bara kodens struktur,
+            utan förbättrar också läsbarheten och kodens separation av ansvar.
+        </p>
+
+        <h3>3. Minska komplexitet i InitCardGameController</h3>
+        <p>
+            Klassen InitCardGameController har hög komplexitet enligt både PhpMetrics (21) och Scrutinizer (35).
+            Genom att dela upp större metoder som initGameStop() och handlePlayerDraw() i mindre delar, minskas
+            den cyklomatiska komplexiteten och CRAP-värdena. Det gör koden mer lättförståelig och lättare att testa,
+            vilket påverkar både “Complexity” och “CRAP” i 6C positivt.
+        </p>
+
+        <h3>4. Öka testtäckning</h3>
+        <p>
+            Den nuvarande testtäckningen är låg (23 % totalt), trots att vissa testade klasser har 100 %.
+            Det kommer därför att göras fler enhetstester, särskilt för controllers där det idag saknas tester.
+            Detta kommer att höja “Coverage”-värdet i både PhpMetrics och Scrutinizer och göra det lättare att
+            upptäcka buggar tidigt.
+        </p>
+
+        <h3>5. Öka underhållbarhetsvärdet</h3>
+        <p>
+            I PhpMetrics har InitCardGameController, DiceGameController, LibraryController låga underhållbarhetsvärden,
+            vilket visualiseras med stora röda cirklar i översikten. Dessa ska förbättras genom att bryta upp metoder och förtydliga ansvarsfördelning.
+            Målet är att höja deras “Maintainability Index” över 70, vilket gör koden mer hanterbar, minskar risken för fel och förbättrar kvaliteten enligt 6C-principerna
+            för <em>Complexity</em> och <em>Clean code</em>.
+        </p>
+
+    </div>
+
+{% endblock %}

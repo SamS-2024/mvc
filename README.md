@@ -4,6 +4,11 @@
 
 Report repo README
 ====================
+[![Build Status](https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/SamS-2024/mvc/build-status/main)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/SamS-2024/mvc/?branch=main)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SamS-2024/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/SamS-2024/mvc/?branch=main)
 
 Here are the necessary instructions on how to clone the repository and get started with running the website.
 
