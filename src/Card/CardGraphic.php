@@ -8,30 +8,23 @@ namespace App\Card;
  */
 class CardGraphic extends Card
 {
-    /** @var string[] */
-    protected array $spades;
-
-    /** @var string[] */
-    protected array $hearts;
-
-    /** @var string[] */
-    protected array $diamonds;
-
-    /** @var string[] */
-    protected array $clubs;
-
     public const MIN_VALUE = 2;
     public const MAX_VALUE = 14;
 
+    /** @var array<string, string[]> */
+    private const SUITS = [
+        'spades' => ['🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮', '🂡'],
+        'hearts' => ['🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾', '🂱'],
+        'diamonds' => ['🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎', '🃁'],
+        'clubs' => ['🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞', '🃑'],
+    ];
+
     /**
-     * Initializes the arrays used to store card symbols for each suit.
+     * Initializes the object.
      */
     public function __construct()
     {
-        $this->spades = [];
-        $this->hearts = [];
-        $this->diamonds = [];
-        $this->clubs = [];
+        // No need to initialize anything here now
     }
 
     /**
@@ -41,15 +34,7 @@ class CardGraphic extends Card
      */
     public function createSpades(): array
     {
-        $spadesCards = [];
-
-        $this->spades = [
-            '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮', '🂡'
-        ];
-
-        $spadesCards = $this->createCardObjects($this->spades, 'spades');
-
-        return $spadesCards;
+        return $this->createCardObjects(self::SUITS['spades'], 'spades');
     }
 
     /**
@@ -59,15 +44,7 @@ class CardGraphic extends Card
      */
     public function createHearts(): array
     {
-        $heartsCards = [];
-
-        $this->hearts = [
-            '🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾', '🂱'
-        ];
-
-        $heartsCards = $this->createCardObjects($this->hearts, 'hearts');
-
-        return $heartsCards;
+        return $this->createCardObjects(self::SUITS['hearts'], 'hearts');
     }
 
     /**
@@ -77,16 +54,7 @@ class CardGraphic extends Card
      */
     public function createDiamonds(): array
     {
-        $diamondsCards = [];
-
-        $this->diamonds = [
-            '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎', '🃁'
-        ];
-
-        $diamondsCards = $this->createCardObjects($this->diamonds, 'diamonds');
-
-
-        return $diamondsCards;
+        return $this->createCardObjects(self::SUITS['diamonds'], 'diamonds');
     }
 
     /**
@@ -96,15 +64,7 @@ class CardGraphic extends Card
      */
     public function createClubs(): array
     {
-        $clubsCards = [];
-
-        $this->clubs = [
-            '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞', '🃑'
-        ];
-
-        $clubsCards = $this->createCardObjects($this->clubs, 'clubs');
-
-        return $clubsCards;
+        return $this->createCardObjects(self::SUITS['clubs'], 'clubs');
     }
 
     /**
@@ -119,8 +79,7 @@ class CardGraphic extends Card
         $cards = [];
 
         for ($i = self::MIN_VALUE; $i <= self::MAX_VALUE; $i++) {
-            // Skickar både svit och symbol
-            $cards[] = new Card($representation[$i - 2], $suit);
+            $cards[] = new Card($representation[$i - self::MIN_VALUE], $suit);
         }
 
         return $cards;
@@ -137,19 +96,16 @@ class CardGraphic extends Card
         $strings = [];
 
         foreach ($cardsArray as $card) {
-            // Reuse formatCard for each card
             $strings[] = $this->formatCard($card);
         }
 
         return implode(" ", $strings);
     }
 
-
     /**
      * Formats a card as an HTML string, with handling for red cards.
      *
      * @param Card $card The card to be formatted.
-     *
      * @return string The formatted card string.
      */
     public function formatCard(Card $card): string
@@ -162,5 +118,4 @@ class CardGraphic extends Card
 
         return $symbol;
     }
-
 }

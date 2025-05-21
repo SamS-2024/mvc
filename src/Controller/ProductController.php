@@ -26,8 +26,9 @@ final class ProductController extends AbstractController
         $entityManager = $doctrine->getManager();
 
         $product = new Product();
-        $product->setName('Keyboard_num_' . rand(1, 9));
-        $product->setValue(rand(100, 999));
+        // $product->setName('Keyboard_num_' . rand(1, 9));
+        // $product->setValue(rand(100, 999));
+        $this->fillProductData($product, 'Keyboard_num_' . rand(1, 9), rand(100, 999));
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
@@ -141,6 +142,20 @@ final class ProductController extends AbstractController
         $products = $productRepository->findByMinimumValue2($value);
 
         return $this->json($products);
+    }
+
+
+    /**
+     * Fills a Product object with name and value.
+     *
+     * @param Product $product, The product object to update.
+     * @param string $name, The name to set on the product.
+     * @param int $value, The value to set on the product.
+     */
+    private function fillProductData(Product $product, string $name, int $value): void
+    {
+        $product->setName($name);
+        $product->setValue($value);
     }
 
 }

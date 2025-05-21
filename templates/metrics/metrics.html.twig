@@ -60,7 +60,6 @@
             I PhpMetrics hade flera klasser ett Afferent Coupling-värde på 3, till exempel DeckOfCards och CardHand, vilket tyder
             på att de används frekvent av andra. Två controller-klasser hade ett Efferent Coupling-värde på 8.
             För att minska coupling är det bra att se till att klasser inte är onödigt beroende av många andra klasser.
-            Controllers klasserna anropar andra klasser, så det är naturligt att de använder flera klasser.
         </p><br><br>
 
 
@@ -105,9 +104,10 @@
 
         <p>
             Ett Afferent Coupling-värde på 3 mättes i till exempel DeckOfCards och CardHand, vilket tyder
-            på att de används frekvent av andra. Dessa är stabila kärnklasser i applikationen. Samtidigt hade flera controllers,
-            till exempel InitCardGameController och DiceGameController, ett Efferent Coupling-värde på 8 och en Instability-poäng på 1.
-            Det betyder att de är starkt beroende av andra klasser och därmed känsliga för förändringar.
+            på att de används frekvent av andra. Dessa är kärnklasser i applikationen. Samtidigt hade flera controllers,
+            till exempel InitCardGameController och DiceGameController, ett Efferent Coupling-värde på 8 vilket
+            betyder att de använder många andra klasser. Controller-klasserna anropar andra klasser,
+            så det är naturligt att de använder flera klasser
         </p>
 
         <img src="{{ asset('img/phpmetrics.webp') }}" class="phpmetrics" alt="PhpMetrics" width="800">
@@ -211,6 +211,54 @@
             vilket visualiseras med stora röda cirklar i översikten. Dessa ska förbättras genom att bryta upp metoder och förtydliga ansvarsfördelning.
             Målet är att höja deras “Maintainability Index” över 70, vilket gör koden mer hanterbar, minskar risken för fel och förbättrar kvaliteten enligt 6C-principerna
             för <em>Complexity</em> och <em>Clean code</em>.
+        </p>
+
+        <h2>Analys</h2>
+
+        <h3>PhpMetrics</h3>
+        <p>
+        För att förbättra underhållbarhet har InitCardGameController delats upp till två filer. Hjälp-metoderna
+        flyttades till en 'trait' i Controller/Helper och importerades sedan i InitCardGameController. Detta gjorde
+        att den stora röda cirkeln blev gul istället och underhållbarhetsindex ökade från 65.28 till 76.92. Antal kodrader
+        i klassen minskade också från 322 till under 200 rader....
+
+        Metoden initGameResult har också minskats i storlek och istället anropar den en annan privat metod preparePlayerData($player)
+        som tar emot argument för antingen spelare eller bank och returnerar resultaten.
+
+        I phpmetrics blev det violation på 'trait' pga 'Packages should be either abstract and stable or concrete and instable'
+        så det ändrades till en vanlig extra klass istället med publika metoder och som instansieras i InitCardGameController.
+        Men detta orsakade ett fel 'blob' och 'A blob object (or "god class") does not follow the Single responsibility principle. istället.
+
+        Det testades även med att skapa små klasser i en 'Service' mapp och använda 'Dependency injection' med resultatet
+        blev sämst av alla alternativ och det resulterade i betydligt lägre underhållsbarhetsindex t.ex 56 för InitCardGameController.
+
+        Så till slut implementerades den första lösningen med 'trait' igen men utan en undermapp så den finns direkt i controllern
+        för att inte skapa onödig komplexitet eller förvirring. Resultatet på underhållbarhetsindex är nu på 77,04. Det
+        har även utökats med kommentarer för att förtydliga koden. Detta gav dock ingen effekt på underhållbarhetsindexet.
+
+        Det skapades också ett testfall testPreparePlayerData() för att testa preparePlayerData() och öka täckningen för
+        klassen InitCardGameController. Det användes i detta fall 'mock' för att testa detta.
+
+        Det har också rensats i DiceGameController och det resulterade i en gul cirkel med underhållbarhetsindex på 70,06 och koplexitet 7 från tidigare
+        62,78 och komplexitet 12.
+
+        Dice-klassen hade komplexitet på 1 men låg underhållbarhetsindex (59,01) och med docstring som hade glömts tidigare
+        bort ökade underhållbarhetsindex till 99,51 och den lilla cirkeln blev grön.
+
+        I LibraryController har det minskats upprepning av kod genom att skapa några privata metoder för att organisera koden vilket ökade underhållbarhetsindex från
+        62,26 till 67,45.
+
+        I ProductController är underhållbarhetsindex på 68,36 och det är en liten röd cirkel. Efter att ha skapat en privat
+        metod för att separera en del av logiken, blev underhållbarhetsindexet 72,43 och cirklen blev gul.
+
+        DiceHand underhållbarhetsindex 80,99 gul cirkel till 93,48 grön cirkel med bättre docstrings.
+
+        CardGraphic organiserades genom att minska antalet metoder vilket ändrade underhållbarhetsindex från 82,22 och gul cirkel till 86,44 och grön cirkel
+        </p>
+
+        <h3>Scrutinizer</h3>
+        <p>
+        De oanvända raderna har tagits bort så i 'issues'
         </p>
 
     </div>

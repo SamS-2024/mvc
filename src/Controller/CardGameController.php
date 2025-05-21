@@ -147,7 +147,7 @@ class CardGameController extends AbstractController
         /** @var \App\Card\DeckOfCards $deck */
         $deck = $session->get("deck");
 
-        $removedCards = [];
+        // $removedCards = [];
 
         $removedCards = $deck->drawCards($num);
 

@@ -2,11 +2,6 @@
 
 namespace App\Controller;
 
-use App\Card\Bank;
-use App\Card\CardHand;
-use App\Card\DeckOfCards;
-use App\Card\Player;
-use App\Card\Status;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -14,19 +9,23 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InitCardGameController extends AbstractController
 {
+    // Inkluderar hjälpfunktioner för att initiera och hantera kortspelet.
+    use InitCardHelpers;
+
+    // Visar startsidan för spelet.
     #[Route("/game", name: "game")]
     public function game(): Response
     {
-
+        // Rendera Twig-mallen för spelet.
         return $this->render('Cards/game.html.twig');
     }
-
+    // Visar spelets dokumentationssida.
     #[Route("/game/doc", name: "game_doc")]
     public function gameDoc(): Response
     {
         return $this->render('Cards/game-doc.html.twig');
     }
-
+    // Startar spelet och initierar alla nödvändiga session-objekt.
     #[Route("/game/init", name: "init_game")]
     public function initGame(SessionInterface $session): Response
     {
@@ -37,6 +36,7 @@ class InitCardGameController extends AbstractController
         $this->initPlayer($session);
         $this->initBank($session);
 
+        // Renderar spelsidan med initiala tomma värden och sätter spelarens tur.
         return $this->render('Cards/init-game.html.twig', [
             'data' => [
                 'cards' => '',
@@ -51,7 +51,7 @@ class InitCardGameController extends AbstractController
             'turn' => 'player'
         ]);
     }
-
+    // Spelaren drar ett kort.
     #[Route("/game/init/draw", name: "init_game_draw", methods: ['POST'])]
     public function initGamePost(SessionInterface $session): Response
     {
@@ -63,6 +63,8 @@ class InitCardGameController extends AbstractController
 
             // Lägger till status till data-arrayen
             $data['status'] = $player->checkStatus();
+
+            // Renderar sidan med uppdaterad spelardata efter att spelaren dragit ett kort.
             return $this->render('Cards/init-game.html.twig', [
                 'data' => $data,
                 'turn' => 'player'
@@ -82,51 +84,48 @@ class InitCardGameController extends AbstractController
     public function initGameStop(SessionInterface $session): Response
     {
         /** @var \App\Card\Player|null $player */
-        $player = $session->get('player');
-        if ($player && $player->getPoints() > 0) {
+        $player = $session->get('player'); // Hämtar spelarobjektet från sessionen
+        if ($player && $player->getPoints() > 0) { // Stoppar spelaren om den har poäng
             $player->stop();
         }
 
         /** @var \App\Card\Bank|null $bank */
-        $bank = $session->get('bank');
+        $bank = $session->get('bank'); // Hämtar bankobjektet från sessionen
 
-        if ($bank && $bank->isPlaying()) {
+        if ($bank && $bank->isPlaying()) { // Låter banken spela om den är aktiv
             $this->handleBankDraw($session);
         }
-
+        // Avgör spelets resultat och sparar det i sessionen
         $finalResult = $this->endGame($session);
         $session->set('final_result', $finalResult);
 
+        // Omdirigerar till resultatsidan
         return $this->redirectToRoute('init_game_result');
     }
 
+    // Visar slutresultatet efter att spelet är avslutat.
     #[Route("/game/init/result", name: "init_game_result", methods: ['GET'])]
     public function initGameResult(SessionInterface $session): Response
     {
         /** @var \App\Card\Player|null $player */
-        $player = $session->get('player');
+        $player = $session->get('player'); // Hämtar spelarens tillstånd
 
         /** @var \App\Card\Bank|null $bank */
-        $bank = $session->get('bank');
+        $bank = $session->get('bank'); // Hämtar bankens tillstånd
 
+        // Om spelare eller bank saknas, starta om spelet
         if (!$player || !$bank) { //(phpstan)
             return $this->redirectToRoute('init_game');
         }
 
-        $data = [
-            'cards' => $player->getHand()->getCardsAsString(),
-            'points' => $player->getPoints(),
-            'status' => $player->checkStatus(),
-        ];
+        // Förbereder data för spelare och bank för att visa på sidan
+        $data = $this->preparePlayerData($player);
+        $dataBank = $this->preparePlayerData($bank);
 
-        $dataBank = [
-            'cards' => $bank->getHand()->getCardsAsString(),
-            'points' => $bank->getPoints(),
-            'status' => $bank->checkStatus(),
-        ];
-
+        // Hämtar det slutgiltiga resultatet från sessionen
         $finalResult = $session->get('final_result');
 
+        // Renderar vyn med speldata, bankdata och resultat
         return $this->render('Cards/init-game.html.twig', [
             'data' => $data,
             'dataBank' => $dataBank,
@@ -135,205 +134,40 @@ class InitCardGameController extends AbstractController
         ]);
     }
 
+    // Nollställer spelets tillstånd för en ny spelrunda.
     #[Route("/game/reset", name: "game_reset", methods: ['POST'])]
     public function newGameRound(SessionInterface $session): Response
     {
+        // Tar bort spelare, bank, kortlek och händer från sessionen
         $session->remove('player');
         $session->remove('bank');
         $session->remove('deck');
         $session->remove('hand_player');
         $session->remove('hand_bank');
-        $session->remove('final_result');
+        $session->remove('final_result'); // Tar även bort tidigare resultat
 
-
+        // Omdirigerar till initiering av nytt spel
         return $this->redirectToRoute('init_game');
     }
 
-    /* Controller Help methods. */
-
     /**
-     * Initializes the deck in the session if it doesn't already exist.
+     * Prepares player data for rendering in the view.
+     * Returns an associative array containing the player's hand as a string,
+     * current points, and status.
      *
-     * @param SessionInterface $session The session instance to store the deck.
-     */
-    private function initDeck(SessionInterface $session): void
+     * @param \App\Card\Player|\App\Card\Bank $player
+     * @return array<string, string|int>
+    */
+    public function preparePlayerData($player): array
     {
-        if ($session->get('deck') === null) {
-            $deck = new DeckOfCards();
-            $deck->createDeck();
-            $deck->shuffleCards();
-            $session->set('deck', $deck);
-        }
-    }
-
-    /**
-     * Initializes the player's hand in the session if it doesn't already exist.
-     *
-     * @param SessionInterface $session The session instance to store the player's hand.
-     */
-    private function initHandPlayer(SessionInterface $session): void
-    {
-        if ($session->get('hand_player') === null) {
-            $handPlayer = new CardHand();
-            $session->set('hand_player', $handPlayer);
-        }
-    }
-
-    /**
-     * Initializes the bank's hand in the session if it doesn't already exist.
-     *
-     * @param SessionInterface $session The session instance to store the bank's hand.
-     */
-    private function initHandBank(SessionInterface $session): void
-    {
-        if ($session->get('hand_bank') === null) {
-            $handBank = new CardHand();
-            $session->set('hand_bank', $handBank);
-        }
-    }
-
-    /**
-     * Initializes the player in the session if they don't already exist.
-     *
-     * @param SessionInterface $session The session instance to store the player.
-     */
-    private function initPlayer(SessionInterface $session): void
-    {
-        if ($session->get('player') === null) {
-            $player = new Player();
-            $session->set('player', $player);
-        }
-    }
-
-    /**
-     * Initializes the bank in the session if it doesn't already exist.
-     *
-     * @param SessionInterface $session The session instance to store the bank.
-     */
-    private function initBank(SessionInterface $session): void
-    {
-        if ($session->get('bank') === null) {
-            $bank = new Bank();
-            $session->set('bank', $bank);
-        }
-    }
-
-    /**
-     * Handles the player's card draw from the deck and updates the player's hand in the session.
-     *
-     * @param SessionInterface $session The session instance to retrieve and store data.
-     * @return array{cards: string, points: int} An array containing the formatted card
-     * and updated points of the player's hand.
-     */
-    private function handlePlayerDraw(SessionInterface $session): array
-    {
-        /** @var \App\Card\DeckOfCards|null $deck */
-        $deck = $session->get('deck');
-
-        /** @var \App\Card\CardHand|null $handPlayer */
-        $handPlayer = $session->get('hand_player');
-
-        /** @var \App\Card\Player|null $player */
-        $player = $session->get('player');
-
-        // Kontrollerar om något objekt är null (phpstan)
-        if (!$deck || !$handPlayer || !$player) {
-            return ['cards' => 'No cards', 'points' => 0];
-        }
-
-        // Drar ett kort från DeckOfCards
-        $card = $deck->drawCard();
-
-        // Kontrollerar att kortet inte är null innan det används (phpstan)
-        if (!$card) {
-            return ['cards' => 'No cards', 'points' => 0];
-        }
-
-        $formatedCard = $deck->getCardAsString($card);
-
-        // Lägger till kortet i handen
-        $handPlayer->addCard($card);
-
-        $player->play($handPlayer);
-
-        // Uppdaterar session
-        $session->set('hand_player', $handPlayer);
-        $session->set('deck', $deck);
-        $session->set('player', $player);
-
-        $data = [
-            'cards' => $formatedCard,
-            'points' => $handPlayer->getPoints(),
+        return [
+            // Kort i handen som sträng
+            'cards' => $player->getHand()->getCardsAsString(),
+            // Aktuella poäng
+            'points' => $player->getPoints(),
+            // Spelarens status (t.ex. "stopped", "busted")
+            'status' => $player->checkStatus(),
         ];
-
-        return $data;
     }
 
-    /**
-     * Handles the bank's card draw process until it reaches 17 or more points and updates the session.
-     *
-     * @param SessionInterface $session The session instance to retrieve and store data.
-     * @return array{cards: string, points: int, status: string} An array containing the
-     * formatted cards, the bank's points, and its status.
-     */
-    private function handleBankDraw(SessionInterface $session): array
-    {
-        /** @var \App\Card\DeckOfCards $deck */
-        $deck = $session->get('deck');
-
-        /** @var \App\Card\CardHand $handBank */
-        $handBank = $session->get('hand_bank');
-
-        /** @var \App\Card\Bank $bank */
-        $bank = $session->get('bank');
-
-        // Banken drar tills den når 17 eller mer.
-        while ($bank->isPlaying()) {
-            $card = $deck->drawCard();
-            if ($card) { // phpstan
-                $handBank->addCard($card);
-            }
-
-            $bank->play($handBank);
-
-            if ($bank->shouldStop()) {
-                $bank->stop();
-            }
-        }
-
-        $status = $bank->checkstatus();
-
-        // Uppdaterar session
-        $session->set('hand_bank', $handBank);
-        $session->set('deck', $deck);
-        $session->set('bank', $bank);
-
-        $data = [
-            'cards' => $handBank->getCardsAsString(),
-            'points' => $handBank->getPoints(),
-            'status' => $status,
-        ];
-
-        return $data;
-    }
-
-    /**
-     * Ends the game and determines the winner based on the final status of the player and bank.
-     *
-     * @param SessionInterface $session The session instance to retrieve player and bank data.
-     * @return string The result of the game, either the winner's name or an error message.
-     */
-    private function endGame(SessionInterface $session): string
-    {
-        /** @var \App\Card\Player $player */
-        $player = $session->get('player');
-
-        /** @var \App\Card\Bank $bank */
-        $bank = $session->get('bank');
-
-        $finalStatus = new Status($player, $bank);
-
-        return $finalStatus->winner();
-
-    }
 }

@@ -15,12 +15,8 @@ final class LibraryController extends AbstractController
     #[Route('/library', name: 'app_library')]
     public function index(BookRepository $bookRepository): Response
     {
-
-        $books = $bookRepository
-            ->findAll();
-
         return $this->render('library/index.html.twig', [
-            'books' => $books
+            'books' => $this->getAllBooks($bookRepository),
         ]);
     }
 
@@ -39,10 +35,7 @@ final class LibraryController extends AbstractController
 
         $book = new Book();
 
-        $book->setTitle((string) $request->request->get('title'));
-        $book->setIsbn((string) $request->request->get('isbn'));
-        $book->setAuthor((string) $request->request->get('author'));
-        $book->setImage((string) $request->request->get('image'));
+        $this->fillBookData($book, $request);
 
         $entityManager->persist($book);
         $entityManager->flush();
@@ -69,8 +62,7 @@ final class LibraryController extends AbstractController
         BookRepository $bookRepository,
         int $id
     ): Response {
-        $book = $bookRepository
-            ->find($id);
+        $book = $bookRepository->find($id);
 
         if (!$book) {
             throw $this->createNotFoundException(
@@ -78,23 +70,18 @@ final class LibraryController extends AbstractController
             );
         }
         return $this->render('library/show-book.html.twig', [
-            'book' => $book
+            'book' => $book,
         ]);
     }
-    // Tabell för att visa titel och länka till mer info.
+
     #[Route('/library/list', name: 'book-list')]
-    public function bookLinks(
-        BookRepository $bookRepository,
-    ): Response {
-        $books = $bookRepository
-            ->findAll();
-
+    public function bookLinks(BookRepository $bookRepository): Response
+    {
         return $this->render('library/book-table.html.twig', [
-            'books' => $books
+            'books' => $this->getAllBooks($bookRepository),
         ]);
     }
 
-    // Update
     #[Route('/library/show/update', name: 'show_update_form')]
     public function showUpdateForm(Request $request): Response
     {
@@ -106,23 +93,20 @@ final class LibraryController extends AbstractController
         return $this->render('library/show-update-form.html.twig');
     }
 
-
     #[Route('/library/update/{id<\d+>}', name: 'show-book-to-update', methods: ['GET'])]
     public function findBook(
         BookRepository $bookRepository,
         int $id
     ): Response {
-
-        $book = $bookRepository
-        ->find($id);
+        $book = $bookRepository->find($id);
 
         if (!$book) {
             throw $this->createNotFoundException("No book with id $id is found.");
         }
 
         return $this->render('library/update-form.html.twig', [
-            'book' => $book
-            ]);
+            'book' => $book,
+        ]);
     }
 
     #[Route('/library/update', name: 'book_update', methods: ['POST'])]
@@ -131,7 +115,6 @@ final class LibraryController extends AbstractController
         BookRepository $bookRepository,
         ManagerRegistry $doctrine,
     ): Response {
-
         $entityManager = $doctrine->getManager();
         $id = $request->request->get('id');
         $book = $bookRepository->find($id);
@@ -140,17 +123,13 @@ final class LibraryController extends AbstractController
             throw $this->createNotFoundException("No book with id $id is found.");
         }
 
-        $book->setTitle((string) $request->request->get('title'));
-        $book->setIsbn((string) $request->request->get('isbn'));
-        $book->setAuthor((string) $request->request->get('author'));
-        $book->setImage((string) $request->request->get('image'));
+        $this->fillBookData($book, $request);
 
         $entityManager->flush();
 
         return $this->redirectToRoute('app_library');
     }
 
-    // Delete
     #[Route('/library/delete/{id<\d+>}', name: 'book_delete_by_id')]
     public function deleteProductById(
         ManagerRegistry $doctrine,
@@ -169,5 +148,31 @@ final class LibraryController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_library');
+    }
+
+    /**
+     * Populates a Book object with data from an HTTP request.
+     * Used for both creating and updating books.
+     *
+     * @param Book $book The Book entity to populate.
+     * @param Request $request The HTTP request containing form data.
+     */
+    private function fillBookData(Book $book, Request $request): void
+    {
+        $book->setTitle((string) $request->request->get('title'));
+        $book->setIsbn((string) $request->request->get('isbn'));
+        $book->setAuthor((string) $request->request->get('author'));
+        $book->setImage((string) $request->request->get('image'));
+    }
+
+    /**
+     * Retrieves all Book entities from the repository.
+     *
+     * @param BookRepository $bookRepository The repository to fetch books from.
+     * @return Book[] An array of Book objects.
+     */
+    private function getAllBooks(BookRepository $bookRepository): array
+    {
+        return $bookRepository->findAll();
     }
 }
