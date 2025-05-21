@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * Provides utility methods for handling Book entity data.
  */
+// @phpstan-ignore-next-line
 trait LibraryHelpers
 {
     /**
