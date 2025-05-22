@@ -73,7 +73,7 @@
         <h2>Phpmetrics</h2>
 
         <p>
-            Denna analys täcker särskilt komplexitet, täckning (coverage) och kodkvalitet (code style/violations) enligt 6C-modellen.
+            Denna analys täcker särskilt komplexitet, underhållbarhet, täckning (coverage) och kodkvalitet (code style/violations) enligt 6C-modellen.
         </p>
 
         <p>
@@ -116,7 +116,7 @@
 
         <p>
             I Scrutinizer finns flera områden som kan förbättras. Under 'issues' finns oanvänd kod i ungefär två klasser (CardGraphic och CardGameController),
-            totalt cirka 5 rader, som kan tas bort. Ett annat område är den allmänna kodtäckningen, som ligger på 23 %, och som kan förbättras genom att implementera fler enhetstester.
+            totalt cirka 5 rader, som kan tas bort. Också antalet rader i InitCardGameControllers är över 300 och bör minskas.
             Den allmänna kodstilen fick däremot bra värden med betyget 10 och alla klasser har fått betyg A.
         </p>
 
@@ -139,7 +139,7 @@
 
         <p>
             Ett tredje område är komplexiteten, som kan minskas genom att fördela koden på flera klasser eller metoder, eller genom att öka testtäckningen för dessa.
-            Att dela upp koden i fler metoder, särskilt i controllers, och skapa testfall för dessa kan också förbättra komplexiteten och CRAP-värdena.
+            Att dela upp koden i fler metoder, särskilt i controllers kan förbättra komplexiteten och CRAP-värdena.
             Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardGameController::handlePlayerDraw()' höga CRAP-värden på 30 poäng vardera.
         </p>
 
@@ -185,27 +185,19 @@
         <p>
             Klassen InitCardGameController har över 300 rader kod, vilket gör den svår att överblicka och underhålla.
             Målet är att minska antalet rader till under 200 genom att extrahera delar av logiken till mindre hjälpfunktioner,
-            flytta ansvar till andra klasser eller eventuellt skapa en ny controllerklass. Detta påverkar inte bara kodens struktur,
+            flytta ansvar till andra klasser eller eventuellt skapa en ny hjälpklass. Detta påverkar inte bara kodens struktur,
             utan förbättrar också läsbarheten och kodens separation av ansvar.
         </p>
 
         <h3>3. Minska komplexitet i InitCardGameController</h3>
         <p>
             Klassen InitCardGameController har hög komplexitet enligt både PhpMetrics (21) och Scrutinizer (35).
-            Genom att dela upp större metoder som initGameStop() och handlePlayerDraw() i mindre delar, minskas
-            den cyklomatiska komplexiteten och CRAP-värdena. Det gör koden mer lättförståelig och lättare att testa,
-            vilket påverkar både “Complexity” och “CRAP” i 6C positivt.
+            Genom att dela upp koden i metoder och minska antalet rader i klassen, kan den cyklomatiska komplexiteten minska.
+            Det gör koden mer lättförståelig och lättare att testa och underhålla, vilket påverkar både “Complexity” i 6C positivt.
         </p>
 
-        <h3>4. Öka testtäckning</h3>
-        <p>
-            Den nuvarande testtäckningen är låg (23 % totalt), trots att vissa testade klasser har 100 %.
-            Det kommer därför att göras fler enhetstester, särskilt för controllers där det idag saknas tester.
-            Detta kommer att höja “Coverage”-värdet i både PhpMetrics och Scrutinizer och göra det lättare att
-            upptäcka buggar tidigt.
-        </p>
 
-        <h3>5. Öka underhållbarhetsvärdet</h3>
+        <h3>4. Öka underhållbarhetsvärdet</h3>
         <p>
             I PhpMetrics har InitCardGameController, DiceGameController, LibraryController låga underhållbarhetsvärden,
             vilket visualiseras med stora röda cirklar i översikten. Dessa ska förbättras genom att bryta upp metoder och förtydliga ansvarsfördelning.

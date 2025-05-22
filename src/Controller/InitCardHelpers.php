@@ -79,6 +79,57 @@ trait InitCardHelpers
         }
     }
 
+    // /**
+    //  * Handles the player's card draw from the deck and updates the player's hand in the session.
+    //  *
+    //  * @param SessionInterface $session The session instance to retrieve and store data.
+    //  * @return array{cards: string, points: int} An array containing the formatted card
+    //  * and updated points of the player's hand.
+    //  */
+    // private function handlePlayerDraw(SessionInterface $session): array
+    // {
+    //     /** @var \App\Card\DeckOfCards|null $deck */
+    //     $deck = $session->get('deck');
+
+    //     /** @var \App\Card\CardHand|null $handPlayer */
+    //     $handPlayer = $session->get('hand_player');
+
+    //     /** @var \App\Card\Player|null $player */
+    //     $player = $session->get('player');
+
+    //     // Kontrollerar om något objekt är null (phpstan)
+    //     if (!$deck || !$handPlayer || !$player) {
+    //         return ['cards' => 'No cards', 'points' => 0];
+    //     }
+
+    //     // Drar ett kort från DeckOfCards
+    //     $card = $deck->drawCard();
+
+    //     // Kontrollerar att kortet inte är null innan det används (phpstan)
+    //     if (!$card) {
+    //         return ['cards' => 'No cards', 'points' => 0];
+    //     }
+
+    //     $formatedCard = $deck->getCardAsString($card);
+
+    //     // Lägger till kortet i handen
+    //     $handPlayer->addCard($card);
+
+    //     $player->play($handPlayer);
+
+    //     // Uppdaterar session
+    //     $session->set('hand_player', $handPlayer);
+    //     $session->set('deck', $deck);
+    //     $session->set('player', $player);
+
+    //     $data = [
+    //         'cards' => $formatedCard,
+    //         'points' => $handPlayer->getPoints(),
+    //     ];
+
+    //     return $data;
+    // }
+
     /**
      * Handles the player's card draw from the deck and updates the player's hand in the session.
      *
@@ -87,6 +138,48 @@ trait InitCardHelpers
      * and updated points of the player's hand.
      */
     private function handlePlayerDraw(SessionInterface $session): array
+    {
+        $game = $this->getGameObjectsFromSession($session);
+
+        if (!$game) {
+            return [
+                'cards' => 'No cards',
+                'points' => 0
+            ];
+        }
+
+        [$deck, $handPlayer, $player] = $game;
+
+        $card = $deck->drawCard();
+
+        if (!$card) {
+            return [
+                'cards' => 'No cards',
+                'points' => 0
+            ];
+        }
+
+        $formatedCard = $deck->getCardAsString($card);
+        $handPlayer->addCard($card);
+        $player->play($handPlayer);
+
+        $session->set('hand_player', $handPlayer);
+        $session->set('deck', $deck);
+        $session->set('player', $player);
+
+        return [
+            'cards' => $formatedCard,
+            'points' => $handPlayer->getPoints(),
+        ];
+    }
+
+    /**
+     * Retrieves and validates deck, player hand, and player from the session.
+     *
+     * @param SessionInterface $session
+     * @return array{DeckOfCards,CardHand,Player}|null
+     */
+    private function getGameObjectsFromSession(SessionInterface $session): ?array
     {
         /** @var \App\Card\DeckOfCards|null $deck */
         $deck = $session->get('deck');
@@ -97,38 +190,13 @@ trait InitCardHelpers
         /** @var \App\Card\Player|null $player */
         $player = $session->get('player');
 
-        // Kontrollerar om något objekt är null (phpstan)
         if (!$deck || !$handPlayer || !$player) {
-            return ['cards' => 'No cards', 'points' => 0];
+            return null;
         }
 
-        // Drar ett kort från DeckOfCards
-        $card = $deck->drawCard();
-
-        // Kontrollerar att kortet inte är null innan det används (phpstan)
-        if (!$card) {
-            return ['cards' => 'No cards', 'points' => 0];
-        }
-
-        $formatedCard = $deck->getCardAsString($card);
-
-        // Lägger till kortet i handen
-        $handPlayer->addCard($card);
-
-        $player->play($handPlayer);
-
-        // Uppdaterar session
-        $session->set('hand_player', $handPlayer);
-        $session->set('deck', $deck);
-        $session->set('player', $player);
-
-        $data = [
-            'cards' => $formatedCard,
-            'points' => $handPlayer->getPoints(),
-        ];
-
-        return $data;
+        return [$deck, $handPlayer, $player];
     }
+
 
     /**
      * Handles the bank's card draw process until it reaches 17 or more points and updates the session.
