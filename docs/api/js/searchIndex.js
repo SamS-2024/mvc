@@ -113,7 +113,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Initializes\u0020the\u0020arrays\u0020used\u0020to\u0020store\u0020card\u0020symbols\u0020for\u0020each\u0020suit.",
+            "summary": "Initializes\u0020the\u0020object.",
             "url": "classes/App-Card-CardGraphic.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AcreateSpades\u0028\u0029",
@@ -161,25 +161,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-CardGraphic.html#constant_MAX_VALUE"
         },                {
-            "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A\u0024spades",
-            "name": "spades",
+            "fqsen": "\\App\\Card\\CardGraphic\u003A\u003ASUITS",
+            "name": "SUITS",
             "summary": "",
-            "url": "classes/App-Card-CardGraphic.html#property_spades"
-        },                {
-            "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A\u0024hearts",
-            "name": "hearts",
-            "summary": "",
-            "url": "classes/App-Card-CardGraphic.html#property_hearts"
-        },                {
-            "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A\u0024diamonds",
-            "name": "diamonds",
-            "summary": "",
-            "url": "classes/App-Card-CardGraphic.html#property_diamonds"
-        },                {
-            "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A\u0024clubs",
-            "name": "clubs",
-            "summary": "",
-            "url": "classes/App-Card-CardGraphic.html#property_clubs"
+            "url": "classes/App-Card-CardGraphic.html#constant_SUITS"
         },                {
             "fqsen": "\\App\\Card\\CardHand",
             "name": "CardHand",
@@ -506,21 +491,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-DiceGameController.html#method_home"
         },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestRollDice\u0028\u0029",
-            "name": "testRollDice",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testRollDice"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestRollDices\u0028\u0029",
-            "name": "testRollDices",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testRollDices"
-        },                {
-            "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003AtestDiceHand\u0028\u0029",
-            "name": "testDiceHand",
-            "summary": "",
-            "url": "classes/App-Controller-DiceGameController.html#method_testDiceHand"
-        },                {
             "fqsen": "\\App\\Controller\\DiceGameController\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "",
@@ -576,6 +546,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-InitCardGameController.html#method_initGameStop"
         },                {
+            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AstopPlayer\u0028\u0029",
+            "name": "stopPlayer",
+            "summary": "",
+            "url": "classes/App-Controller-InitCardGameController.html#method_stopPlayer"
+        },                {
+            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AplayBank\u0028\u0029",
+            "name": "playBank",
+            "summary": "",
+            "url": "classes/App-Controller-InitCardGameController.html#method_playBank"
+        },                {
             "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitGameResult\u0028\u0029",
             "name": "initGameResult",
             "summary": "",
@@ -586,45 +566,60 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-InitCardGameController.html#method_newGameRound"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitDeck\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003ApreparePlayerData\u0028\u0029",
+            "name": "preparePlayerData",
+            "summary": "Prepares\u0020player\u0020data\u0020for\u0020rendering\u0020in\u0020the\u0020view.",
+            "url": "classes/App-Controller-InitCardGameController.html#method_preparePlayerData"
+        },                {
+            "fqsen": "\\App\\Controller\\InitCardHelpers",
+            "name": "InitCardHelpers",
+            "summary": "",
+            "url": "classes/App-Controller-InitCardHelpers.html"
+        },                {
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AinitDeck\u0028\u0029",
             "name": "initDeck",
             "summary": "Initializes\u0020the\u0020deck\u0020in\u0020the\u0020session\u0020if\u0020it\u0020doesn\u0027t\u0020already\u0020exist.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_initDeck"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_initDeck"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitHandPlayer\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AinitHandPlayer\u0028\u0029",
             "name": "initHandPlayer",
             "summary": "Initializes\u0020the\u0020player\u0027s\u0020hand\u0020in\u0020the\u0020session\u0020if\u0020it\u0020doesn\u0027t\u0020already\u0020exist.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_initHandPlayer"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_initHandPlayer"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitHandBank\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AinitHandBank\u0028\u0029",
             "name": "initHandBank",
             "summary": "Initializes\u0020the\u0020bank\u0027s\u0020hand\u0020in\u0020the\u0020session\u0020if\u0020it\u0020doesn\u0027t\u0020already\u0020exist.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_initHandBank"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_initHandBank"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitPlayer\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AinitPlayer\u0028\u0029",
             "name": "initPlayer",
             "summary": "Initializes\u0020the\u0020player\u0020in\u0020the\u0020session\u0020if\u0020they\u0020don\u0027t\u0020already\u0020exist.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_initPlayer"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_initPlayer"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AinitBank\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AinitBank\u0028\u0029",
             "name": "initBank",
             "summary": "Initializes\u0020the\u0020bank\u0020in\u0020the\u0020session\u0020if\u0020it\u0020doesn\u0027t\u0020already\u0020exist.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_initBank"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_initBank"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AhandlePlayerDraw\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AhandlePlayerDraw\u0028\u0029",
             "name": "handlePlayerDraw",
             "summary": "Handles\u0020the\u0020player\u0027s\u0020card\u0020draw\u0020from\u0020the\u0020deck\u0020and\u0020updates\u0020the\u0020player\u0027s\u0020hand\u0020in\u0020the\u0020session.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_handlePlayerDraw"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_handlePlayerDraw"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AhandleBankDraw\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AgetObjectsFromSession\u0028\u0029",
+            "name": "getObjectsFromSession",
+            "summary": "Retrieves\u0020and\u0020validates\u0020deck,\u0020player\u0020hand,\u0020and\u0020player\u0020from\u0020the\u0020session.",
+            "url": "classes/App-Controller-InitCardHelpers.html#method_getObjectsFromSession"
+        },                {
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AhandleBankDraw\u0028\u0029",
             "name": "handleBankDraw",
             "summary": "Handles\u0020the\u0020bank\u0027s\u0020card\u0020draw\u0020process\u0020until\u0020it\u0020reaches\u002017\u0020or\u0020more\u0020points\u0020and\u0020updates\u0020the\u0020session.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_handleBankDraw"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_handleBankDraw"
         },                {
-            "fqsen": "\\App\\Controller\\InitCardGameController\u003A\u003AendGame\u0028\u0029",
+            "fqsen": "\\App\\Controller\\InitCardHelpers\u003A\u003AendGame\u0028\u0029",
             "name": "endGame",
             "summary": "Ends\u0020the\u0020game\u0020and\u0020determines\u0020the\u0020winner\u0020based\u0020on\u0020the\u0020final\u0020status\u0020of\u0020the\u0020player\u0020and\u0020bank.",
-            "url": "classes/App-Controller-InitCardGameController.html#method_endGame"
+            "url": "classes/App-Controller-InitCardHelpers.html#method_endGame"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
@@ -686,6 +681,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryController.html#method_deleteProductById"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AgetAllBooks\u0028\u0029",
+            "name": "getAllBooks",
+            "summary": "Retrieves\u0020all\u0020Book\u0020entities\u0020from\u0020the\u0020repository.",
+            "url": "classes/App-Controller-LibraryController.html#method_getAllBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryHelpers",
+            "name": "LibraryHelpers",
+            "summary": "Trait\u0020LibraryHelpers",
+            "url": "classes/App-Controller-LibraryHelpers.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryHelpers\u003A\u003AfillBookData\u0028\u0029",
+            "name": "fillBookData",
+            "summary": "Populate\u0020a\u0020Book\u0020entity\u0020with\u0020data\u0020from\u0020an\u0020HTTP\u0020request.",
+            "url": "classes/App-Controller-LibraryHelpers.html#method_fillBookData"
+        },                {
             "fqsen": "\\App\\Controller\\LuckyControllerTwig",
             "name": "LuckyControllerTwig",
             "summary": "",
@@ -710,6 +720,16 @@ Search.appendIndex(
             "name": "report",
             "summary": "",
             "url": "classes/App-Controller-LuckyControllerTwig.html#method_report"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\ProductController",
             "name": "ProductController",
@@ -761,9 +781,14 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProductController.html#method_showProductByMinimumValue"
         },                {
+            "fqsen": "\\App\\Controller\\ProductController\u003A\u003AfillProductData\u0028\u0029",
+            "name": "fillProductData",
+            "summary": "Fills\u0020a\u0020Product\u0020object\u0020with\u0020name\u0020and\u0020value.",
+            "url": "classes/App-Controller-ProductController.html#method_fillProductData"
+        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
-            "summary": "",
+            "summary": "Represents\u0020a\u0020six\u002Dsided\u0020die\u0020with\u0020roll\u0020and\u0020display\u0020functionality.",
             "url": "classes/App-Dice-Dice.html"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
@@ -773,17 +798,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
             "name": "roll",
-            "summary": "",
+            "summary": "Roll\u0020the\u0020die\u0020and\u0020return\u0020the\u0020result.",
             "url": "classes/App-Dice-Dice.html#method_roll"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "",
+            "summary": "Get\u0020the\u0020current\u0020value\u0020of\u0020the\u0020die.",
             "url": "classes/App-Dice-Dice.html#method_getValue"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "Get\u0020the\u0020string\u0020representation\u0020of\u0020the\u0020die.",
             "url": "classes/App-Dice-Dice.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
@@ -793,7 +818,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic",
             "name": "DiceGraphic",
-            "summary": "",
+            "summary": "Represents\u0020a\u0020six\u002Dsided\u0020die\u0020with\u0020roll\u0020and\u0020display\u0020functionality.",
             "url": "classes/App-Dice-DiceGraphic.html"
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A__construct\u0028\u0029",
@@ -803,7 +828,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "Get\u0020the\u0020string\u0020representation\u0020of\u0020the\u0020die.",
             "url": "classes/App-Dice-DiceGraphic.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A\u0024representation",
@@ -813,32 +838,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Dice\\DiceHand",
             "name": "DiceHand",
-            "summary": "",
+            "summary": "Class\u0020DiceHand",
             "url": "classes/App-Dice-DiceHand.html"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aadd\u0028\u0029",
             "name": "add",
-            "summary": "",
+            "summary": "Add\u0020a\u0020die\u0020to\u0020the\u0020hand.",
             "url": "classes/App-Dice-DiceHand.html#method_add"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003Aroll\u0028\u0029",
             "name": "roll",
-            "summary": "",
+            "summary": "Roll\u0020all\u0020dice\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Dice-DiceHand.html#method_roll"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetNumberDices\u0028\u0029",
             "name": "getNumberDices",
-            "summary": "",
+            "summary": "Get\u0020the\u0020number\u0020of\u0020dice\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Dice-DiceHand.html#method_getNumberDices"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetValues\u0028\u0029",
             "name": "getValues",
-            "summary": "",
+            "summary": "Get\u0020the\u0020numeric\u0020values\u0020of\u0020all\u0020rolled\u0020dice.",
             "url": "classes/App-Dice-DiceHand.html#method_getValues"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003AgetString\u0028\u0029",
             "name": "getString",
-            "summary": "",
+            "summary": "Get\u0020the\u0020string\u0020representation\u0020of\u0020each\u0020die\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Dice-DiceHand.html#method_getString"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand\u003A\u003A\u0024hand",

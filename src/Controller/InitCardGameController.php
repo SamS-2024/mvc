@@ -81,29 +81,6 @@ class InitCardGameController extends AbstractController
         ]);
     }
 
-    // #[Route("/game/init/stop", name: "init_game_stop", methods: ['POST'])]
-    // public function initGameStop(SessionInterface $session): Response
-    // {
-    //     /** @var \App\Card\Player|null $player */
-    //     $player = $session->get('player'); // Hämtar spelarobjektet från sessionen
-    //     if ($player && $player->getPoints() > 0) { // Stoppar spelaren om den har poäng
-    //         $player->stop();
-    //     }
-
-    //     /** @var \App\Card\Bank|null $bank */
-    //     $bank = $session->get('bank'); // Hämtar bankobjektet från sessionen
-
-    //     if ($bank && $bank->isPlaying()) { // Låter banken spela om den är aktiv
-    //         $this->handleBankDraw($session);
-    //     }
-    //     // Avgör spelets resultat och sparar det i sessionen
-    //     $finalResult = $this->endGame($session);
-    //     $session->set('final_result', $finalResult);
-
-    //     // Omdirigerar till resultatsidan
-    //     return $this->redirectToRoute('init_game_result');
-    // }
-
     #[Route("/game/init/stop", name: "init_game_stop", methods: ['POST'])]
     public function initGameStop(SessionInterface $session): Response
     {
@@ -133,7 +110,6 @@ class InitCardGameController extends AbstractController
             $this->handleBankDraw($session);
         }
     }
-
 
     // Visar slutresultatet efter att spelet är avslutat.
     #[Route("/game/init/result", name: "init_game_result", methods: ['GET'])]

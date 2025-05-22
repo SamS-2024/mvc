@@ -79,57 +79,6 @@ trait InitCardHelpers
         }
     }
 
-    // /**
-    //  * Handles the player's card draw from the deck and updates the player's hand in the session.
-    //  *
-    //  * @param SessionInterface $session The session instance to retrieve and store data.
-    //  * @return array{cards: string, points: int} An array containing the formatted card
-    //  * and updated points of the player's hand.
-    //  */
-    // private function handlePlayerDraw(SessionInterface $session): array
-    // {
-    //     /** @var \App\Card\DeckOfCards|null $deck */
-    //     $deck = $session->get('deck');
-
-    //     /** @var \App\Card\CardHand|null $handPlayer */
-    //     $handPlayer = $session->get('hand_player');
-
-    //     /** @var \App\Card\Player|null $player */
-    //     $player = $session->get('player');
-
-    //     // Kontrollerar om något objekt är null (phpstan)
-    //     if (!$deck || !$handPlayer || !$player) {
-    //         return ['cards' => 'No cards', 'points' => 0];
-    //     }
-
-    //     // Drar ett kort från DeckOfCards
-    //     $card = $deck->drawCard();
-
-    //     // Kontrollerar att kortet inte är null innan det används (phpstan)
-    //     if (!$card) {
-    //         return ['cards' => 'No cards', 'points' => 0];
-    //     }
-
-    //     $formatedCard = $deck->getCardAsString($card);
-
-    //     // Lägger till kortet i handen
-    //     $handPlayer->addCard($card);
-
-    //     $player->play($handPlayer);
-
-    //     // Uppdaterar session
-    //     $session->set('hand_player', $handPlayer);
-    //     $session->set('deck', $deck);
-    //     $session->set('player', $player);
-
-    //     $data = [
-    //         'cards' => $formatedCard,
-    //         'points' => $handPlayer->getPoints(),
-    //     ];
-
-    //     return $data;
-    // }
-
     /**
      * Handles the player's card draw from the deck and updates the player's hand in the session.
      *

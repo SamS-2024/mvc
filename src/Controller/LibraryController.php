@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class LibraryController extends AbstractController
 {
-
     use LibraryHelpers;
 
     #[Route('/library', name: 'app_library')]
@@ -153,21 +152,6 @@ final class LibraryController extends AbstractController
 
         return $this->redirectToRoute('app_library');
     }
-
-    // /**
-    //  * Populates a Book object with data from an HTTP request.
-    //  * Used for both creating and updating books.
-    //  *
-    //  * @param Book $book The Book entity to populate.
-    //  * @param Request $request The HTTP request containing form data.
-    //  */
-    // private function fillBookData(Book $book, Request $request): void
-    // {
-    //     $book->setTitle((string) $request->request->get('title'));
-    //     $book->setIsbn((string) $request->request->get('isbn'));
-    //     $book->setAuthor((string) $request->request->get('author'));
-    //     $book->setImage((string) $request->request->get('image'));
-    // }
 
     /**
      * Retrieves all Book entities from the repository.

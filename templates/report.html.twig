@@ -249,6 +249,75 @@
                     alla filer som skapades.</p><br>
                 </div>
 
+                <div id="kmom06">
+                    <h2>Kmom06</h2>
+                    <p>
+                        PHP Metrics uppfattades som ett ganska krävande verktyg att använda, särskilt eftersom det presenterar många olika begrepp
+                        och mätvärden som inte alltid är självklara. Det som kändes mest användbart var informationen om antal kodrader, längden på
+                        metoder och komplexitet, dessa delar gick att förstå och relatera till mer direkt jämfört med andra, mer abstrakta mätvärden.
+                        De färgade cirklarna i rapporterna var också hjälpsamma för att snabbt se vilka klasser eller metoder som behövde förbättras.
+                    </p><br><br>
+
+                    <p>
+                        Det gick relativt smidigt att integrera repot med Scrutinizer. Själva analysen tog ganska lång tid vid första körningen,
+                        men när resultatet väl kom upp visades direkt höga värden. Kodkvaliteten klassades som very good med ett värde på 10, och
+                        alla betyg låg på A. Samtliga badges visade positiva resultat: "Build passed", "Scrutinizer 10", med mera.
+                    </p><br><br>
+
+                    <p>
+                        Kodtäckningen låg däremot på 23 %. Detta beror på att tester endast implementerades i de uppgifter där det var ett krav,
+                        främst på grund av tidsbrist och bristande erfarenhet av hur man testar controllers. Det hade varit värdefullt att få öva
+                        på ett exempel där man steg för steg lär sig testa en mer komplex controller.
+                    </p><br><br>
+
+                    <p>
+                        Första intrycket av Scrutinizer var ändå positivt. Det kändes mer lättförståeligt än PHP Metrics, även om det inte innehåller
+                        samma typer av visuella element som cirklar. Navigeringen var till en början lite förvirrande, men efter att ha sett en kort
+                        introduktionsvideo gick det snabbt att komma in i hur verktyget fungerade.
+                    </p><br><br>
+
+                    <p>
+                        Min syn på kodkvalitet är att det är ett viktigt mål att sträva efter, men att det inte alltid är enkelt att definiera exakt
+                        vad "bra kod" innebär. Det är positivt att det finns verktyg och automatiska tester som försöker mäta kvalitet och ge tydlig
+                        feedback, till exempel genom badges. Dessa kan i viss mån hjälpa till att påvisa att koden uppfyller vissa tekniska kriterier, vilket kan vara användbart både för
+                        en själv och för andra som läser eller jobbar vidare med koden.
+                    </p><br><br>
+
+                    <p>
+                        Samtidigt finns det en baksida när man använder dessa verktyg rent generellt enligt min upplevelse. För att få höga mätvärden
+                        krävs det ibland att man skriver om sin kod på ett sätt som inte alltid känns naturligt eller som gör strukturen mer splittrad.
+                        Det kan till exempel handla om att överdrivet dela upp en klass i flera filer, vilket kan göra det svårare att få en överblick.
+                        Då riskerar man att optimera för verktyget snarare än för läsbarhet eller egen förståelse.
+                    </p><br><br>
+
+                    <p>
+                        Det är därför svårt att säga om dessa verktyg eller badges i sig verkligen visar på god kodkvalitet, men de kan absolut fungera
+                        som en indikator. Verktygen hjälper en också att uppmärksamma sådant som kan förbättras för att göra koden mer underhållbar,
+                        och det är en viktig aspekt att ta med sig vidare.
+                    </p><br><br>
+
+                    <p>
+                        Det här kursmomentet har framför allt lärt mig hur komplext och omfattande det är att arbeta med kodkvalitet i efterhand,
+                        särskilt i ett större projekt där koden inte från början varit strukturerad med clean code-principer i åtanke, inte i den omfattningen iaf.
+                    </p><br><br>
+
+                    <p>
+                        Jag har också insett att verktyg som PHP Metrics och Scrutinizer kan vara både hjälpsamma och frustrerande. De pekar ut förbättringsområden,
+                        men kan också leda till att man skriver kod främst för verktygen, på ett sätt som inte alltid känns naturligt.
+                    </p><br><br>
+
+                    <p>
+                        Jag har lärt mig vikten av att tänka på struktur och underhållbarhet tidigt i ett projekt, och att det krävs övning och tid för
+                        att kunna använda testning och kvalitetsverktyg på ett effektivt sätt.
+                    </p><br><br>
+
+                    <p>
+                        Även om resultatet inte blev som man hoppats, har man ändå fått en bättre förståelse för vad som krävs för att skriva hållbar och lättförståelig kod.
+                        Det har också blivit tydligt hur mycket tid och planering som faktiskt krävs.
+                    </p>
+
+                </div>
+
             </div>
 
             <div class="kmom-links">

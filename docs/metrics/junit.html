@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-05-22 03:10:08        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-05-22 16:02:40        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,24 +60,24 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                8            </div>
+                9            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                58            </div>
+                59            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(70.37 %)</small>
+                <small>(66.67 %)</small>
             </div>
             <div class="number">
-                19            </div>
+                18            </div>
         </div>
     </div>
 </div>
@@ -268,17 +268,6 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Controller\InitCardGameController</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.62);">
-                                        9                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.34);">
-                                        0.34                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
                                 <td><span class="path">App\Controller\LibraryController</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.38);">
@@ -410,6 +399,17 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             4                                        </span>
                                         <span class="path">App\Card\DeckOfCards</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Tests\Controller\InitCardGameControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            9                                        </span>
+                                        <span class="path">App\Controller\InitCardGameController</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -707,7 +707,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Card\\BankTest","time":0.010241},{"name":"App\\Card\\CardGraphicTest","time":0.002333},{"name":"App\\Card\\CardHandTest","time":0.001929},{"name":"App\\Card\\CardTest","time":0.000489},{"name":"App\\Card\\DeckOfCardsTest","time":0.002472},{"name":"App\\Card\\PlayerTest","time":0.000961},{"name":"App\\Card\\StatusTest","time":0.000747},{"name":"App\\Dice\\DiceTest","time":0.000469}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Card\\BankTest","time":0.014176},{"name":"App\\Card\\CardGraphicTest","time":0.004686},{"name":"App\\Card\\CardHandTest","time":0.003613},{"name":"App\\Card\\CardTest","time":0.002904},{"name":"App\\Card\\DeckOfCardsTest","time":0.006809},{"name":"App\\Tests\\Controller\\InitCardGameControllerTest","time":0.022555},{"name":"App\\Card\\PlayerTest","time":0.002724},{"name":"App\\Card\\StatusTest","time":0.003148},{"name":"App\\Dice\\DiceTest","time":0.001476}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {
