@@ -140,7 +140,7 @@
         <p>
             Ett tredje område är komplexiteten, som kan minskas genom att fördela koden på flera klasser eller metoder, eller genom att öka testtäckningen för dessa.
             Att dela upp koden i fler metoder, särskilt i controllers kan förbättra komplexiteten och CRAP-värdena.
-            Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardGameController::handlePlayerDraw()' höga CRAP-värden på 30 poäng vardera.
+            Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardHelpers::handlePlayerDraw()' höga CRAP-värden på 30 poäng vardera.
         </p>
 
         <img src="{{ asset('img/scrutinizer2.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
@@ -251,7 +251,10 @@
 
         <h3>Scrutinizer</h3>
         <p>
-        De oanvända raderna har tagits bort så i 'issues'
+        De oanvända raderna har tagits bort så i 'issues'. CRAP-värdet för metoden InitCardHelpers::handlePlayerDraw()
+        har minskats från 30 till 12 efter att koden ha delats upp i två metoder istället för ett. Så nu finns det en ytterligare
+        metod som
+
         </p>
 
     </div>

@@ -139,7 +139,7 @@ trait InitCardHelpers
      */
     private function handlePlayerDraw(SessionInterface $session): array
     {
-        $game = $this->getGameObjectsFromSession($session);
+        $game = $this->getObjectsFromSession($session);
 
         if (!$game) {
             return [
@@ -177,9 +177,10 @@ trait InitCardHelpers
      * Retrieves and validates deck, player hand, and player from the session.
      *
      * @param SessionInterface $session
-     * @return array{DeckOfCards,CardHand,Player}|null
+     * @return array{0: DeckOfCards, 1: CardHand, 2: Player}|null
+
      */
-    private function getGameObjectsFromSession(SessionInterface $session): ?array
+    private function getObjectsFromSession(SessionInterface $session): ?array
     {
         /** @var \App\Card\DeckOfCards|null $deck */
         $deck = $session->get('deck');
