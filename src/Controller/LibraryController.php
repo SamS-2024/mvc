@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\LibraryHelpers;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class LibraryController extends AbstractController
 {
+
     use LibraryHelpers;
 
     #[Route('/library', name: 'app_library')]
