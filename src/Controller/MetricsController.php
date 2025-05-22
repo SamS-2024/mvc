@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MetricsController extends AbstractController
 {
     #[Route("/metrics", name: "metrics")]
-    public function lucky(): Response
+    public function metrics(): Response
     {
 
         return $this->render('metrics/metrics.html.twig');

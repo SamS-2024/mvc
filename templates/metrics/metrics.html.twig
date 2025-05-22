@@ -70,14 +70,14 @@
             För att förbättra detta kan metoderna delas upp i mindre delar, eller så kan enhetstester implementeras för att täcka komplexiteten.
         </p>
 
-        <h2>Phpmetrics</h2>
+        <h2>PHP Metrics</h2>
 
         <p>
             Denna analys täcker särskilt komplexitet, underhållbarhet, täckning (coverage) och kodkvalitet (code style/violations) enligt 6C-modellen.
         </p>
 
         <p>
-            De tre områden som kan förbättras enligt PhpMetrics är: komplexitet och underhållsbarhet (särskilt i vissa controllers),
+            De tre områden som kan förbättras enligt PHP Metrics är: komplexitet och underhållsbarhet (särskilt i vissa controllers),
             låg kodtäckning för flera klasser samt ett antal kodbrott (violations) som bör ses över.<br><br>
         </p>
 
@@ -93,14 +93,14 @@
             LibraryController har en mellanstor röd cirkel. Målet är att minska cirklarnas storlek och få
             bort den röda färgen, samtidigt som underhållsbarhetsindex höjs, helst över 70. Just nu ligger
             den största cirkeln (InitCardGameController) på 65,28.
-        </p>
+        </p><br><br>
 
         <p>
-            PhpMetrics mäter även kohesion (LCOM) och koppling (coupling). I rapporten syns till exempel att vissa
+            PHP Metrics mäter även kohesion (LCOM) och koppling (coupling). I rapporten syns till exempel att vissa
             controllers har hög Efferent Coupling, vilket innebär att de är beroende av många andra klasser.
             Detta påverkar både testbarhet och underhåll negativt, vilket enligt 6C är relevant för Coupling. Ett exempel är
             klasserna ProductController och ProductRepository som har LCOM på 4 respektive 3.
-        </p>
+        </p><br><br>
 
         <p>
             Ett Afferent Coupling-värde på 3 mättes i till exempel DeckOfCards och CardHand, vilket tyder
@@ -140,7 +140,7 @@
         <p>
             Ett tredje område är komplexiteten, som kan minskas genom att fördela koden på flera klasser eller metoder, eller genom att öka testtäckningen för dessa.
             Att dela upp koden i fler metoder, särskilt i controllers kan förbättra komplexiteten och CRAP-värdena.
-            Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardHelpers::handlePlayerDraw()' höga CRAP-värden på 30 poäng vardera.
+            Exempelvis har metoderna 'InitCardGameController::initGameStop()' och 'InitCardGameController::handlePlayerDraw()' (nuvarande klasss är InitCardHelpers::handlePlayerDraw()) höga CRAP-värden på 30 poäng vardera.
         </p>
 
         <img src="{{ asset('img/scrutinizer2.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
@@ -158,8 +158,6 @@
 
          <img src="{{ asset('img/scrutinizer4.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
 
-         <img src="{{ asset('img/scrutinizer5.webp') }}" class="phpmetrics" alt="Scrutinizer" width="800">
-
 
         <p>
             Sammanfattningsvis visar Scrutinizer-rapporten att komplexitet (Complexity) och testtäckning (del av Coverage) är områden som behöver förbättras.
@@ -170,7 +168,7 @@
         <h2>Förbättringar</h2>
 
         <p>
-            Baserat på analyserna från PhpMetrics och Scrutinizer har det identifierats tre huvudsakliga förbättringsområden: ta bort oanvänd kod,
+            Baserat på analyserna från PHP Metrics och Scrutinizer har det identifierats tre huvudsakliga förbättringsområden: ta bort oanvänd kod,
             minska antalet rader och komplexitet i vissa controllers samt att öka testtäckningen. Dessa förändringar syftar till att förbättra kodkvaliteten enligt 6C-modellen.
         </p>
 
@@ -199,7 +197,7 @@
 
         <h3>4. Öka underhållbarhetsvärdet</h3>
         <p>
-            I PhpMetrics har InitCardGameController, DiceGameController, LibraryController låga underhållbarhetsvärden,
+            I PHP Metrics har InitCardGameController, DiceGameController, LibraryController låga underhållbarhetsvärden,
             vilket visualiseras med stora röda cirklar i översikten. Dessa ska förbättras genom att bryta upp metoder och förtydliga ansvarsfördelning.
             Målet är att höja deras “Maintainability Index” över 70, vilket gör koden mer hanterbar, minskar risken för fel och förbättrar kvaliteten enligt 6C-principerna
             för <em>Complexity</em> och <em>Clean code</em>.
@@ -207,56 +205,145 @@
 
         <h2>Analys</h2>
 
-        <h3>PhpMetrics</h3>
+        <h3>PHP Metrics</h3>
         <p>
-        För att förbättra underhållbarhet har InitCardGameController delats upp till två filer. Hjälp-metoderna
-        flyttades till en 'trait' i Controller/Helper och importerades sedan i InitCardGameController. Detta gjorde
-        att den stora röda cirkeln blev gul istället och underhållbarhetsindex ökade från 65.28 till 76.92. Antal kodrader
-        i klassen minskade också från 322 till under 200 rader....
-
-        Metoden initGameResult har också minskats i storlek och istället anropar den en annan privat metod preparePlayerData($player)
-        som tar emot argument för antingen spelare eller bank och returnerar resultaten.
-
-        I phpmetrics blev det violation på 'trait' pga 'Packages should be either abstract and stable or concrete and instable'
-        så det ändrades till en vanlig extra klass istället med publika metoder och som instansieras i InitCardGameController.
-        Men detta orsakade ett fel 'blob' och 'A blob object (or "god class") does not follow the Single responsibility principle. istället.
-
-        Det testades även med att skapa små klasser i en 'Service' mapp och använda 'Dependency injection' med resultatet
-        blev sämst av alla alternativ och det resulterade i betydligt lägre underhållsbarhetsindex t.ex 56 för InitCardGameController.
-
-        Så till slut implementerades den första lösningen med 'trait' igen men utan en undermapp så den finns direkt i controllern
-        för att inte skapa onödig komplexitet eller förvirring. Resultatet på underhållbarhetsindex är nu på 77,04. Det
-        har även utökats med kommentarer för att förtydliga koden. Detta gav dock ingen effekt på underhållbarhetsindexet.
-
-        Det skapades också ett testfall testPreparePlayerData() för att testa preparePlayerData() och öka täckningen för
-        klassen InitCardGameController. Det användes i detta fall 'mock' för att testa detta.
-
-        Det har också rensats i DiceGameController och det resulterade i en gul cirkel med underhållbarhetsindex på 70,06 och koplexitet 7 från tidigare
-        62,78 och komplexitet 12.
-
-        Dice-klassen hade komplexitet på 1 men låg underhållbarhetsindex (59,01) och med docstring som hade glömts tidigare
-        bort ökade underhållbarhetsindex till 99,51 och den lilla cirkeln blev grön.
-
-        I LibraryController har det minskats upprepning av kod genom att skapa några privata metoder för att organisera koden
-        , en av dessa metoder finns i en trait som hjälpmetod vilket ökade underhållbarhetsindex från
-        62,26 till 72,3 och gul cirkel.
-
-        I ProductController är underhållbarhetsindex på 68,36 och det är en liten röd cirkel. Efter att ha skapat en privat
-        metod för att separera en del av logiken, blev underhållbarhetsindexet 72,43 och cirklen blev gul.
-
-        DiceHand underhållbarhetsindex 80,99 gul cirkel till 93,48 grön cirkel med bättre docstrings.
-
-        CardGraphic organiserades genom att minska antalet metoder vilket ändrade underhållbarhetsindex från 82,22 och gul cirkel till 86,44 och grön cirkel
+            För att förbättra underhållbarheten har InitCardGameController delats upp i två filer. Hjälpmetoderna har flyttats
+            till ett trait Controller/Helper och importerats i InitCardGameController. Detta resulterade i att den stora
+            röda cirkeln blev gul, och underhållbarhetsindexet ökade från 65,28 till 76,92. Antalet kodrader i klassen minskade
+            dessutom från 322 till under 200.
         </p>
+
+         <img src="{{ asset('img/phpmetrics-view.webp') }}" class="phpmetrics" alt="PhpMetrics overview" width="800">
+
+        <p>
+            Metoden initGameResult har också minskats i storlek och anropar nu i stället en privat metod, preparePlayerData($player),
+            som tar emot ett argument för antingen spelaren eller banken och returnerar resultatet.
+        </p><br><br>
+
+        <p>
+            Inledningsvis gav användningen av ett trait upphov till en varning i PHP Metrics: "Packages should be either abstract and stable or concrete and instable."
+            För att lösa detta ersattes traitet med en vanlig klass med publika metoder, som instansierades i InitCardGameController.
+        </p><br><br>
+        <p>
+            Detta ledde dock till ett nytt problem: ett blob-fel, med meddelandet "A blob object (or 'god class') does not follow the Single Responsibility Principle."
+            Ett annat alternativ som testades var att skapa mindre klasser i en Service-mapp och använda dependency injection. Det visade sig dock vara det sämsta
+            alternativet av alla, då det resulterade i ett betydligt lägre underhållbarhetsindex, exempelvis endast 56 för InitCardGameController.
+        </p><br><br>
+
+        <p>
+            Slutligen återgick implementationen till den ursprungliga lösningen med ett trait, men denna gång utan en undermapp, traitet ligger nu direkt i
+            Controller-mappen för att undvika onödig komplexitet. Underhållbarhetsindexet är nu 77,04. Koden har dessutom kompletterats
+            med kommentarer för att öka tydligheten, även om detta inte påverkade underhållbarhetsindexet.
+        </p><br><br>
+
+        <p>
+            Ett testfall, testPreparePlayerData(), skapades för att testa metoden preparePlayerData() och öka kodtäckningen för klassen InitCardGameController.
+            I detta test användes mocking för att isolera och verifiera metodens funktionalitet.
+        </p><br><br>
+
+        <p>
+            Det har även genomförts en rensning i DiceGameController, vilket resulterade i en gul cirkel med ett underhållbarhetsindex på 70,06 och en komplexitet på 7,
+             en förbättring från tidigare värden på 62,78 respektive 12.
+        </p><br><br>
+
+        <p>
+            Dice-klassen hade en låg komplexitet på 1, men ett lågt underhållbarhetsindex på 59,01. Efter att en docstring, som tidigare hade glömts bort,
+            lades till ökade underhållbarhetsindexet till 99,51, och den lilla cirkeln blev grön.
+        </p><br><br>
+
+        <p>
+            I LibraryController har kodupprepning minskats genom att skapa flera privata metoder för att organisera koden bättre.
+            En av dessa metoder placerades i ett trait som hjälpmetod. Detta bidrog till att underhållbarhetsindexet ökade från 62,26
+            till 72,3, vilket resulterade i en gul cirkel.
+        </p><br><br>
+
+        <p>
+            DiceHand hade initialt ett underhållbarhetsindex på 80,99 och en gul cirkel. Genom att förbättra docstrings ökade indexet till 93,48
+            och cirkeln blev grön. CardGraphic organiserades om genom att minska antalet metoder, vilket förbättrade underhållbarhetsindexet från
+            82,22 (gul cirkel) till 86,44 (grön cirkel).
+        </p><br><br>
 
         <h3>Scrutinizer</h3>
         <p>
-        De oanvända raderna har tagits bort så i 'issues'. CRAP-värdet för metoden InitCardHelpers::handlePlayerDraw()
-        har minskats från 30 till 12 efter att koden ha delats upp i två metoder istället för ett. Så nu finns det en ytterligare
-        metod InitCardGameController::initGameStop() som dess CRAP-tal har minskats från 30 till 2 när den delades upp till flera
-        mindre metoder.
-
+            För att följa Scrutinizer-rekommendationerna har oanvänd kod tagits bort, vilket eliminerade vissa varningar i Issues-sektionen.
+            De allmänna crap-värden för metoderna ligger nu på högst 20 istället för tidigare 30.
         </p>
+
+            <img src="{{ asset('img/crap.webp') }}" class="phpmetrics" alt="CRAP-scores" width="800">
+        <p>
+            CRAP-värdet för metoden InitCardHelpers::handlePlayerDraw() minskade från 30 till 12 efter att koden delades upp i två mindre metoder.
+            Metoden InitCardGameController::initGameStop() refaktorerades också genom att delas upp i flera mindre metoder,
+            vilket minskade dess CRAP-värde från 30 till 2.
+        </p>
+
+        <img src="{{ asset('img/method1.webp') }}" class="phpmetrics" alt="CRAP-scores" width="800">
+
+        <img src="{{ asset('img/method2.webp') }}" class="phpmetrics" alt="CRAP-scores" width="800">
+
+        <p>
+            Kodraderna låg generellt bra till tidigare men det fanns en klass som stack ut med 322 rader (InitCardGameController)
+            och som nu ligger på 191. För InitCardHelpers controll-klass blev det dock 254 rader.
+        </p>
+
+        <img src="{{ asset('img/line.webp') }}" class="phpmetrics" alt="class lines" width="800">
+
+        <img src="{{ asset('img/lines.webp') }}" class="phpmetrics" alt="Code lines" width="800">
+
+        <p>
+
+            Komplexitet för InitCardGameController klassen har minskat från 35 till 18. Det är dock en komplexitet på 22 för
+            InitCardHelpers klassen.
+
+            En rensning har även genomförts i DiceGameController, vilket sänkte komplexitetsvärdet från 20 till 12 och minskade
+            antalet rader från 174 till 106. Enligt PHP Metrics ligger samma klass nu på ett komplexitetsvärde på 7.
+        </p>
+
+        <h2>Diskussion</h2>
+
+        <p>
+            Att aktivt arbeta med kodkvalitet och principer som Clean Code är möjligt, men det är inte alltid enkelt,
+            särskilt i större projekt eller när man arbetar med äldre kod. Genom att använda verktyg som PHP Metrics och Scrutinizer
+            blir det tydligt att det finns konkreta sätt att mäta och följa upp kodkvalitet, vilket kan hjälpa till att identifiera
+            förbättringsområden. I detta kurmoment har många klasser och metoder förbättrats avsevärt, även om flera mätvärden fortfarande
+            ligger på en gul nivå. Det är ändå en tydlig förbättring jämfört med tidigare versioner.
+        </p><br><br>
+
+        <p>
+            En tydlig nackdel som upplevts är att det har varit svårt att förbättra all kod samtidigt. Det finns kod från flera tidigare kursmoment,
+            och det hade varit lättare att arbeta strukturerat med kvalitet om man fått öva på ett mindre projekt i taget. Att ha tillgång till exempel på hur
+            "bra kod" bör se ut i en mer komplex controller hade också varit till stor hjälp. För vissa klasser var det dessutom riskabelt att göra för stora
+            förändringar, då det saknades tillräcklig testtäckning för att känna sig trygg med att inget gick sönder.
+        </p><br><br>
+
+        <p>
+            Kodtäckning har bara implementerats i delar där det uttryckligen krävdes, främst på grund av tidsbrist och bristande erfarenhet kring hur man testar controllers.
+            Ett försök gjordes att använda mocking för att testa en controller, men det visar att det behövs mer handledning kring just testning i PHP, särskilt med fokus
+            på mocking och struktur i controllerklasser.
+        </p><br><br>
+
+        <p>
+            Överlag har upplevelsen varit något överväldigande. Verktygen visade på brister som inte var uppenbara vid en första anblick, särskilt i kod som man själv upplevde som "fungerande".
+            Det fanns mycket gammal kod att gå igenom, vilket gjorde det svårt att förbättra utan att riskera nya problem. Det är tydligt att dessa verktyg fungerar bäst när man
+            jobbar med ett uppdrag eller en modul i taget, där man kan fokusera på kvalitet redan från början.
+        </p><br><br>
+
+        <p>
+            Slutligen har verktygen upplevts som både hjälpsamma och ibland överdrivna. Det har varit tidskrävande att arbeta sig igenom alla varningar och mätvärden, och det är inte alltid uppenbart hur
+            förbättringar enligt verktygens måttstock faktiskt leder till mer läsbar eller bättre kod. Därför väcks också frågan om det inte borde finnas andra sätt att mäta och förstå clean code, exempelvis
+            med hjälp av kodgranskningar, erfarenhetsbaserade riktlinjer eller tydligare exempel på god praxis.
+        </p><br><br>
+
+        <p>
+            Avslutningsvis har arbetet med att förbättra kodkvalitet och struktur i detta kurmoment har visat sig både lärorikt och utmanande. Genom att använda verktyg som PHP Metrics och Scrutinizer har flera konkreta förbättringar
+            genomförts, bland annat reducerad komplexitet och högre underhållbarhetsindex i flera klasser. Det har samtidigt blivit tydligt att det krävs både tid, vana och ett mer strategiskt arbetssätt för att kunna uppnå
+            riktigt god kodkvalitet i större kodbaser.
+        </p><br><br>
+
+        <p>
+            Även om alla mål inte nåddes fullt ut, har kursmomentet gett en tydligare förståelse för clean code-principer och vikten av kontinuerlig kodgranskning. Erfarenheterna från detta arbete kan tas med i framtida projekt,
+            där verktygen kan användas mer effektivt om de integreras redan från början.
+        </p>
+
 
     </div>
 
