@@ -1,0 +1,483 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f0f0;
+    line-height: 1.5;
+    /* color: #E5E5EA; */
+}
+
+
+main {
+    max-width: 80%;
+    margin: 0 auto;
+    /* Växer med innehållet och håller footern på plats */
+    min-height: 70vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.proj-h1 {
+    margin-bottom: 3rem;
+    text-align: center;
+    /* border-bottom: 0.5px solid #BFA75A; */
+    /* color: #BFA75A; */
+    color: #a68f45;
+    padding: 0.5rem;
+}
+
+h2, h3 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+/* header {
+    height: 150px; */
+    /* background: url('../images/background.jpg'); */
+    /* background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.site-title {
+    color: rgb(243, 242, 242);
+} */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #2C2C2E; */
+    background-color: #353740;
+    margin-bottom: 1.5rem;
+    margin-bottom: 4rem;
+    padding: 1rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 50px;
+    width: 50%; /* Gör att ul tar upp 50% av bredden av nav och kan ändras när länkarna ökar */
+}
+
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+p {
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+footer {
+    /* background-color: #efece0; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    /* Hjälper med att hålla footern nere vid kort innehåll */
+    /* margin-top: 25%; */
+    margin-top: 15%;
+    color: #333;
+    padding: 2rem;
+    background: linear-gradient(to top, #dcd6c5, #f1f0f0);
+}
+
+.about-title {
+    margin-bottom: 2rem;
+}
+/*
+.copyright {
+    padding: 30px;
+    margin: 0 auto;
+} */
+
+
+/* .me-img {
+    float: left;
+    border-radius: 8px;
+    padding-right: 20px;
+} */
+
+/* .about-container {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 3rem;
+}
+
+.about-link {
+    color: rgb(1, 61, 37);
+    text-decoration: underline;
+}
+
+.about-link:hover {
+    color: rgb(6, 149, 116);
+} */
+
+/* .report-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+} */
+
+/* .kmom-links a {
+   color: black;
+   text-decoration: underline;
+   font-size: 1.3rem;
+} */
+
+/* .kmom-links ul {
+    display: block;
+    align-self: center;
+    margin-left: 100px;
+    border-left: 1px darkgray solid;
+    height: 100%;
+} */
+
+/* .kmom-links-titel {
+    text-align: center;
+    margin-bottom: 10px;
+} */
+
+/* .magic-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+} */
+
+
+/* .lucky-img {
+    border-radius: 5px;
+    margin-top: 4rem;
+    border: 1px rgb(234, 236, 234) solid;
+    width: 30%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+} */
+
+.api-overview {
+    min-height: 75vh;
+}
+
+.api-overview ul {
+    display: block;
+    padding: 10px;
+}
+
+.api-overview ul li {
+    margin-bottom: 10px;
+}
+
+/* Övningen kmom02 */
+/* input {
+    font-size: 1em;
+    margin: 0.3em;
+    margin-top: 1em;
+    padding: 0.5em;
+}
+
+.die {
+    font-size: 2em;
+}
+
+.pig-game {
+    margin-bottom: 1em;
+} */
+
+.flash-notice {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+.flash-notice:before {
+    content: "ⓘ";
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.flash-warning:before {
+    content: "⚠";
+}
+
+/* Kmom02 */
+.link-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.links {
+    align-self: self-start;
+    margin: 10px;
+    text-decoration: none;
+    /* background-color: #007aff; */
+    background-color: #BFA75A;
+    color: #000000;
+    font-weight: 400;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Mjuk övergång på hover */
+}
+
+.links:hover {
+    background-color: #D1B85D;
+}
+
+
+.card-container {
+    text-align: center;
+    font-size: 5.5em;
+    display: block;
+
+}
+
+.red {
+    color: red;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .uml {
+    width: 80%;
+    margin-top: 4em;
+    border-radius: 10px;
+} */
+
+.card-game-submit {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.points-text, .winner-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.winner-text {
+    color: #a68f45;
+    margin-bottom: 1.4rem;
+}
+
+.player {
+    text-align: center;
+    margin-top: 1.4rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.game-over {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.status-text {
+    font-size: 1.15rem;
+    text-align: center;
+    margin-top: 1.4rem;
+    color: rgb(172, 79, 4);
+}
+
+.doc-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+}
+
+.flowchart {
+    padding: 1rem;
+}
+
+.flowchart-img {
+    border: 1px solid rgb(115, 114, 114);
+    width: 90%;
+}
+
+.code {
+    background-color: rgb(223, 222, 222);
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    border-radius: 7px;
+}
+
+.doc-text {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+/* Kmom05 'product' */
+.example-wrapper ul{
+    padding: 2rem;
+    width: 100%;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.example-wrapper ul li {
+    padding: 1rem;
+}
+
+.example-wrapper h1 {
+    margin-bottom: 3rem;;
+}
+
+/* kmom05*/
+.img-radius {
+    border-radius: 0.4rem;
+}
+
+.book-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+}
+
+
+/* .book-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-family: sans-serif;
+}
+
+.book-table th,
+.book-table td {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.book-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.book-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+} */
+
+/* .book-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.book-table a:hover {
+    text-decoration: underline;
+}
+
+.update-book-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-bottom: 4rem;
+}
+
+.update-book-form label {
+    font-size: 1.1rem;
+    margin: 0.8rem 0.1rem;
+    font-weight: bold;
+} */
+
+/* .find-book-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    gap: 0.5rem;
+    font-family: sans-serif;
+}
+
+.find-book-form label {
+    font-weight: bold;
+}
+
+.find-book-form input {
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+} */
+
+/* .find-book-form button {
+    padding: 0.5rem;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.find-book-form button:hover {
+    background-color: #005fa3;
+}
+
+/* Bibliteket */
+/* .library-container {
+    padding: 2rem;
+    width: 80%;
+    margin: 0 auto;
+  } */
+
+/* .book-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    border-bottom: 1px solid gray;
+    padding: 1rem;
+
+}
+
+.delete {
+    background-color: rgb(124, 123, 123);
+} */
+
+.phpmetrics {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.metrics .badges {
+    padding: 2rem;
+}

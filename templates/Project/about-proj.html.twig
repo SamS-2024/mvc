@@ -1,0 +1,26 @@
+{% extends "proj-base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h1 class="about-title">Om webbsidan</h1>
+        <div class="about-container">
+            <div class="about-text">
+                <p>
+                   Detta projekt är ett webbaserat Blackjack-spel byggt med Symfony.
+                   Målet har varit att skapa en fungerande spelupplevelse där spelaren kan dra kort,
+                   stanna och spela mot en dealer. Spelets logik hanteras i bakgrunden med hjälp av PHP-klasser,
+                   och spelets tillstånd sparas i sessionen.<br><br>
+                </p>
+                <p>
+                   Fokus har legat på att få spelet att fungera stabilt
+                   och att gränssnittet ska vara enkelt att använda. Projektet använder controllers med routes för
+                   att hantera användarens interaktioner, och templates med HTML och Twig-kod för att visa spelets
+                   olika vyer.
+                </p>
+            </div>
+
+
+        </div>
+
+{% endblock %}

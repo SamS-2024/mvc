@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('project') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('project') }}
+            {% block importmap %}{{ importmap('project') }}{% endblock %}
+        {% endblock %}
+    </head>
+
+    <body>
+        {# <header class="site-header">
+            <span class="site-title">My Symfony Site</span>
+        </header> #}
+            <nav>
+                <ul>
+                    <li><a href="{{ path('about_proj') }}">Om</a></li>
+                    <li><a href="{{ path('proj') }}">Project</a></li>
+                    {# <li><a href="{{ path('show_proj_session') }}">Session</a></li>
+                    <a href="{{ path('delete_proj_session') }}">Radera session</a> #}
+
+
+                </ul>
+            </nav>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="footer">
+            <div class="copyright">
+                &copy; MVC 2025
+            </div>
+
+            <a href="https://github.com/SamS-2024/mvc" target="_blank">
+                <img src="{{ asset('img/github-mark.png') }}" alt="GitHub" class="github-icon-proj" width="35">
+            </a>
+        </footer>
+    </body>
+</html>

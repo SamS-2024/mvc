@@ -1,0 +1,13 @@
+{% extends "proj-base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %}
+
+<h1>Session</h1>
+
+{{ dump(session) }}
+
+{{ include('flash.html.twig') }}
+
+{% endblock %}

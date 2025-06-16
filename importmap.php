@@ -16,6 +16,11 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    // Lägger till "project" entrypoint
+    'project' => [
+        'path' => './assets/project.js', // Pekar på project.js-fil
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
