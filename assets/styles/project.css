@@ -19,11 +19,11 @@ main {
 }
 
 .proj-h1 {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
     /* border-bottom: 0.5px solid #BFA75A; */
     /* color: #BFA75A; */
-    color: #a68f45;
+    color: #333;
     padding: 0.5rem;
 }
 
@@ -110,98 +110,22 @@ footer {
     margin: 0 auto;
 } */
 
-
-/* .me-img {
-    float: left;
-    border-radius: 8px;
-    padding-right: 20px;
-} */
-
-/* .about-container {
-    display: grid;
-    gap: 40px;
-    grid-template-columns: 2fr 1fr;
-    margin-bottom: 3rem;
-}
-
-.about-link {
-    color: rgb(1, 61, 37);
-    text-decoration: underline;
-}
-
-.about-link:hover {
-    color: rgb(6, 149, 116);
-} */
-
-/* .report-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-} */
-
-/* .kmom-links a {
-   color: black;
-   text-decoration: underline;
-   font-size: 1.3rem;
-} */
-
-/* .kmom-links ul {
-    display: block;
-    align-self: center;
-    margin-left: 100px;
-    border-left: 1px darkgray solid;
-    height: 100%;
-} */
-
-/* .kmom-links-titel {
-    text-align: center;
-    margin-bottom: 10px;
-} */
-
-/* .magic-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
-} */
-
-
-/* .lucky-img {
-    border-radius: 5px;
-    margin-top: 4rem;
-    border: 1px rgb(234, 236, 234) solid;
-    width: 30%;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-} */
-
 .api-overview {
-    min-height: 75vh;
+    display: inline;
+}
+.api-overview ul li a {
+  color: blue !important;
+  padding: 0;
 }
 
 .api-overview ul {
     display: block;
-    padding: 10px;
+    padding: 0;
 }
 
 .api-overview ul li {
     margin-bottom: 10px;
 }
-
-/* Övningen kmom02 */
-/* input {
-    font-size: 1em;
-    margin: 0.3em;
-    margin-top: 1em;
-    padding: 0.5em;
-}
-
-.die {
-    font-size: 2em;
-}
-
-.pig-game {
-    margin-bottom: 1em;
-} */
 
 .flash-notice {
     padding: 0.5em;
@@ -480,4 +404,12 @@ footer {
 
 .metrics .badges {
     padding: 2rem;
+}
+
+canvas {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }

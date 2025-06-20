@@ -1,0 +1,14 @@
+{% extends "proj-base.html.twig" %}
+
+{% block body %}
+
+<h1 class="proj-h1">API-översikt</h1>
+<div class="api-overview">
+    <ul>
+    {% for path, description in data %}
+        <li><a href="{{ path }}">{{ path }}</a> - {{ description }}</li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

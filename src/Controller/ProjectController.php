@@ -20,6 +20,13 @@ class ProjectController extends AbstractController
         return $this->render('Project/proj.html.twig');
     }
 
+     #[Route("/proj/energy", name: "proj_energy")]
+    public function energyInTwh(): Response
+    {
+
+        return $this->render('Project/proj-energy.html.twig');
+    }
+
     #[Route("/proj/about", name: "about_proj")]
     public function aboutProj(): Response
     {

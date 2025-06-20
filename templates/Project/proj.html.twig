@@ -1,12 +1,73 @@
 {% extends "proj-base.html.twig" %}
 
-{% block title %}Project{% endblock %}
-
 {% block body %}
 
-<p>Test..</p>
+    <h1 class="proj-h1">Förnybar energi i Sverige</h1><br>
+    <p>
+        Sverige är ett av de ledande länderna i världen när det gäller användning av förnybar energi.
+        Genom satsningar på vattenkraft, bioenergi, vindkraft och hållbara lösningar inom transporter,
+        uppvärmning och elproduktion har andelen förnybar energi ökat stadigt under 2000-talet.
+    </p><br>
+    <p>
+        Denna sida visar utvecklingen i olika sektorer från år 2005 till 2017, baserat på statistik från
+        Energimyndigheten och Eurostat. Varje diagram illustrerar hur andelen förnybar energi förändrats över
+        tid och ger en inblick i Sveriges energiomställning.
+    </p><br>
 
+    <h2> Totalt - Förnybar andel i hela energisystemet (2005-2017)</h2>
+    <p>
+        Andelen förnybar energi i Sverige har ökat stadigt från 41 % år 2005 till 54 % år 2017.
+        Den största ökningen skedde mellan 2005 och 2010, vilket visar på ett kraftigt politiskt och
+        tekniskt fokus på omställning till hållbara energikällor. Efter 2014 stabiliseras andelen runt 54 %,
+        vilket tyder på att Sverige nått en hög nivå av förnybar energi, men att ytterligare ökning kräver nya
+        teknologier eller reformer.
+    </p>
+    <canvas id="chart-total"></canvas>
 
+    <h2>Förnybar energi i värme, kyla, industri m.m.</h2>
+    <p>
+        Inom denna kategori syns en tydlig och kraftig ökning: från 52 % år 2005 till 69 % år 2017. Det visar att fjärrvärme
+        och industriella processer har blivit mycket mer hållbara över tid, troligen tack vare utbyggnad av biobränslebaserade
+        system och effektivare energianvändning.
+    </p>
+    <canvas id="chart-industry"></canvas>
+
+    <h2>El - Förnybar andel i elproduktionen</h2>
+    <p>
+        Andelen förnybar energi i elproduktionen ökade från 51 % till 66 % under perioden. Särskilt märkbar är
+        ökningen under 2008-2015, vilket sammanfaller med ökad användning av vindkraft och vattenkraft.
+        Efter 2015 planar ökningen ut, vilket kan bero på att elproduktionen redan är mycket förnybar i Sverige.
+    </p>
+    <canvas id="chart-el"></canvas>
+
+    <h2> Transporter - Förnybar energi inom transportsektorn</h2>
+    <p>
+        Den mest dramatiska ökningen finns här: från 6 % år 2005 till 29 % år 2016, innan den sjunker något till
+        27 % år 2017. Det speglar satsningar på biodrivmedel, elbilar och politiska styrmedel som reduktionsplikt.
+        Att andelen minskar något 2017 kan bero på ökad total energianvändning i transporter, eller variation i
+        biodrivmedelsanvändning.
+    </p>
+    <canvas id="chart-transport"></canvas>
+
+    <h2>Energiintensitet per BNP över tid</h2>
+
+    <p>
+        Diagrammet visar hur mycket energi som tillförts per enhet BNP i Sverige under perioden 2008-2017,
+        justerat för temperaturvariationer. Detta kallas energiintensitet och mäts som procentuell förändring
+        jämfört med år 2008 (som är basår).
+    </p><br>
+
+    <p>
+        En negativ procent innebär att Sverige blivit mer energieffektivt, det vill säga att det krävs mindre energi
+        för att producera samma mängd BNP. Till exempel betyder -18,0% år 2015 att energiintensiteten har minskat med 18
+        procent jämfört med 2008.
+    </p><br>
+    <p>
+        Detta är en del av Sveriges arbete med FN:s globala mål för hållbar utveckling, särskilt mål 7.3, som handlar om att
+        förbättra energieffektiviteten globalt. Sverige har ett eget mål om att minska energiintensiteten med 20% mellan 2008 och 2020.
+    </p>
+
+    <canvas id="myChart"></canvas>
 
 
 

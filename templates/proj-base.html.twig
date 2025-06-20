@@ -8,10 +8,15 @@
             {{ encore_entry_link_tags('project') }}
         {% endblock %}
 
-        {% block javascripts %}
+        {# {% block javascripts %}
             {{ encore_entry_script_tags('project') }}
             {% block importmap %}{{ importmap('project') }}{% endblock %}
+        {% endblock %} #}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('project') }}
         {% endblock %}
+
     </head>
 
     <body>
@@ -21,7 +26,8 @@
             <nav>
                 <ul>
                     <li><a href="{{ path('about_proj') }}">Om</a></li>
-                    <li><a href="{{ path('proj') }}">Project</a></li>
+                    <li><a href="{{ path('proj') }}">Förnybar energi</a></li>
+                    <li><a href="{{ path('proj_energy') }}">Energi i TWh</a></li>
                     {# <li><a href="{{ path('show_proj_session') }}">Session</a></li>
                     <a href="{{ path('delete_proj_session') }}">Radera session</a> #}
 
@@ -29,7 +35,8 @@
                 </ul>
             </nav>
         <main>
-            {% block body %}{% endblock %}
+            {% block body %}
+            {% endblock %}
         </main>
         <footer class="footer">
             <div class="copyright">
