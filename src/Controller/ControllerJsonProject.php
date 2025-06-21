@@ -107,4 +107,37 @@ $response = $this->json($result);
     }
 
 
+    #[Route('/proj/api/energy-TWh', name: 'api_energy_TWh')]
+    public function getEnergyTWh(
+    RenewableEnergyTWhRepository $repo
+    ): Response
+{
+    $data = $repo->findAll();
+    $result = [];
+
+    foreach($data as $item) {
+    $result[] = [
+        'year' => $item->getYear(),
+        'bio' => $item->getBiofuels(),
+        'hydro' => $item->getHydropower(),
+        'wind' => $item->getWindPower(),
+        'heat' => $item->getHeatPumps(),
+        'solar' => $item->getSolarEnergy(),
+        'TWh-total' => $item->getTotal(),
+        'statistical' => $item->getStatisticalTransfer(),
+        'target' => $item->getTargetCalculation(),
+        'total-use' => $item->getTotalEnergyUse(),
+    ];
+}
+
+     $response = $this->json($result);
+    $response->setEncodingOptions(
+        $response->getEncodingOptions() | JSON_PRETTY_PRINT
+    );
+    return $response;
+
+    }
+
+
+
 }

@@ -58,7 +58,7 @@ nav {
     justify-content: center;
     align-items: center;
     /* background-color: #2C2C2E; */
-    background-color: #353740;
+    background-color: #1b5d1e;
     margin-bottom: 1.5rem;
     margin-bottom: 4rem;
     padding: 1rem;
@@ -98,7 +98,12 @@ footer {
     margin-top: 15%;
     color: #333;
     padding: 2rem;
-    background: linear-gradient(to top, #dcd6c5, #f1f0f0);
+    /* background: linear-gradient(to top, #e5f6e6, #4f8393); */
+    background-color: #f2f2f2;
+}
+
+.github-icon-proj {
+    color: #333;
 }
 
 .about-title {
@@ -127,25 +132,6 @@ footer {
     margin-bottom: 10px;
 }
 
-.flash-notice {
-    padding: 0.5em;
-    color: #004085;
-    background-color: #cce5ff;
-    border-color: #b8daff;
-}
-.flash-notice:before {
-    content: "ⓘ";
-}
-
-.flash-warning {
-    padding: 0.5em;
-    color: #856404;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
-}
-.flash-warning:before {
-    content: "⚠";
-}
 
 /* Kmom02 */
 .link-container {
@@ -176,64 +162,12 @@ footer {
 }
 
 
-.card-container {
-    text-align: center;
-    font-size: 5.5em;
-    display: block;
-
-}
-
-.red {
-    color: red;
-}
-
-.text-container {
-    display: flex;
-    flex-direction: column;
-}
-
 /* .uml {
     width: 80%;
     margin-top: 4em;
     border-radius: 10px;
 } */
 
-.card-game-submit {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2em;
-}
-
-.points-text, .winner-text {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
-
-.winner-text {
-    color: #a68f45;
-    margin-bottom: 1.4rem;
-}
-
-.player {
-    text-align: center;
-    margin-top: 1.4rem;
-    font-size: 2rem;
-    color: #333;
-}
-
-.game-over {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.status-text {
-    font-size: 1.15rem;
-    text-align: center;
-    margin-top: 1.4rem;
-    color: rgb(172, 79, 4);
-}
 
 .doc-container {
     display: grid;
@@ -412,4 +346,13 @@ canvas {
   margin: 0 auto;
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.source-text {
+    font-size: 0.9em;
+    margin-top: 2em;
+}
+
+.source-link {
+    color: blue;
 }
