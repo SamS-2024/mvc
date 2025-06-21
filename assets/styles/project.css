@@ -356,3 +356,58 @@ canvas {
 .source-link {
     color: blue;
 }
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.search-form input[type="number"],
+.search-form select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.search-form input[type="number"]:focus,
+.search-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.search-form button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+
+.search-result {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-left: 4px solid #4caf50;
+  border-radius: 6px;
+  line-height: 1.6;
+  width: 35%;
+}
+
+.hidden {
+  display: none;
+}

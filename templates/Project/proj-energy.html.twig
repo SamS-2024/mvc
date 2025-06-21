@@ -6,19 +6,20 @@
 
 <p>
     Den här tabellen visar hur Sveriges produktion av förnybar energi utvecklats mellan 2005 och 2017,
-    mätt i terawattimmar (TWh). Siffrorna är uppdelade efter energikällor och inkluderar även total energianvändning
-    och måluppföljning.
+    mätt i terawattimmar (TWh). Terawattimmar är en miljard kilowattimmar (1 TWh = 1 000 000 000 kWh).
+    Siffrorna är uppdelade efter energikällor och inkluderar även total energianvändning och måluppföljning.
 </p>
 
 <h2>Bioenergi</h2>
 <p>
     Bioenergi är Sveriges mest använda förnybara energikälla och spelar en nyckelroll i klimatomställningen.
     Den utvinns ur biomassa från skog, jordbruk och avfall, och används främst inom industrin och fjärrvärmesystem.
-    Restprodukter från t.ex. massabruk omvandlas till värme, el eller biodrivmedel.
+    Restprodukter från t.ex. massabruk omvandlas till värme, el eller biodrivmedel. Bioenergiproduktionen har ökat
+    från 92 TWh år 2005 till 129 TWh år 2017.
 </p><br>
 
 <p>
-    <em>"Biobränslen från skog, mark, och andra verksamheter utgör merparten av den förnybara energin i Sverige."</em> – <a href="https://www.energiforetagen.se/fragor-vi-driver/positioner/hallbar-bioenergi-behovs-for-att-klara-klimatmalen?utm_source=chatgpt.com" target="_blank" class ="source-link">Energiföretagen Sverige</a>
+    <em>"Biobränslen från skog, mark, och andra verksamheter utgör merparten av den förnybara energin i Sverige."</em> - <a href="https://www.energiforetagen.se/fragor-vi-driver/positioner/hallbar-bioenergi-behovs-for-att-klara-klimatmalen?utm_source=chatgpt.com" target="_blank" class ="source-link">Energiföretagen Sverige</a>
 </p><br>
 <p>
     I transportsektorn bidrar bioenergi med förnybara alternativ som etanol och biogas. Den kan även kombineras
@@ -26,8 +27,7 @@
     energiförsörjningen och Sveriges klimatmål.
 </p><br>
 <p>
-    <em>"Bioenergi är världens och Sveriges största förnybara energikälla."</em> - <a href="https://www.energimyndigheten.se/forskning-och-innovation/forskning/bioenergi/?utm_source=chatgpt.com" target="_blank" class ="source-link">Energimyndigheten</a><br>
-    Bioenergiproduktionen har ökat från 92 TWh år 2005 till 129 TWh år 2017.
+    <em>"Bioenergi är världens och Sveriges största förnybara energikälla."</em> - <a href="https://www.energimyndigheten.se/forskning-och-innovation/forskning/bioenergi/?utm_source=chatgpt.com" target="_blank" class ="source-link">Energimyndigheten</a>
 </p><br>
 
 <canvas id="chart-bio"></canvas>
@@ -42,7 +42,7 @@
         "Det är tack vare vattenkraften Sverige har så god tillgång till förnybar el och har kunnat satsa kraftfullt
         på vindkraft. Vattenkraften fungerar nämligen som så kallad "reglerkraft". Sverige och Norge är två av de
         nationer som använder och producerar mest vattenkraft i världen."
-    </em> – <a href="https://www.energiforetagen.se/energifakta/elsystemet/produktion/vattenkraft/" target="_blank" class ="source-link">Energiföretagen Sverige</a>
+    </em> - <a href="https://www.energiforetagen.se/energifakta/elsystemet/produktion/vattenkraft/" target="_blank" class ="source-link">Energiföretagen Sverige</a>
 </p>
 
 <canvas id="chart-hydro"></canvas>
@@ -55,7 +55,7 @@
 <p><br>
     <em>
         "Vindkraften bidrar redan idag på de marknader som stöttar balanseringen av elsystemet, där den är ett bra komplement till den reglerbara vattenkraften."
-    </em> – <a href="https://svenskvindenergi.org/pressmeddelanden/vindkraften-stottar-redan-idag-stabilitet-i-elnatet-kan-och-vill-bidra-an-mer" target="_blank" class ="source-link">Svensk Vindenergi</a>
+    </em> - <a href="https://svenskvindenergi.org/pressmeddelanden/vindkraften-stottar-redan-idag-stabilitet-i-elnatet-kan-och-vill-bidra-an-mer" target="_blank" class ="source-link">Svensk Vindenergi</a>
 </p><br>
 
 <p>
@@ -64,7 +64,7 @@
         Vindkraften har vuxit kraftigt de senaste åren och levererar omkring 20 procent (år 2023) av den el vi använder
         i Sverige idag. Och av de fossilfria kraftslagen ser vindkraften ut att vara det som byggs ut mest närmsta åren,
         fram till 2030."<br>
-    </em> – <a href="https://www.energiforetagen.se/energifakta/elsystemet/produktion/vindkraft" target="_blank" class ="source-link">Energiföretagen Sverige</a>
+    </em> - <a href="https://www.energiforetagen.se/energifakta/elsystemet/produktion/vindkraft" target="_blank" class ="source-link">Energiföretagen Sverige</a>
 
 </p>
 
@@ -80,7 +80,7 @@
     <em>
         "Värmepumpars värmebidrag, 40TWh, motsvarar 40 procent av uppvärmningsbehovet i Sverige.
         Fjärrvärme levererar något mer, 47 TWh, och det finns i genomsnitt 6 procent värmepumpar i fjärrvärmenäten."
-    </em> – <a href="https://www.energinyheter.se/20250417/33087/vilken-roll-spelar-varmepumpstekniken-i-energiomstallningen" target="_blank" class ="source-link">energinyheter.se</a>
+    </em> - <a href="https://www.energinyheter.se/20250417/33087/vilken-roll-spelar-varmepumpstekniken-i-energiomstallningen" target="_blank" class ="source-link">energinyheter.se</a>
 
 <p>
 
@@ -113,18 +113,25 @@
 
 <canvas id="chart-TWh-target"></canvas>
 
+
 <h2>Total energianvändning</h2>
 <p>
-    Total energianvändning i Sverige varierade under perioden men låg kring 400 TWh per år. Att den förnybara
-    andelen har ökat, samtidigt som den totala användningen varit relativt stabil, är ett tecken på framsteg i
-    omställningen.
+    Total energianvändning i Sverige varierade under perioden men låg kring 400 TWh per år.
+    Att den förnybara andelen har ökat, samtidigt som den totala användningen varit relativt stabil,
+    är ett tecken på framsteg i omställningen.
+</p><br>
+
+<p>
+    <strong>Förklaring:</strong><br>
+    Totalt (t.ex. 229 TWh år 2017) = summan av all förnybar energi som producerats i Sverige (bio, vatten, vind osv.).<br>
+    Total energianvändning (t.ex. 410 TWh år 2017) = all energi som används i landet, både förnybar och fossil (olja, kol, naturgas).
 </p>
+
 
 <canvas id="chart-TWh-total-use"></canvas>
 
 <p class="source-text">
     <strong>Källa:</strong> Statistiska centralbyrån (SCB)
 </p>
-
 
 {% endblock %}

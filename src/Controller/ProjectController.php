@@ -34,6 +34,14 @@ class ProjectController extends AbstractController
         return $this->render('Project/about-proj.html.twig');
     }
 
+
+    #[Route("/proj/search", name: "search_proj")]
+    public function searchProj(): Response
+    {
+
+        return $this->render('Project/search.html.twig');
+    }
+
      #[Route("proj/session", name: "show_proj_session")]
     public function session(
         SessionInterface $session
