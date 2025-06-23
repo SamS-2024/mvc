@@ -11,14 +11,13 @@ use App\Repository\EnergyIntensityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
- use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ControllerJsonProject extends AbstractController
 {
-
-
-#[Route("/proj/api", name: "api-proj")]
+    // Översikt över routes med länkar. POST-routen testas via sök-formuläret på sidan.
+    #[Route("/proj/api", name: "api-proj")]
     public function apiOverview(): Response
     {
         $data = [
@@ -28,7 +27,8 @@ final class ControllerJsonProject extends AbstractController
             '/proj/api/energy-intensity' => 'Energi-intensitet i procent.',
             '/proj/api/energy-TWh' => 'Förnybar energi i TWh',
             '/proj/api/TWh-target' => 'Visar överförd energi till Norge och målberäkningen',
-            '/proj/api/TWh-total' => 'Total förnybar energiproduktion och total energianvändning i TWh.'
+            '/proj/api/TWh-total' => 'Total förnybar energiproduktion och total energianvändning i TWh.',
+            '/proj/search' => 'Formulär för att testa POST-routen.'
 
         ];
 
@@ -36,48 +36,46 @@ final class ControllerJsonProject extends AbstractController
     }
     #[Route('/proj/api/energy-share-total', name: 'api_energy_share_total')]
     public function getEnergyShare(
-    RenewableEnergyShareRepository $repo
-    ): Response
-{
-    $data = $repo->findAll();
-    $result = [];
+        RenewableEnergyShareRepository $repo
+    ): Response {
+        $data = $repo->findAll();
+        $result = [];
 
-    foreach($data as $item) {
-    $result[] = [
-        'year' => $item->getYear(),
-        'total' => $item->getTotal(),
-        'value' => $item->getHeatCoolingIndustry(),
-    ];
-}
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'total' => $item->getTotal(),
+                'value' => $item->getHeatCoolingIndustry(),
+            ];
+        }
 
-     $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
     #[Route('/proj/api/energy-intensity', name: 'api_energy_intensity')]
     public function getEnergyIntensity(
         EnergyIntensityRepository $repo
-        ): Response
-    {
+    ): Response {
         $data = $repo->findAll();
         $result = [];
 
-        foreach($data as $item) {
-        $result[] = [
-            'year' => $item->getYear(),
-            'value' => $item->getIntensityChangePercent()
-        ];
-    }
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'value' => $item->getIntensityChangePercent()
+            ];
+        }
 
-     $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
@@ -85,100 +83,96 @@ final class ControllerJsonProject extends AbstractController
     // Den här route visar endast el och transporter för enklare API-användning i frontend.
     #[Route('/proj/api/energy-share-el', name: 'api_energy_share-el')]
     public function getEnergyShareEL(
-    RenewableEnergyShareRepository $repo
-    ): Response
-{
-    $data = $repo->findAll();
-    $result = [];
+        RenewableEnergyShareRepository $repo
+    ): Response {
+        $data = $repo->findAll();
+        $result = [];
 
-    foreach($data as $item) {
-    $result[] = [
-        'year' => $item->getYear(),
-        'el' => $item->getElectricity(),
-        'transport' => $item->getTransport(),
-    ];
-}
-    $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'el' => $item->getElectricity(),
+                'transport' => $item->getTransport(),
+            ];
+        }
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
 
     #[Route('/proj/api/energy-TWh', name: 'api_energy_TWh')]
     public function getEnergyTWh(
-    RenewableEnergyTWhRepository $repo
-    ): Response
-{
-    $data = $repo->findAll();
-    $result = [];
+        RenewableEnergyTWhRepository $repo
+    ): Response {
+        $data = $repo->findAll();
+        $result = [];
 
-    foreach($data as $item) {
-    $result[] = [
-        'year' => $item->getYear(),
-        'bio' => $item->getBiofuels(),
-        'hydro' => $item->getHydropower(),
-        'wind' => $item->getWindPower(),
-        'heat' => $item->getHeatPumps(),
-        'solar' => $item->getSolarEnergy(),
-    ];
-}
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'bio' => $item->getBiofuels(),
+                'hydro' => $item->getHydropower(),
+                'wind' => $item->getWindPower(),
+                'heat' => $item->getHeatPumps(),
+                'solar' => $item->getSolarEnergy(),
+            ];
+        }
 
-     $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
- #[Route('/proj/api/TWh-total', name: 'api_TWh_total')]
+    #[Route('/proj/api/TWh-total', name: 'api_TWh_total')]
     public function getTotalInTWh(
-    RenewableEnergyTWhRepository $repo
-    ): Response
-{
-    $data = $repo->findAll();
-    $result = [];
+        RenewableEnergyTWhRepository $repo
+    ): Response {
+        $data = $repo->findAll();
+        $result = [];
 
-    foreach($data as $item) {
-    $result[] = [
-        'year' => $item->getYear(),
-        'TWh-total' => $item->getTotal(),
-        'total-use' => $item->getTotalEnergyUse(),
-    ];
-}
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'TWh-total' => $item->getTotal(),
+                'total-use' => $item->getTotalEnergyUse(),
+            ];
+        }
 
-     $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
     #[Route('/proj/api/TWh-target', name: 'api_TWh_target')]
     public function getTarget(
-    RenewableEnergyTWhRepository $repo
-    ): Response
-{
-    $data = $repo->findAll();
-    $result = [];
+        RenewableEnergyTWhRepository $repo
+    ): Response {
+        $data = $repo->findAll();
+        $result = [];
 
-    foreach($data as $item) {
-    $result[] = [
-        'year' => $item->getYear(),
-        'statistical' => $item->getStatisticalTransfer(),
-        'target' => $item->getTargetCalculation(),
-    ];
-}
+        foreach ($data as $item) {
+            $result[] = [
+                'year' => $item->getYear(),
+                'statistical' => $item->getStatisticalTransfer(),
+                'target' => $item->getTargetCalculation(),
+            ];
+        }
 
-     $response = $this->json($result);
-    $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    );
-    return $response;
+        $response = $this->json($result);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
 
     }
 
@@ -187,11 +181,11 @@ final class ControllerJsonProject extends AbstractController
     public function filterTWhByYearAndType(
         Request $request,
         RenewableEnergyTWhRepository $repo
-        ): Response
-    {
+    ): Response {
         $json = $request->getContent();
         $data = json_decode($json, true);
 
+        /** @var array{year?: int, type?: string} $data */
         $year = $data['year'] ?? null;
         $type = $data['type'] ?? null;
 
@@ -201,11 +195,16 @@ final class ControllerJsonProject extends AbstractController
             if ($item->getYear() == $year) {
                 $value = null;
                 switch ($type) {
-                    case 'bio': $value = $item->getBiofuels(); break;
-                    case 'hydro': $value = $item->getHydropower(); break;
-                    case 'wind': $value = $item->getWindPower(); break;
-                    case 'heat': $value = $item->getHeatPumps(); break;
-                    case 'solar': $value = $item->getSolarEnergy(); break;
+                    case 'bio': $value = $item->getBiofuels();
+                        break;
+                    case 'hydro': $value = $item->getHydropower();
+                        break;
+                    case 'wind': $value = $item->getWindPower();
+                        break;
+                    case 'heat': $value = $item->getHeatPumps();
+                        break;
+                    case 'solar': $value = $item->getSolarEnergy();
+                        break;
                 }
                 if ($value !== null) {
                     $result[] = [
@@ -217,7 +216,7 @@ final class ControllerJsonProject extends AbstractController
         }
         $response = $this->json($result);
         $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }

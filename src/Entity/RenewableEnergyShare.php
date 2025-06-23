@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: "renewable_energy_share")]
 class RenewableEnergyShare
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

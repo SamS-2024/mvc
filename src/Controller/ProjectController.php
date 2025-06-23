@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\RenewableEnergyShare;
-use App\Controller\ProjectHelpers;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +41,7 @@ class ProjectController extends AbstractController
         return $this->render('Project/search.html.twig');
     }
 
-     #[Route("proj/session", name: "show_proj_session")]
+    #[Route("proj/session", name: "show_proj_session")]
     public function session(
         SessionInterface $session
     ): Response {
@@ -72,8 +71,7 @@ class ProjectController extends AbstractController
     #[Route('/proj/import-csv', name: 'proj_import_csv')]
     public function importAll(
         EntityManagerInterface $entityManager
-        ): Response
-    {
+    ): Response {
         $this->importRenewableEnergyShare($entityManager);
         $this->importRenewableEnergyTWh($entityManager);
         $this->importEnergyIntensityPerGDP($entityManager);

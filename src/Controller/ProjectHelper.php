@@ -21,7 +21,7 @@ trait ProjectHelper
         $file = __DIR__ . '/../data/' . $fileName;
 
         if (!file_exists($file)) {
-           throw new Exception('CSV file not found: ' . $fileName);
+            throw new Exception('CSV file not found: ' . $fileName);
         }
 
         // Öppnar en fil för läsning.
@@ -42,18 +42,17 @@ trait ProjectHelper
 
     public function importRenewableEnergyShare(
         EntityManagerInterface $entityManager
-        ): void
-    {
+    ): void {
         $rows = $this->readCsv('renewable_energy_share.csv');
         $years = $rows[0];
         $data = array_slice($rows, 1);
 
-       $entityManager->getConnection()->executeStatement('DELETE FROM renewable_energy_share');
+        $entityManager->getConnection()->executeStatement('DELETE FROM renewable_energy_share');
 
-       // Återställer auto-increment också.
-       $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='renewable_energy_share'");
+        // Återställer auto-increment också.
+        $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='renewable_energy_share'");
 
-       $length = count($years);
+        $length = count($years);
 
         for ($i = 1; $i < $length; $i++) {
             $entity = new RenewableEnergyShare();
@@ -71,18 +70,17 @@ trait ProjectHelper
 
     public function importRenewableEnergyTWh(
         EntityManagerInterface $entityManager
-        ): void
-    {
+    ): void {
         $rows = $this->readCsv('renewable_energy_TWh.csv');
         $years = $rows[0];
         $data = array_slice($rows, 1);
 
         $entityManager->getConnection()->executeStatement('DELETE FROM renewable_energy_twh');
 
-       // Återställer auto-increment också.
-       $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='renewable_energy_twh'");
+        // Återställer auto-increment också.
+        $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='renewable_energy_twh'");
 
-       $length = count($years);
+        $length = count($years);
 
         for ($i = 1; $i <  $length; $i++) {
             $entity = new RenewableEnergyTWh();
@@ -104,18 +102,17 @@ trait ProjectHelper
 
     public function importEnergyIntensityPerGDP(
         EntityManagerInterface $entityManager
-        ): void
-    {
+    ): void {
         $rows = $this->readCsv('energy_intensity.csv');
         $years = $rows[0];
         $data = array_slice($rows, 1);
 
         $entityManager->getConnection()->executeStatement('DELETE FROM energy_intensity_per_gdp');
 
-       // Återställer auto-increment också.
-       $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='energy_intensity_per_gdp'");
+        // Återställer auto-increment också.
+        $entityManager->getConnection()->executeStatement("DELETE FROM sqlite_sequence WHERE name='energy_intensity_per_gdp'");
 
-       $length = count($years);
+        $length = count($years);
 
         for ($i = 1; $i <  $length; $i++) {
             $entity = new EnergyIntensityPerGDP();

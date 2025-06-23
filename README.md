@@ -23,8 +23,13 @@ You have installed Composer, the PHP package manager.
 About this repo:
 -----------------
 
-This repo is part of the MVC course and contains the project details for all course modules and assignments.
+This repo is part of the MVC course in the Web Development program. It contains solutions to all course modules (kmom01–kmom06) as well as a final project (kmom10).
 
+Each module focuses on different parts of MVC architecture, Symfony, routing, templating, and working with databases using Doctrine ORM.
+
+The final project is a standalone section of the website, accessible via the main site's navigation. It features its own layout and navigation bar. The project demonstrates how to build and provide access to a REST API with multiple GET and POST routes. The API connects to a database using Doctrine ORM and allows user interaction through a form.
+
+JavaScript modules are used to fetch data from the API and visualize it in the form of charts.
 
 Link to the repo:
 https://github.com/SamS-2024/mvc

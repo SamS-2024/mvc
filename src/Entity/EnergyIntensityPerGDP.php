@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 class EnergyIntensityPerGDP
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -19,7 +18,7 @@ class EnergyIntensityPerGDP
     private ?int $year = null;
 
     #[ORM\Column(type:"float", nullable:true)]
-    // private ?float $percentChange = null;
+
     private ?float $intensityChangePercent = null;
 
 
