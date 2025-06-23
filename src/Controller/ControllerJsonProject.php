@@ -2,13 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\RenewableEnergyShare;
-use App\Entity\RenewableEnergyTWh;
-use App\Entity\EnergyIntensityPerGDP;
 use App\Repository\RenewableEnergyShareRepository;
 use App\Repository\RenewableEnergyTWhRepository;
 use App\Repository\EnergyIntensityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +30,7 @@ final class ControllerJsonProject extends AbstractController
 
         return $this->render('Project/api-proj.html.twig', ['data' => $data]);
     }
+
     #[Route('/proj/api/energy-share-total', name: 'api_energy_share_total')]
     public function getEnergyShare(
         RenewableEnergyShareRepository $repo
@@ -49,12 +46,7 @@ final class ControllerJsonProject extends AbstractController
             ];
         }
 
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
+        return $this->createJsonResponse($result);
     }
 
     #[Route('/proj/api/energy-intensity', name: 'api_energy_intensity')]
@@ -71,12 +63,7 @@ final class ControllerJsonProject extends AbstractController
             ];
         }
 
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
+        return $this->createJsonResponse($result);
     }
 
     // Detaljerad api
@@ -95,12 +82,8 @@ final class ControllerJsonProject extends AbstractController
                 'transport' => $item->getTransport(),
             ];
         }
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
 
+        return $this->createJsonResponse($result);
     }
 
 
@@ -122,12 +105,7 @@ final class ControllerJsonProject extends AbstractController
             ];
         }
 
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
+        return $this->createJsonResponse($result);
     }
 
     #[Route('/proj/api/TWh-total', name: 'api_TWh_total')]
@@ -145,12 +123,7 @@ final class ControllerJsonProject extends AbstractController
             ];
         }
 
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
+        return $this->createJsonResponse($result);
     }
 
     #[Route('/proj/api/TWh-target', name: 'api_TWh_target')]
@@ -168,12 +141,7 @@ final class ControllerJsonProject extends AbstractController
             ];
         }
 
-        $response = $this->json($result);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
+        return $this->createJsonResponse($result);
     }
 
     // En route för filtrering
@@ -214,11 +182,16 @@ final class ControllerJsonProject extends AbstractController
                 }
             }
         }
-        $response = $this->json($result);
+
+        return $this->createJsonResponse($result);
+    }
+
+    private function createJsonResponse(array $data): Response
+    {
+        $response = $this->json($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
-
 }

@@ -8,6 +8,9 @@ use App\Entity\EnergyIntensityPerGDP;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 
+/**
+ * Trait for importing energy statistics from CSV files into the database.
+ */
 trait ProjectHelper
 {
     /**
@@ -40,6 +43,12 @@ trait ProjectHelper
         return $rows;
     }
 
+    /**
+     * Imports data from 'renewable_energy_share.csv' into the database.
+     *
+     * @param EntityManagerInterface $entityManager Doctrine entity manager.
+     * @return void
+     */
     public function importRenewableEnergyShare(
         EntityManagerInterface $entityManager
     ): void {
@@ -68,6 +77,12 @@ trait ProjectHelper
         $entityManager->flush();
     }
 
+    /**
+     * Imports data from 'renewable_energy_TWh.csv' into the database.
+     *
+     * @param EntityManagerInterface $entityManager Doctrine entity manager.
+     * @return void
+     */
     public function importRenewableEnergyTWh(
         EntityManagerInterface $entityManager
     ): void {
@@ -100,6 +115,12 @@ trait ProjectHelper
         $entityManager->flush();
     }
 
+    /**
+     * Imports data from 'energy_intensity.csv' into the database.
+     *
+     * @param EntityManagerInterface $entityManager Doctrine entity manager.
+     * @return void
+     */
     public function importEnergyIntensityPerGDP(
         EntityManagerInterface $entityManager
     ): void {
