@@ -9,6 +9,7 @@ build:
 
     nodes:
         my-tests:
+            checkout: true
             commands:
                 - composer install
                 - php bin/console doctrine:schema:create --env=test
