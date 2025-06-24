@@ -9,6 +9,11 @@ build:
 
     nodes:
         my-tests:
+            commands:
+                - composer install
+                - php bin/console doctrine:schema:create --env=test
+                - composer phpunit
+
             environment:
                 php:
                     version: 8.3.3
