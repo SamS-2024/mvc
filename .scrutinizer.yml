@@ -10,9 +10,6 @@ build:
 
     nodes:
         my-tests:
-            commands:
-                - php bin/console doctrine:schema:create --env=test
-
             environment:
                 php:
                     version: 8.3.3
