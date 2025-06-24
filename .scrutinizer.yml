@@ -25,6 +25,7 @@ build:
                     # version: 8.1.17
                     # version: 8.2.4
         analysis:
+            root_path: /scrutinizer/build
             tests:
                 override:
                     - php-scrutinizer-run
