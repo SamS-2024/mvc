@@ -10,6 +10,8 @@ build:
 
     nodes:
         my-tests:
+            root_path: /scrutinizer/build
+
             commands:
                 - ls -la
                 - pwd
