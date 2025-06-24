@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use App\Repository\RenewableEnergyShareRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: RenewableEnergyShareRepository::class)]
 #[ORM\Table(name: "renewable_energy_share")]
 class RenewableEnergyShare
 {

@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
+use App\Repository\EnergyIntensityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: EnergyIntensityRepository::class)]
 class EnergyIntensityPerGDP
 {
     #[ORM\Id]
