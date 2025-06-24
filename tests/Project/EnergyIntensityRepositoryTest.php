@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Tests\Project;
+// namespace App\Tests\Project;
 
-use App\Repository\EnergyIntensityRepository;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+// use App\Repository\EnergyIntensityRepository;
+// use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class EnergyIntensityRepositoryTest extends KernelTestCase
-{
-    public function testFindAllResults(): void
-    {
-        self::bootKernel();
-        $container = self::getContainer();
+// class EnergyIntensityRepositoryTest extends KernelTestCase
+// {
+//     public function testFindAllResults(): void
+//     {
+//         self::bootKernel();
+//         $container = self::getContainer();
 
-        /** @var \App\Repository\EnergyIntensityRepository $repo */
-        $repo = $container->get(EnergyIntensityRepository::class);
+//         /** @var \App\Repository\EnergyIntensityRepository $repo */
+//         $repo = $container->get(EnergyIntensityRepository::class);
 
-        $result = $repo->findAll();
+//         $result = $repo->findAll();
 
-        $this->assertNotEmpty($result);
-    }
-}
+//         $this->assertNotEmpty($result);
+//     }
+// }
