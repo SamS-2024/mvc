@@ -526,6 +526,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ControllerJsonProject.html#method_filterTWhByYearAndType"
         },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonProject\u003A\u003AcreateJsonResponse\u0028\u0029",
+            "name": "createJsonResponse",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonProject.html#method_createJsonResponse"
+        },                {
             "fqsen": "\\App\\Controller\\DiceGameController",
             "name": "DiceGameController",
             "summary": "",
@@ -873,7 +878,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ProjectHelper",
             "name": "ProjectHelper",
-            "summary": "",
+            "summary": "Trait\u0020for\u0020importing\u0020energy\u0020statistics\u0020from\u0020CSV\u0020files\u0020into\u0020the\u0020database.",
             "url": "classes/App-Controller-ProjectHelper.html"
         },                {
             "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AreadCsv\u0028\u0029",
@@ -883,17 +888,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportRenewableEnergyShare\u0028\u0029",
             "name": "importRenewableEnergyShare",
-            "summary": "",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_share.csv\u0027\u0020into\u0020the\u0020database.",
             "url": "classes/App-Controller-ProjectHelper.html#method_importRenewableEnergyShare"
         },                {
             "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportRenewableEnergyTWh\u0028\u0029",
             "name": "importRenewableEnergyTWh",
-            "summary": "",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_TWh.csv\u0027\u0020into\u0020the\u0020database.",
             "url": "classes/App-Controller-ProjectHelper.html#method_importRenewableEnergyTWh"
         },                {
             "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportEnergyIntensityPerGDP\u0028\u0029",
             "name": "importEnergyIntensityPerGDP",
-            "summary": "",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027energy_intensity.csv\u0027\u0020into\u0020the\u0020database.",
             "url": "classes/App-Controller-ProjectHelper.html#method_importEnergyIntensityPerGDP"
         },                {
             "fqsen": "\\App\\Dice\\Dice",
@@ -1243,107 +1248,107 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Get\u0020the\u0020entity\u0020ID.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getId"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetYear\u0028\u0029",
             "name": "getYear",
-            "summary": "",
+            "summary": "Get\u0020the\u0020year.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getYear"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetYear\u0028\u0029",
             "name": "setYear",
-            "summary": "",
+            "summary": "Set\u0020the\u0020year.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setYear"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetBiofuels\u0028\u0029",
             "name": "getBiofuels",
-            "summary": "",
+            "summary": "Get\u0020biofuels\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getBiofuels"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetBiofuels\u0028\u0029",
             "name": "setBiofuels",
-            "summary": "",
+            "summary": "Set\u0020biofuels\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setBiofuels"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetHydropower\u0028\u0029",
             "name": "getHydropower",
-            "summary": "",
+            "summary": "Get\u0020hydropower\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getHydropower"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetHydropower\u0028\u0029",
             "name": "setHydropower",
-            "summary": "",
+            "summary": "Set\u0020hydropower\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setHydropower"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetWindPower\u0028\u0029",
             "name": "getWindPower",
-            "summary": "",
+            "summary": "Get\u0020wind\u0020power\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getWindPower"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetWindPower\u0028\u0029",
             "name": "setWindPower",
-            "summary": "",
+            "summary": "Set\u0020wind\u0020power\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setWindPower"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetHeatPumps\u0028\u0029",
             "name": "getHeatPumps",
-            "summary": "",
+            "summary": "Get\u0020heat\u0020pumps\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getHeatPumps"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetHeatPumps\u0028\u0029",
             "name": "setHeatPumps",
-            "summary": "",
+            "summary": "Set\u0020heat\u0020pumps\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setHeatPumps"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetSolarEnergy\u0028\u0029",
             "name": "getSolarEnergy",
-            "summary": "",
+            "summary": "Get\u0020solar\u0020energy\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getSolarEnergy"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetSolarEnergy\u0028\u0029",
             "name": "setSolarEnergy",
-            "summary": "",
+            "summary": "Set\u0020solar\u0020energy\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setSolarEnergy"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetTotal\u0028\u0029",
             "name": "getTotal",
-            "summary": "",
+            "summary": "Get\u0020total\u0020renewable\u0020energy\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getTotal"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetTotal\u0028\u0029",
             "name": "setTotal",
-            "summary": "",
+            "summary": "Set\u0020total\u0020renewable\u0020energy\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setTotal"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetStatisticalTransfer\u0028\u0029",
             "name": "getStatisticalTransfer",
-            "summary": "",
+            "summary": "Get\u0020statistical\u0020transfer\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getStatisticalTransfer"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetStatisticalTransfer\u0028\u0029",
             "name": "setStatisticalTransfer",
-            "summary": "",
+            "summary": "Set\u0020statistical\u0020transfer\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setStatisticalTransfer"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetTargetCalculation\u0028\u0029",
             "name": "getTargetCalculation",
-            "summary": "",
+            "summary": "Get\u0020value\u0020used\u0020for\u0020target\u0020calculation\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getTargetCalculation"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetTargetCalculation\u0028\u0029",
             "name": "setTargetCalculation",
-            "summary": "",
+            "summary": "Set\u0020value\u0020used\u0020for\u0020target\u0020calculation\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setTargetCalculation"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AgetTotalEnergyUse\u0028\u0029",
             "name": "getTotalEnergyUse",
-            "summary": "",
+            "summary": "Get\u0020total\u0020energy\u0020use\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_getTotalEnergyUse"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003AsetTotalEnergyUse\u0028\u0029",
             "name": "setTotalEnergyUse",
-            "summary": "",
+            "summary": "Set\u0020total\u0020energy\u0020use\u0020in\u0020TWh.",
             "url": "classes/App-Entity-RenewableEnergyTWh.html#method_setTotalEnergyUse"
         },                {
             "fqsen": "\\App\\Entity\\RenewableEnergyTWh\u003A\u003A\u0024id",
