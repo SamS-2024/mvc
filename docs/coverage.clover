@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750807819">
-  <project timestamp="1750807819">
+<coverage generated="1750844989">
+  <project timestamp="1750844989">
     <file name="/Users/sams./dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="21" coveredelements="21"/>
@@ -1114,10 +1114,10 @@
     </file>
     <file name="/Users/sams./dbwebb-kurser/mvc/me/report/src/Entity/EnergyIntensityPerGDP.php">
       <class name="App\Entity\EnergyIntensityPerGDP" namespace="global">
-        <metrics complexity="5" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="12" coveredelements="10"/>
+        <metrics complexity="5" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
       </class>
-      <line num="26" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
+      <line num="26" type="method" name="getId" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="28" type="stmt" count="1"/>
       <line num="30" type="method" name="getYear" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="32" type="stmt" count="1"/>
       <line num="34" type="method" name="setYear" visibility="public" complexity="1" crap="1" count="1"/>
@@ -1128,7 +1128,7 @@
       <line num="43" type="method" name="setIntensityChangePercent" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="45" type="stmt" count="1"/>
       <line num="46" type="stmt" count="1"/>
-      <metrics loc="49" ncloc="49" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="12" coveredelements="10"/>
+      <metrics loc="49" ncloc="49" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
     </file>
     <file name="/Users/sams./dbwebb-kurser/mvc/me/report/src/Entity/Product.php">
       <class name="App\Entity\Product" namespace="global">
@@ -1300,6 +1300,6 @@
       <line num="18" type="stmt" count="0"/>
       <metrics loc="21" ncloc="17" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
     </file>
-    <metrics files="36" loc="3463" ncloc="2710" classes="35" methods="211" coveredmethods="85" conditionals="0" coveredconditionals="0" statements="872" coveredstatements="173" elements="1083" coveredelements="258"/>
+    <metrics files="36" loc="3463" ncloc="2710" classes="35" methods="211" coveredmethods="86" conditionals="0" coveredconditionals="0" statements="872" coveredstatements="174" elements="1083" coveredelements="260"/>
   </project>
 </coverage>

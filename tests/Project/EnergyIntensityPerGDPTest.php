@@ -10,6 +10,7 @@ class EnergyIntensityPerGDPTest extends TestCase
     public function testSetAndGetYear(): void
     {
         $entity = new EnergyIntensityPerGDP();
+        $this->assertNull($entity->getId());
         $entity->setYear(2015);
         $this->assertEquals(2015, $entity->getYear());
     }
