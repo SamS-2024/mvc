@@ -7,6 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class RenewableEnergyShareTest extends TestCase
 {
+    public function testGetId(): void
+    {
+        $entity = new RenewableEnergyShare();
+        $this->assertNull($entity->getId());
+    }
     public function testSetAndGetYear(): void
     {
         $entity = new RenewableEnergyShare();

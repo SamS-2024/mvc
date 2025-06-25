@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\RenewableEnergyTWhRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-
 #[ORM\Entity(repositoryClass: RenewableEnergyTWhRepository::class)]
 class RenewableEnergyTWh
 {

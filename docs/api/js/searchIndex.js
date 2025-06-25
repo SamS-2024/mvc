@@ -876,31 +876,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjectController.html#method_importAll"
         },                {
-            "fqsen": "\\App\\Controller\\ProjectHelper",
-            "name": "ProjectHelper",
-            "summary": "Trait\u0020for\u0020importing\u0020energy\u0020statistics\u0020from\u0020CSV\u0020files\u0020into\u0020the\u0020database.",
-            "url": "classes/App-Controller-ProjectHelper.html"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AreadCsv\u0028\u0029",
-            "name": "readCsv",
-            "summary": "Reads\u0020a\u0020CSV\u0020file\u0020and\u0020returns\u0020raw\u0020rows\u0020\u0028including\u0020header\u0029.",
-            "url": "classes/App-Controller-ProjectHelper.html#method_readCsv"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportRenewableEnergyShare\u0028\u0029",
-            "name": "importRenewableEnergyShare",
-            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_share.csv\u0027\u0020into\u0020the\u0020database.",
-            "url": "classes/App-Controller-ProjectHelper.html#method_importRenewableEnergyShare"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportRenewableEnergyTWh\u0028\u0029",
-            "name": "importRenewableEnergyTWh",
-            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_TWh.csv\u0027\u0020into\u0020the\u0020database.",
-            "url": "classes/App-Controller-ProjectHelper.html#method_importRenewableEnergyTWh"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectHelper\u003A\u003AimportEnergyIntensityPerGDP\u0028\u0029",
-            "name": "importEnergyIntensityPerGDP",
-            "summary": "Imports\u0020data\u0020from\u0020\u0027energy_intensity.csv\u0027\u0020into\u0020the\u0020database.",
-            "url": "classes/App-Controller-ProjectHelper.html#method_importEnergyIntensityPerGDP"
-        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
             "summary": "Represents\u0020a\u0020six\u002Dsided\u0020die\u0020with\u0020roll\u0020and\u0020display\u0020functionality.",
@@ -1471,6 +1446,71 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-RenewableEnergyTWhRepository.html#method___construct"
         },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait",
+            "name": "EnergyFormatterTrait",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatEnergyShareTotal\u0028\u0029",
+            "name": "formatEnergyShareTotal",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatEnergyShareTotal"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatEnergyShareEL\u0028\u0029",
+            "name": "formatEnergyShareEL",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatEnergyShareEL"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatEnergyIntensity\u0028\u0029",
+            "name": "formatEnergyIntensity",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatEnergyIntensity"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatEnergyTWh\u0028\u0029",
+            "name": "formatEnergyTWh",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatEnergyTWh"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatTotalInTWh\u0028\u0029",
+            "name": "formatTotalInTWh",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatTotalInTWh"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AformatTarget\u0028\u0029",
+            "name": "formatTarget",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_formatTarget"
+        },                {
+            "fqsen": "\\App\\Trait\\EnergyFormatterTrait\u003A\u003AfilterTWhDataByYearAndType\u0028\u0029",
+            "name": "filterTWhDataByYearAndType",
+            "summary": "",
+            "url": "classes/App-Trait-EnergyFormatterTrait.html#method_filterTWhDataByYearAndType"
+        },                {
+            "fqsen": "\\App\\Trait\\ProjectHelper",
+            "name": "ProjectHelper",
+            "summary": "Trait\u0020for\u0020importing\u0020energy\u0020statistics\u0020from\u0020CSV\u0020files\u0020into\u0020the\u0020database.",
+            "url": "classes/App-Trait-ProjectHelper.html"
+        },                {
+            "fqsen": "\\App\\Trait\\ProjectHelper\u003A\u003AreadCsv\u0028\u0029",
+            "name": "readCsv",
+            "summary": "Reads\u0020a\u0020CSV\u0020file\u0020and\u0020returns\u0020raw\u0020rows\u0020\u0028including\u0020header\u0029.",
+            "url": "classes/App-Trait-ProjectHelper.html#method_readCsv"
+        },                {
+            "fqsen": "\\App\\Trait\\ProjectHelper\u003A\u003AimportRenewableEnergyShare\u0028\u0029",
+            "name": "importRenewableEnergyShare",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_share.csv\u0027\u0020into\u0020the\u0020database.",
+            "url": "classes/App-Trait-ProjectHelper.html#method_importRenewableEnergyShare"
+        },                {
+            "fqsen": "\\App\\Trait\\ProjectHelper\u003A\u003AimportRenewableEnergyTWh\u0028\u0029",
+            "name": "importRenewableEnergyTWh",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027renewable_energy_TWh.csv\u0027\u0020into\u0020the\u0020database.",
+            "url": "classes/App-Trait-ProjectHelper.html#method_importRenewableEnergyTWh"
+        },                {
+            "fqsen": "\\App\\Trait\\ProjectHelper\u003A\u003AimportEnergyIntensityPerGDP\u0028\u0029",
+            "name": "importEnergyIntensityPerGDP",
+            "summary": "Imports\u0020data\u0020from\u0020\u0027energy_intensity.csv\u0027\u0020into\u0020the\u0020database.",
+            "url": "classes/App-Trait-ProjectHelper.html#method_importEnergyIntensityPerGDP"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1505,5 +1545,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Trait",
+            "name": "Trait",
+            "summary": "",
+            "url": "namespaces/app-trait.html"
         }            ]
 );

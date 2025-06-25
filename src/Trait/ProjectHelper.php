@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Trait;
 
 use App\Entity\RenewableEnergyShare;
 use App\Entity\RenewableEnergyTWh;

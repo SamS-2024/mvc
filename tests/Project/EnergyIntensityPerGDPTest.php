@@ -7,10 +7,15 @@ use PHPUnit\Framework\TestCase;
 
 class EnergyIntensityPerGDPTest extends TestCase
 {
-    public function testSetAndGetYear(): void
+    public function testGetId(): void
     {
         $entity = new EnergyIntensityPerGDP();
         $this->assertNull($entity->getId());
+    }
+
+    public function testSetAndGetYear(): void
+    {
+        $entity = new EnergyIntensityPerGDP();
         $entity->setYear(2015);
         $this->assertEquals(2015, $entity->getYear());
     }
