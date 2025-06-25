@@ -24,7 +24,7 @@ build:
                     #- phpcs-run # Not used, missing config file
     tests:
         override:
-            -   command: "composer phpunit"
+            -   command: "vendor/bin/phpunit --exclude-group=repo"
                 # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
                 coverage:
                     file: "docs/coverage.clover"

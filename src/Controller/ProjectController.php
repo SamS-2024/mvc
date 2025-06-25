@@ -34,6 +34,13 @@ class ProjectController extends AbstractController
         return $this->render('Project/about-proj.html.twig');
     }
 
+    #[Route("/proj/about/database", name: "proj_about_database")]
+    public function projDatabase(): Response
+    {
+
+        return $this->render('Project/proj-database.html.twig');
+    }
+
 
     #[Route("/proj/search", name: "search_proj")]
     public function searchProj(): Response
@@ -42,32 +49,7 @@ class ProjectController extends AbstractController
         return $this->render('Project/search.html.twig');
     }
 
-    #[Route("proj/session", name: "show_proj_session")]
-    public function session(
-        SessionInterface $session
-    ): Response {
 
-        $data = [
-            "session" => $session->all()
-        ];
-
-        return $this->render('Project/session.html.twig', $data);
-    }
-
-    #[Route("proj/session/delete", name: "delete_proj_session")]
-    public function deleteSession(
-        SessionInterface $session
-    ): Response {
-
-        $session->clear();
-
-        $this->addFlash(
-            'notice',
-            'The session is deleted!'
-        );
-
-        return $this->redirectToRoute('show_proj_session');
-    }
 
     #[Route('/proj/import-csv', name: 'proj_import_csv')]
     public function importAll(

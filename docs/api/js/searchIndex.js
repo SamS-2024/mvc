@@ -856,20 +856,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjectController.html#method_aboutProj"
         },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AprojDatabase\u0028\u0029",
+            "name": "projDatabase",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectController.html#method_projDatabase"
+        },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AsearchProj\u0028\u0029",
             "name": "searchProj",
             "summary": "",
             "url": "classes/App-Controller-ProjectController.html#method_searchProj"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Asession\u0028\u0029",
-            "name": "session",
-            "summary": "",
-            "url": "classes/App-Controller-ProjectController.html#method_session"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AdeleteSession\u0028\u0029",
-            "name": "deleteSession",
-            "summary": "",
-            "url": "classes/App-Controller-ProjectController.html#method_deleteSession"
         },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AimportAll\u0028\u0029",
             "name": "importAll",

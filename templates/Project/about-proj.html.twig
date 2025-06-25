@@ -3,7 +3,7 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1 class="about-title">Om projektet</h1>
+    <h1 class="proj-h1">Om projektet</h1>
         <div class="about-container">
             <div class="about-text">
                 <p>
@@ -28,8 +28,10 @@
                     information om energianvändning och samtidigt bidra till ökad medvetenhet om hållbarhet.
                 </p>
             </div>
+        </div>
 
-
+        <div class="link-container-button">
+            <a href="{{ path('proj_about_database') }}" class="links">Om databasen</a>
         </div>
 
 {% endblock %}

@@ -132,13 +132,11 @@ footer {
     margin-bottom: 10px;
 }
 
-
-/* Kmom02 */
-.link-container {
+.link-container-button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
@@ -146,19 +144,23 @@ footer {
     align-self: self-start;
     margin: 10px;
     text-decoration: none;
-    /* background-color: #007aff; */
-    background-color: #BFA75A;
-    color: #000000;
-    font-weight: 400;
+    background-color: #dedee0;
+    color: #333;
+    font-weight: 500;
     border: 0;
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 16px;
-    transition: background-color 0.3s; /* Mjuk övergång på hover */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.15); /* mjuk skugga under */
 }
 
 .links:hover {
-    background-color: #D1B85D;
+    background-color: #d4d4d8;
+    transform: translateY(-3px); /* Flyttar upp knappen lite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Lite starkare skugga vid hover */
 }
 
 
