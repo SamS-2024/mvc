@@ -256,65 +256,298 @@
                         och mätvärden som inte alltid är självklara. Det som kändes mest användbart var informationen om antal kodrader, längden på
                         metoder och komplexitet, dessa delar gick att förstå och relatera till mer direkt jämfört med andra, mer abstrakta mätvärden.
                         De färgade cirklarna i rapporterna var också hjälpsamma för att snabbt se vilka klasser eller metoder som behövde förbättras.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Det gick relativt smidigt att integrera repot med Scrutinizer. Själva analysen tog ganska lång tid vid första körningen,
                         men när resultatet väl kom upp visades direkt höga värden. Kodkvaliteten klassades som very good med ett värde på 10, och
                         alla betyg låg på A. Samtliga badges visade positiva resultat: "Build passed", "Scrutinizer 10", med mera.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Kodtäckningen låg däremot på 23 %. Detta beror på att tester endast implementerades i de uppgifter där det var ett krav,
                         främst på grund av tidsbrist och bristande erfarenhet av hur man testar controllers. Det hade varit värdefullt att få öva
                         på ett exempel där man steg för steg lär sig testa en mer komplex controller.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Första intrycket av Scrutinizer var ändå positivt. Det kändes mer lättförståeligt än PHP Metrics, även om det inte innehåller
                         samma typer av visuella element som cirklar. Navigeringen var till en början lite förvirrande, men efter att ha sett en kort
                         introduktionsvideo gick det snabbt att komma in i hur verktyget fungerade.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Min syn på kodkvalitet är att det är ett viktigt mål att sträva efter, men att det inte alltid är enkelt att definiera exakt
                         vad "bra kod" innebär. Det är positivt att det finns verktyg och automatiska tester som försöker mäta kvalitet och ge tydlig
                         feedback, till exempel genom badges. Dessa kan i viss mån hjälpa till att påvisa att koden uppfyller vissa tekniska kriterier, vilket kan vara användbart både för
                         en själv och för andra som läser eller jobbar vidare med koden.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Samtidigt finns det en baksida när man använder dessa verktyg rent generellt enligt min upplevelse. För att få höga mätvärden
                         krävs det ibland att man skriver om sin kod på ett sätt som inte alltid känns naturligt eller som gör strukturen mer splittrad.
                         Det kan till exempel handla om att överdrivet dela upp en klass i flera filer, vilket kan göra det svårare att få en överblick.
                         Då riskerar man att optimera för verktyget snarare än för läsbarhet eller egen förståelse.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Det är därför svårt att säga om dessa verktyg eller badges i sig verkligen visar på god kodkvalitet, men de kan absolut fungera
                         som en indikator. Verktygen hjälper en också att uppmärksamma sådant som kan förbättras för att göra koden mer underhållbar,
                         och det är en viktig aspekt att ta med sig vidare.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Det här kursmomentet har framför allt lärt mig hur komplext och omfattande det är att arbeta med kodkvalitet i efterhand,
                         särskilt i ett större projekt där koden inte från början varit strukturerad med clean code-principer i åtanke, inte i den omfattningen iaf.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Jag har också insett att verktyg som PHP Metrics och Scrutinizer kan vara både hjälpsamma och frustrerande. De pekar ut förbättringsområden,
                         men kan också leda till att man skriver kod främst för verktygen, på ett sätt som inte alltid känns naturligt.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Jag har lärt mig vikten av att tänka på struktur och underhållbarhet tidigt i ett projekt, och att det krävs övning och tid för
                         att kunna använda testning och kvalitetsverktyg på ett effektivt sätt.
-                    </p><br><br>
+                    </p><br>
 
                     <p>
                         Även om resultatet inte blev som man hoppats, har man ändå fått en bättre förståelse för vad som krävs för att skriva hållbar och lättförståelig kod.
                         Det har också blivit tydligt hur mycket tid och planering som faktiskt krävs.
                     </p>
+
+                </div>
+
+                <div id="kmom10">
+                    <h2>Kmom10</h2>
+                    <h3>Krav 1-3</h3>
+                    <h4 class="h4">Innehåll och utseende:</h4>
+                    <p>
+                        En landningssida skapades under sökvägen /proj och lades till i navigationsmenyn på report-sidan.
+                        Sidan fungerar som förstasida för projektets webbplats. Ett projektfokus valdes och implementerades
+                        inom projektets mappstruktur.
+                    </p><br>
+
+                    <p>
+                        Webbplatsen under /proj fick en egen visuell stil som skiljer sig från report-sidans utseende.
+                        För att skapa denna skillnad modifierades färger, typsnitt samt utformningen av header och footer.
+                        En separat stylesheet användes för att hantera projektets design. En ny navbar skapades specifikt för projektet.
+                    </p><br>
+
+                    <p>
+                        Denna navbar innehåller endast länkar som är relevanta för projektet. Ingen koppling till report-sidans navigation
+                        finns i projektets navbar. En ny sida med sökvägen /proj/about skapades för att ge information om projektets syfte.
+                        På about-sidan ges en kort introduktion till projektets innehåll och mål.
+                    </p><br>
+
+                    <p>
+                        Strukturen följer projektkraven och håller tydlig uppdelning mellan report och projekt. Navigeringen anpassades
+                        så att användaren lätt kan hitta inom projektet. All kod placerades i nya mappar och nya filer skapades. Js-moduler och kod hanterades
+                        i 'js/chartModule.js' och 'project.js'. Resultatet blev en separat webbdel med eget utseende och syfte.
+                    </p><br>
+
+                    <h4 class="h4">Repo och dokumentation:</h4>
+                    <p>
+                        README-filen fanns redan sedan ett tidigare kursmoment, men har nu uppdaterats inför projektet.
+                        I README beskrivs syftet med projektet samt innehållet i repot på ett övergripande sätt.
+                        Instruktioner har lagts till för hur man klonar repot och startar webbplatsen.
+                    </p><br>
+
+                    <p>
+                        Klickbara badges för build, coverage och quality skapades i tidigare moment, men pekar nu mot
+                        aktuella och uppdaterade Scrutinizer-rapporter. Innehållet i mappen docs/ har uppdaterats enligt
+                        projektets nuvarande struktur och funktion. Kodtäckningen för projektet möter kravet om att vara 'över 90%'.
+                    </p><br>
+
+                    <p>
+                        Dokumentation har genererats med hjälp av phpdoc som beskriver klasser, metoder och struktur i projektet
+                        och en rapport skapats med hjälp av phpmetrics.
+                    </p><br>
+
+                    <h3>Krav 4: JSON API</h3>
+
+                    <p>
+                        En JSON-controller med JSON API skapades och presenterades på sidan /proj/api enligt kraven.
+                        På sidan visas länkar som låter användaren testa de olika API-rutterna direkt i webbläsaren.
+                        POST-rutten testas genom en länk som leder till en separat sida med ett formulär där användaren
+                        kan mata in sina värden.
+                    </p><br>
+
+                    <p>
+                        Totalt skapades sju olika JSON-rutter, utöver huvudrutten, där både GET- och POST-metoder används.
+                        En av rutterna är en POST-route som används för att filtrera energidata baserat på användarens val.
+                    </p><br>
+
+                    <p>
+                        För POST-routen hämtas först alla poster från databasen via findAll(). Därefter skickas hela listan
+                        till en metod som tar emot parametrar för år och energityp. I metoden gås listan igenom, och endast de
+                        poster som matchar det valda året hanteras vidare. För varje objekt används en kontrollstruktur för att
+                        hämta rätt energivärde baserat på typen, till exempel bioenergi, vindkraft med mera.
+                    </p><br>
+
+                    <p>
+                        Resultatet samlas i en ny lista där varje post innehåller året och ett värde för den valda energitypen.
+                        All filtrering sker i PHP, efter att hela datasetet har hämtats, vilket innebär att villkor och datatyper
+                        behöver hanteras tydligt.
+                    </p><br>
+
+                    <p>
+                        Det används 'match' som ett alternativ till switch för att välja rätt energivärde beroende på typ.
+                        Den möjliggör en direkt koppling mellan data och metodanrop utan extra kod för jämförelse eller
+                        brytning.
+                    </p><br>
+
+                    <h3>Krav 5: ORM</h3>
+
+                    <p>
+                        En databaslösning byggdes med hjälp av SQLite och ORM via Doctrine. Tre tabeller skapades och definierades
+                        med hjälp av entity-klasser. Till varje entity hör en repository-klass som används för databasoperationer.
+                    </p><br>
+
+                    <p>
+                        Tabellen fylldes med data från SCB (Statistiska centralbyrån) via CSV-filer. Logiken låg i en projekt-controller
+                        och en hjälp-trait som finns i mappen 'Trait'. För att återställa innehållet under utveckling användes en lösning
+                        där tabellerna tömdes direkt med SQL-satser via databasanslutningen, och autoinkrement återställdes genom att
+                        radera poster i SQLite-sekvens-tabellen. Detta gjordes eftersom ORM verkade sakna stöd för att nollställa sekvenser i SQLite.
+                    </p><br>
+
+                    <p>
+                        Tidigare användes $entityManager->remove($row); för att rensa alla poster i en tabell, men detta påverkade inte autoinkrement.
+                        Därför användes en SQL-sats för att rensa motsvarande rad i sqlite_sequence.
+                    </p><br>
+
+                    <p>
+                        Databasen används för att lagra energidata från olika källor och årtal. Varje tabell har ett tydligt syfte som förklaras kort
+                        på sidan /proj/about/database, där även ett ER-diagram finns som visar tabellernas struktur.
+                    </p><br>
+
+                    <p>
+                        Några relationer mellan tabellerna behövde inte hanteras, eftersom varje tabell innehåller fristående data utan kopplingar.
+                        Enhetstester byggdes för att testa entity-klasserna och repository-klasserna mot databasen. Tester kunde köras lokalt utan problem,
+                        men för att undvika build error i Scrutinizer exkluderades just repository-testerna.
+                    </p><br>
+
+                    <p>
+                        På sidan /proj/about lades en länk till sidan med databasbeskrivningen.
+                    </p><br>
+
+                    <p>
+                        ORM visade sig ge en strukturerad och objektorienterad hantering av data. Jämfört med det tidigare
+                        arbetssättet i databaskursen, där SQL skrevs direkt, ger ORM mer återanvändbar kod. Samtidigt innebär
+                        det mindre kontroll över de exakta frågorna.
+                    </p><br>
+
+                    <p>
+                        I vissa fall, som vid återställning av sekvenser, behöver SQL ändå användas, iaf utifrån den kunskap som finns i nuläget.
+                    </p><br>
+
+                    <h3>Krav 6: Avancerade features</h3>
+
+                    <p>
+                        Gällande krav 6 och eventuellt arbete utöver grundkraven tolkades det som att det syftar på om krav 4 och 5 har uppfyllts,
+                        samt om något som inte uttryckligen nämns i kraven ändå har genomförts. Därför behandlas två delar nedan: den första gäller
+                        krav 4 och den andra krav 5.
+                    </p><br>
+
+                    <h4 class="h4">Filtreringslogik för energidata</h4>
+                    <p>
+                        Energidatan filtrerades genom att först hämta alla poster från databasen med findAll(). Dessa objekt skickades sedan
+                        vidare till en metod som tog emot två parametrar: ett valt år och en energityp. Metoden gick igenom varje objekt i listan och
+                        kontrollerade om dess år stämde överens med det valda. Om det matchade, hämtades motsvarande energivärde baserat på typen.
+                    </p><br>
+
+                    <p>
+                        För att avgöra vilket värde som skulle hämtas användes PHP:s kontrollstruktur match. Den valde rätt getter-metod beroende på
+                        vilken typ användaren angivit.
+                    </p><br>
+
+                    <p>
+                        Om ett giltigt värde hittades, sparades både årtalet och värdet i en separat resultatlista. All filtrering utfördes alltså i
+                        PHP efter att hela datasetet hämtats, vilket gav flexibilitet men krävde tydlig hantering av datatyper och villkor.
+                    </p><br>
+
+                    <h4 class="h4">Test av repositoryklasser</h4>
+
+                    <p>
+                        Repositoryn testades för att kontrollera att databaskopplingen fungerar korrekt. Testet startade Symfony-kärnan,
+                        vilket gjorde det möjligt att komma åt servicecontainern och hämta repository-instansen. Därefter anropades findAll()
+                        för att hämta alla rader från databasen.
+                    </p><br>
+
+                    <p>
+                        Resultatet verifierades med en assertion för att säkerställa att det inte var tomt. Detta test fungerar som en grundläggande
+                        kontroll av att repositoryn kan kommunicera med databasen och att data finns lagrat som förväntat. På så sätt bidrar det till en
+                        stabil grund för vidare funktionalitet i applikationen.
+                    </p><br>
+
+                    <h3>Allmänt</h3>
+
+                    <p>
+                        Projektet har skiljt sig från tidigare projekt. Det var svårt att välja ämne, vilket bidrog till att projektet drog ut på tiden.
+                        Själva projektet var inte nödvändigtvis svårt, men blev omständligt på grund av alla verktyg som PHPStan, PHP Metrics och Scrutinizer.
+                    </p><br>
+
+                    <p>
+                        Det fanns inte heller tillräckliga övningar eller genomgångar kring ORM och Doctrine i kursmaterialet,
+                        vilket gjorde arbetet mindre flexibelt och mer tidskrävande.
+                    </p><br>
+
+                    <p>
+                        Det som tog mest tid var att hantera de fel och varningar som rapporterades av PHPStan och Scrutinizer, eftersom dessa verktyg
+                        är mycket noggranna. Även valet av projektidé och att själv ta reda på hur man skulle importera data till databasen med ett tillvägagångssätt
+                        som inte tidigare använts i kursen tog extra tid.
+                    </p><br>
+
+                    <p>
+                        Ytterligare tid gick åt till att sätta sig in i JavaScript-biblioteken för datavisualisering. Det krävdes också en del förarbete för
+                        att förstå och analysera datamaterialet som valdes att presenteras.
+                    </p><br>
+
+                    <p>
+                        En annan tidskrävande del var allt det innehåll som behövde skrivas och redovisas på webbplatsen. Man hade föredragit mer fokus på det
+                        praktiska arbetet, även om det är förståeligt att det krävs en beskrivning av vad som har gjorts och hur, för att underlätta rättningen.
+                    </p><br>
+
+                    <p>
+                        En del av arbetet som upplevdes som lättare var att skapa en ny design för webbplatsen samt att bygga upp tabellerna, särskilt när det väl
+                        blivit tydligt hur de JavaScript-baserade visualiserings-modulerna fungerade. Den delen var utmanande i början, men också intressant att arbeta med.
+                    </p><br>
+
+                    <p>
+                        Det är svårt att säga om projektet i sin helhet var rimligt för kursens nivå, det beror till stor del på vilken idé man väljer att genomföra.
+                        Generellt kändes det dock som att det fanns flera moment och tekniker som låg utanför det som gåtts igenom i kursen, vilket gjorde att det krävdes
+                        extraarbete för att sätta sig in i allt.
+                    </p><br>
+
+                    <h3>Avslutning</h3>
+
+                    <p>
+                        Kursen kändes bred i sitt innehåll, med många olika delar. Även om kursens fokus är mvc,
+                        introducerades flera andra koncept och verktyg, som PHPStan, Scrutinizer och ORM/Doctrine, vilket
+                        gjorde det lite svårare att få en klar överblick.
+                    </p><br>
+
+                    <p>
+                        Fram till att dessa verktyg infördes upplevdes kursen som helt okej, men därefter blev den mindre engagerande.
+                        Jag är därför lite tveksam till om jag skulle rekommendera kursen, särskilt inte till någon man gillar...
+                    </p><br>
+
+                    <p>
+                        Problemet upplevdes vara att kursen försökte täcka för många moment på en gång. Det hade varit bättre för att låta studenterna
+                        fördjupa sig i ett tydligare huvudområde. En möjlig förbättring skulle kunna vara att minska mängden nya verktyg och tekniker, och i
+                        stället lägga mer tid på praktisk förståelse och tillämpning inom ett fokusområde som är relevant för dagens arbetsmarknad.
+                    </p><br>
+
+                    <p>
+                        Det hade också varit bra att minska kraven på redovisningar och dokumentation, samt att introducera någon övning
+                        för databastestning och ha fler kodövningar inom ORM.
+                    </p><br>
+
+                    <p>
+                        Handledningen var som vanligt bra och föreläsningarna var också bra med lagom längd. De gamla videoföreläsningarna från tidigare
+                        år är värdefulla och intressanta, och man skulle kunna titta på dem även i fritiden. Det är också bra med Discord,
+                        och det är hjälpsamt att kunna ställa frågor i Zoom-chatten vid behov.
+                    </p><br>
 
                 </div>
 

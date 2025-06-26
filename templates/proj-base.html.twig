@@ -8,30 +8,21 @@
             {{ encore_entry_link_tags('project') }}
         {% endblock %}
 
-
-        {# {% block javascripts %}
-            {{ encore_entry_script_tags('project') }}
-        {% endblock %} #}
-
     </head>
-
     <body>
-        {# <header class="site-header">
-            <span class="site-title">My Symfony Site</span>
-        </header> #}
-            <nav>
-                <ul>
-                    <li><a href="{{ path('about_proj') }}">Om</a></li>
-                    <li><a href="{{ path('proj') }}">Förnybar energi</a></li>
-                    <li><a href="{{ path('proj_energy') }}">Energi i TWh</a></li>
-                    <li><a href="{{ path('api-proj') }}">Api</a></li>
-                    <li><a href="{{ path('search_proj') }}">Sök</a></li>
-                    {# <li><a href="{{ path('show_proj_session') }}">Session</a></li>
-                    <a href="{{ path('delete_proj_session') }}">Radera session</a> #}
+        <nav>
+            <ul>
+                <li><a href="{{ path('about_proj') }}">Om</a></li>
+                <li><a href="{{ path('proj') }}">Förnybar energi</a></li>
+                <li><a href="{{ path('proj_energy') }}">Energi i TWh</a></li>
+                <li><a href="{{ path('api-proj') }}">Api</a></li>
+                <li><a href="{{ path('search_proj') }}">Sök</a></li>
+            </ul>
+        </nav>
+        <header class="hero-header">
+            <img src="{{ asset('img/heart.webp') }}" alt="Hållbarhet" class="hero-img">
+        </header>
 
-
-                </ul>
-            </nav>
         <main>
             {% block body %}
             {% endblock %}

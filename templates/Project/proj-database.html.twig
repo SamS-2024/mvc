@@ -4,12 +4,104 @@
 
 {% block body %}
     <h1 class="proj-h1">Om databasen</h1>
-        <div class="about-container">
-            <div class="about-text">
 
-            </div>
+    <div class="flowchart">
+        <h2>Er-diagram</h2>
+        <img src="{{ asset('img/ER.png') }}" class ="flowchart-img" alt="ER_diagram">
+    </div>
 
+    <div class="about-container">
 
+                <h2>Tabeller</h2>
+                <p> <strong>renewable_energy_share</strong> innehåller data om andelen förnybar energi (%) för olika år, uppdelat på totalt, värme, el och transporter.</p><br>
+
+                <p> <strong>energy_intensity_per_gdp</strong> innehåller statistik över energiintensitet som procentuell förändring per BNP.</p><br>
+
+                <p>
+                    <strong>renewable_energy_twh</strong> Sparar mängden producerad förnybar energi uppdelad på typ (bio, vattenkraft, vind, värmepumpar, sol) i TWh.
+                    Innehåller även totalproduktion och särskilda poster som “Statistisk överföring till Norge” och “Förnybar energi i målberäkning” utöver huvudtyperna.
+                </p><br>
+
+                <p>
+                    Relationer mellan tabellerna användes inte direkt i databasen utan hanterades i koden, där varje tabell behandlades som en självständig enhet.
+                    Filtrering och sortering skedde efter t.ex. årtal.
+
+                </p><br>
+
+                <p>
+                    SQLite användes som databas eftersom det är enkelt att sätta upp och fungerar bra för mindre projekt och
+                    testmiljöer.
+                </p><br>
+
+                <h2>Enhetstester</h2>
+
+                <p>
+                    Enhetstester gjordes på entitetsklasserna som hanterar databasen, och de testade att klasserna fungerade korrekt.
+                    Det gjordes även tester för repository-klasserna lokalt, till exempel med tester som RenewableEnergyTWhRepositoryTest som körs
+                    mot Symfony-kärnan och verifierar att repository-metoderna returnerar förväntade resultat.
+                </p><br>
+
+                <p>
+                    Enhetstester skrevs först för samtliga repository-klasser som använder databasen. Dessa fungerade lokalt, men efter flera försök
+                    att konfigurera Scrutinizer med rätt databasinställningar i .scrutinizer.yml fortsatte bygget att misslyckas.
+                </p><br>
+
+                <p>
+                    Efter många justeringar, togs dessa tester bort för att undvika att bygget blockerades.
+                    Fokus lades istället på att testa entity-klasserna, som ansvarar för att lagra och hämta data.
+                    Senare återinfördes repository-testklasserna, men de exkluderades i scrutinizer.yml för att inte orsaka problem i bygget.
+                </p><br>
+
+                <h2>Jämförelse mellan ORM och direkt databasarbete</h2>
+                <p>
+                    I databaskursen arbetade vi direkt mot databasen med SQL och mySQL, vilket kändes mer intuitivt och naturligt.
+                    Det var tydligt vad som hände, man skrev en fråga och fick ett resultat direkt.
+                </p><br>
+
+                <p>
+                    Det gav en större känsla av kontroll, särskilt när man snabbt behövde justera eller felsöka något. Man hade insyn i
+                    tabellerna och deras datatyper, vilket gjorde det möjligt att anpassa frågorna precis efter behov. Användningen av
+                    Express och de olika metoderna i src-mappen, som kommunicerade både med databasen och med routerna, var initialt mer komplex.
+                    Men i efterhand upplevdes detta arbetssätt som rimligt, och förståelsen för det ökade successivt.
+                </p><br>
+
+                <p>
+                    Nackdelen var att det krävdes mer kod för att hantera vanliga operationer som att skapa, läsa eller uppdatera data,
+                    och man behövde vara noggrann med att skydda sig mot exempelvis SQL-injektioner.
+                </p><br>
+
+                <p>
+                    I den här kursen har vi istället använt ORM med Doctrine, vilket gör mycket automatiskt i bakgrunden.
+                    Det känns lite mer inlindat, man skriver inte SQL direkt, utan jobbar via olika klasser.
+                </p><br>
+
+                <p>
+                    Det kan vara praktiskt i vissa lägen, men det gör det också svårare att förstå exakt vad som händer.
+                    Det var t.ex mer komplicerat att mata in data från CSV-filer jämfört med att göra det direkt i MySQL.
+                </p><br>
+
+                <p>
+                    Det kändes också som att man behövde fler filer och fler steg för att göra något som annars hade kunnat
+                    vara en enkel fråga. Samtidigt ger ORM en struktur som kan underlätta vid större projekt, där många
+                    tabeller och relationer måste hanteras konsekvent och återanvändas på olika ställen.
+                </p><br>
+
+                <p>
+                    Personligen tycker jag det var enklare och roligare att jobba direkt mot databasen som i förra kursen. Det gav bättre översikt
+                    och mer kontroll, även om det krävdes mer kod. Det tidigare arbetssättet kändes mer som ren programmering.
+                </p><br>
+
+                <p>
+                    Med ORM får man hjälp med strukturen, men det blir också mer abstrakt. Det passar kanske bättre i större projekt,
+                    men jag föredrar det mer direkta arbetssättet vi hade med mySQL.
+                </p><br>
+
+                <p>
+                    En likhet är att båda sätten i grunden handlar om att lagra, hämta och hantera data i tabeller, även om verktygen och
+                    metoderna skiljer sig åt. Oavsett om man skriver SQL direkt eller använder ORM så måste man förstå databasschemat och
+                    hur data är organiserad för att kunna göra effektiva och korrekta databasfrågor.
+                </p><br>
         </div>
+
 
 {% endblock %}

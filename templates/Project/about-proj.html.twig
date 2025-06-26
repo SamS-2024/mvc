@@ -4,34 +4,32 @@
 
 {% block body %}
     <h1 class="proj-h1">Om projektet</h1>
-        <div class="about-container">
-            <div class="about-text">
-                <p>
-                   Det här webbprojektet kombinerar programmering med temat förnybar energi inom hållbar utveckling.
-                   Målet är att presentera energirelaterad data på ett tydligt och interaktivt sätt, med fokus på förnybar energi och
-                   energieffektivitet över tid.
-                </p><br>
-                <p>
-                   Projektet är byggt i PHP med ramverket Symfony och använder Doctrine ORM tillsammans med en
-                   SQLite-databas för att hantera information. Diagram visualiseras med hjälp av Chart.js,
-                   en JavaScript-modul för interaktiva grafer.
-                </p><br>
+        <div class="about-text">
+            <p>
+                Det här webbprojektet kombinerar programmering med temat förnybar energi inom hållbar utveckling.
+                Målet är att presentera energirelaterad data på ett tydligt och interaktivt sätt, med fokus på förnybar energi och
+                energieffektivitet över tid.
+            </p><br>
+            <p>
+                Projektet är byggt i PHP med ramverket Symfony och använder Doctrine ORM tillsammans med en
+                SQLite-databas för att hantera information. Diagram visualiseras med hjälp av Chart.js,
+                en JavaScript-modul för interaktiva grafer.
+            </p><br>
 
-                <p>
-                    Applikationen innehåller en huvudsaklig controller för allmänna sidor samt en särskild
-                    JSON-controller som hanterar API-routes. Dessa API-routes används bland annat för att hämta
-                    data till diagram och för att visa en översikt över tillgängliga endpoints.
-                </p><br>
+            <p>
+                Applikationen innehåller en huvudsaklig controller för allmänna sidor samt en särskild
+                JSON-controller som hanterar API-routes. Dessa API-routes används bland annat för att hämta
+                data till diagram och för att visa en översikt över tillgängliga endpoints.
+            </p><br>
 
-                <p>
-                    Projektet visar hur webbutveckling och datavisualisering kan användas för att förmedla komplex
-                    information om energianvändning och samtidigt bidra till ökad medvetenhet om hållbarhet.
-                </p>
-            </div>
+            <p>
+                Projektet visar hur webbutveckling och datavisualisering kan användas för att förmedla komplex
+                information om energianvändning och samtidigt bidra till ökad medvetenhet om hållbarhet.
+            </p>
         </div>
 
-        <div class="link-container-button">
-            <a href="{{ path('proj_about_database') }}" class="links">Om databasen</a>
-        </div>
+    <div class="link-container-button">
+        <a href="{{ path('proj_about_database') }}" class="links">Om databasen</a>
+    </div>
 
 {% endblock %}

@@ -6,7 +6,6 @@
 body {
     background-color: #f1f0f0;
     line-height: 1.5;
-    /* color: #E5E5EA; */
 }
 
 
@@ -21,13 +20,11 @@ main {
 .proj-h1 {
     margin-bottom: 2rem;
     text-align: center;
-    /* border-bottom: 0.5px solid #BFA75A; */
-    /* color: #BFA75A; */
     color: #333;
     padding: 0.5rem;
 }
 
-h2, h3 {
+h2, h3, h4 {
     margin-bottom: 1em;
     margin-top: 1em;
 }
@@ -36,31 +33,13 @@ h3 {
     font-size: 1.3em;
 }
 
-/* header {
-    height: 150px; */
-    /* background: url('../images/background.jpg'); */
-    /* background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.site-title {
-    color: rgb(243, 242, 242);
-} */
-
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #2C2C2E; */
     background-color: #1b5d1e;
     margin-bottom: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 0;
     padding: 1rem;
 }
 
@@ -87,18 +66,14 @@ p {
 }
 
 footer {
-    /* background-color: #efece0; */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 80px;
-    /* Hjälper med att hålla footern nere vid kort innehåll */
-    /* margin-top: 25%; */
     margin-top: 15%;
     color: #333;
     padding: 2rem;
-    /* background: linear-gradient(to top, #e5f6e6, #4f8393); */
     background-color: #f2f2f2;
 }
 
@@ -109,11 +84,6 @@ footer {
 .about-title {
     margin-bottom: 2rem;
 }
-/*
-.copyright {
-    padding: 30px;
-    margin: 0 auto;
-} */
 
 .api-overview {
     display: inline;
@@ -163,14 +133,6 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Lite starkare skugga vid hover */
 }
 
-
-/* .uml {
-    width: 80%;
-    margin-top: 4em;
-    border-radius: 10px;
-} */
-
-
 .doc-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -197,139 +159,6 @@ footer {
     margin-bottom: 3rem;
     margin-top: 3rem;
 }
-
-/* Kmom05 'product' */
-.example-wrapper ul{
-    padding: 2rem;
-    width: 100%;
-    display: inline-block;
-    font-size: 1.2rem;
-}
-
-.example-wrapper ul li {
-    padding: 1rem;
-}
-
-.example-wrapper h1 {
-    margin-bottom: 3rem;;
-}
-
-/* kmom05*/
-.img-radius {
-    border-radius: 0.4rem;
-}
-
-.book-link {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
-    margin-top: 2rem;
-}
-
-
-/* .book-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-family: sans-serif;
-}
-
-.book-table th,
-.book-table td {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-.book-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-.book-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-} */
-
-/* .book-table a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.book-table a:hover {
-    text-decoration: underline;
-}
-
-.update-book-form {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin-bottom: 4rem;
-}
-
-.update-book-form label {
-    font-size: 1.1rem;
-    margin: 0.8rem 0.1rem;
-    font-weight: bold;
-} */
-
-/* .find-book-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    gap: 0.5rem;
-    font-family: sans-serif;
-}
-
-.find-book-form label {
-    font-weight: bold;
-}
-
-.find-book-form input {
-    padding: 0.5rem;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-} */
-
-/* .find-book-form button {
-    padding: 0.5rem;
-    border: none;
-    background-color: #007acc;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.find-book-form button:hover {
-    background-color: #005fa3;
-}
-
-/* Bibliteket */
-/* .library-container {
-    padding: 2rem;
-    width: 80%;
-    margin: 0 auto;
-  } */
-
-/* .book-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    border-bottom: 1px solid gray;
-    padding: 1rem;
-
-}
-
-.delete {
-    background-color: rgb(124, 123, 123);
-} */
 
 .phpmetrics {
     margin-top: 2rem;
@@ -412,4 +241,19 @@ canvas {
 
 .hidden {
   display: none;
+}
+
+.hero-header {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* För att bilden inte ska bli utdragen */
+    display: block;
 }

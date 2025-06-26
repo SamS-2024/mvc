@@ -6,7 +6,6 @@ use App\Trait\ProjectHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectController extends AbstractController
@@ -48,8 +47,6 @@ class ProjectController extends AbstractController
 
         return $this->render('Project/search.html.twig');
     }
-
-
 
     #[Route('/proj/import-csv', name: 'proj_import_csv')]
     public function importAll(
