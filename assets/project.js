@@ -14,8 +14,11 @@ import {
 
 Chart.register(BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
+const base = '/~saby24/dbwebb-kurser/mvc/me/report/public';
+
 async function loadAndRenderChart(apiUrl, canvasId, title, dataKey) {
-  const response = await fetch(apiUrl);
+
+  const response = await fetch(`${base}${apiUrl}`);
   const data = await response.json();
 
   const labels = data.map(item => item.year);
@@ -48,7 +51,7 @@ loadAndRenderChart('/proj/api/TWh-total', 'chart-TWh-total-use', 'Förnybar ener
 
 // Metod för att filtrera sökningsresultat i formuläret.
 async function fetchEnergyTWh(year, type) {
-  const response = await fetch('/proj/api/energy-TWh-filter', {
+  const response = await fetch(`${base}/proj/api/energy-TWh-filter`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ year, type })

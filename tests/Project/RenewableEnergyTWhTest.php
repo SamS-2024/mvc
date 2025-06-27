@@ -10,6 +10,7 @@ class RenewableEnergyTWhTest extends TestCase
     public function testSetAndGetYear(): void
     {
         $entity = new RenewableEnergyTWh();
+        $this->assertNull($entity->getId());
         $entity->setYear(2021);
         $this->assertEquals(2021, $entity->getYear());
     }

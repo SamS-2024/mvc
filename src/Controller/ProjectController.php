@@ -47,7 +47,7 @@ class ProjectController extends AbstractController
 
         return $this->render('Project/search.html.twig');
     }
-
+    // Route som rensar och fyller databasen med data från CSV-filer.
     #[Route('/proj/import-csv', name: 'proj_import_csv')]
     public function importAll(
         EntityManagerInterface $entityManager

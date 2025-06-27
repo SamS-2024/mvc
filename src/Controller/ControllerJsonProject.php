@@ -55,7 +55,7 @@ final class ControllerJsonProject extends AbstractController
     }
 
 
-    // Den här route visar endast el och transporter för enklare API-användning.
+    // Den här routen visar endast el och transporter för enklare API-användning.
     #[Route('/proj/api/energy-share-el', name: 'api_energy_share-el')]
     public function getEnergyShareEL(
         RenewableEnergyShareRepository $repo
